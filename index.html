@@ -11,7 +11,6 @@
         header { text-align: center; border-bottom: 2px solid var(--primary-color); padding-bottom: 20px; margin-bottom: 30px; }
         h1 { color: var(--dark-blue); margin: 0; font-size: 1.8em; }
         
-        /* 팀원 카드 섹션 */
         .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; margin-bottom: 30px; }
         .team-card { background: #f0f2f5; padding: 15px 10px; border-radius: 10px; text-align: center; border: 1px solid #eee; }
         .profile-img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; background-color: #ddd; margin-bottom: 10px; border: 3px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
@@ -22,7 +21,6 @@
         .btn-mail { color: #555; border: 1px solid #ccc; margin-top: 5px; background: white; }
         .btn-mail:hover { background: #eee; }
 
-        /* 홍보 및 샘플 박스 */
         .flex-box { display: flex; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; }
         .promo-box { flex: 1; min-width: 250px; padding: 20px; border-radius: 10px; text-align: center; border: 2px solid #ddd; }
         .box-sample { border-color: var(--primary-color); background: #fff4f4; }
@@ -37,39 +35,14 @@
         .btn-go { display: inline-block; padding: 5px 12px; background: var(--dark-blue); color: white; text-decoration: none; border-radius: 15px; font-size: 0.8em; }
 
         /* 하단 정보 디자인 개선 */
-        .footer { 
-            margin-top: 50px; 
-            padding-top: 30px; 
-            border-top: 2px solid #eee; 
-            text-align: center; /* 모든 요소 중앙 정렬 */
-        }
-
-        .footer-address { 
-            display: flex; 
-            justify-content: center; 
-            flex-wrap: wrap; 
-            gap: 10px; 
-            margin-bottom: 15px; 
-            font-size: 0.85em; 
-            color: #666; 
-        }
-
+        .footer { margin-top: 50px; padding-top: 30px; border-top: 2px solid #eee; text-align: center; }
+        .footer-address { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 15px; font-size: 0.85em; color: #666; }
         .footer-address div { display: flex; align-items: center; }
-
-        /* 주소 사이 구분선 (|) 넣기 */
-        .footer-address div:not(:last-child):after {
-            content: "|";
-            margin: 0 15px;
-            color: #ddd;
-            font-weight: normal;
-        }
-
+        .footer-address div:not(:last-child):after { content: "|"; margin: 0 15px; color: #ddd; }
         .footer-address strong { color: var(--dark-blue); margin-right: 5px; }
-
         .admin-links { margin-top: 20px; }
         .admin-links a { font-size: 11px; color: #bbb; text-decoration: none; margin: 0 8px; }
         .admin-links a:hover { color: var(--primary-color); text-decoration: underline; }
-
         .copyright { margin-top: 15px; font-size: 11px; color: #999; letter-spacing: 0.5px; }
     </style>
 </head>
@@ -81,51 +54,17 @@
         </header>
 
         <div class="team-grid">
-            <div class="team-card">
-                <img src="photos/kim.png" alt="김동욱" class="profile-img">
-                <span class="role">부장 / 팀장</span><strong>김동욱</strong>
-                <a href="tel:010-8560-6258" class="contact-btn btn-tel">010-8560-6258</a>
-                <a href="mailto:ugi@hanatour.com" class="contact-btn btn-mail">Email 보내기</a>
-            </div>
-            <div class="team-card">
-                <img src="photos/choi.png" alt="최봉재" class="profile-img">
-                <span class="role">차장 / 수석</span><strong>최봉재</strong>
-                <a href="tel:010-7438-0333" class="contact-btn btn-tel">010-7438-0333</a>
-                <a href="mailto:meg234@hanatour.com" class="contact-btn btn-mail">Email 보내기</a>
-            </div>
-            <div class="team-card">
-                <img src="photos/tae.png" alt="김태근" class="profile-img">
-                <span class="role">과장 / 선임</span><strong>김태근</strong>
-                <a href="tel:010-5584-4616" class="contact-btn btn-tel">010-5584-4616</a>
-                <a href="mailto:ktk1104zzang@hanatour.com" class="contact-btn btn-mail">Email 보내기</a>
-            </div>
-            <div class="team-card">
-                <img src="photos/chae.png" alt="김채스민" class="profile-img">
-                <span class="role">대리 / 선임</span><strong>김채스민</strong>
-                <a href="tel:010-9988-3266" class="contact-btn btn-tel">010-9988-3266</a>
-                <a href="mailto:smings@hanatour.com" class="contact-btn btn-mail">Email 보내기</a>
-            </div>
-            <div class="team-card">
-                <img src="photos/jang.png" alt="장현수" class="profile-img">
-                <span class="role">사원 / 사원</span><strong>장현수</strong>
-                <a href="tel:010-3390-5716" class="contact-btn btn-tel">010-3390-5716</a>
-                <a href="mailto:lovehs99@hanatour.com" class="contact-btn btn-mail">Email 보내기</a>
-            </div>
+            <div class="team-card"><img src="photos/kim.png" class="profile-img"><span class="role">부장 / 팀장</span><strong>김동욱</strong><a href="tel:010-8560-6258" class="contact-btn btn-tel">010-8560-6258</a><a href="mailto:ugi@hanatour.com" class="contact-btn btn-mail">Email 보내기</a></div>
+            <div class="team-card"><img src="photos/choi.png" class="profile-img"><span class="role">차장 / 수석</span><strong>최봉재</strong><a href="tel:010-7438-0333" class="contact-btn btn-tel">010-7438-0333</a><a href="mailto:meg234@hanatour.com" class="contact-btn btn-mail">Email 보내기</a></div>
+            <div class="team-card"><img src="photos/tae.png" class="profile-img"><span class="role">과장 / 선임</span><strong>김태근</strong><a href="tel:010-5584-4616" class="contact-btn btn-tel">010-5584-4616</a><a href="mailto:ktk1104zzang@hanatour.com" class="contact-btn btn-mail">Email 보내기</a></div>
+            <div class="team-card"><img src="photos/chae.png" class="profile-img"><span class="role">대리 / 선임</span><strong>김채스민</strong><a href="tel:010-9988-3266" class="contact-btn btn-tel">010-9988-3266</a><a href="mailto:smings@hanatour.com" class="contact-btn btn-mail">Email 보내기</a></div>
+            <div class="team-card"><img src="photos/jang.png" class="profile-img"><span class="role">사원 / 사원</span><strong>장현수</strong><a href="tel:010-3390-5716" class="contact-btn btn-tel">010-3390-5716</a><a href="mailto:lovehs99@hanatour.com" class="contact-btn btn-mail">Email 보내기</a></div>
         </div>
 
         <div class="flex-box">
-            <div class="promo-box box-sample">
-                <p><strong>[시연용]</strong> 복지몰 샘플 사이트</p>
-                <a href="https://wel.hanabizwel.com/pages/exhibition/detail/599" target="_blank" class="btn" style="background:var(--primary-color);">샘플 바로가기</a>
-            </div>
-            <div class="promo-box box-btms">
-                <p><strong>[시스템]</strong> 출장관리서비스 (BTMS)</p>
-                <a href="https://www.hanabtms.com/" target="_blank" class="btn" style="background:var(--dark-blue);">BTMS 바로가기</a>
-            </div>
-            <div class="promo-box box-theme">
-                <p><strong>[테마]</strong> 국제신문 콜라보 페이지</p>
-                <a href="https://bz3.hanabizwel.com/pages/exhibition/detail/410" target="_blank" class="btn" style="background:var(--green);">테마상품 보기</a>
-            </div>
+            <div class="promo-box box-sample"><p><strong>[시연용]</strong> 복지몰 샘플 사이트</p><a href="https://wel.hanabizwel.com/pages/exhibition/detail/599" target="_blank" class="btn" style="background:var(--primary-color);">샘플 바로가기</a></div>
+            <div class="promo-box box-btms"><p><strong>[시스템]</strong> 출장관리서비스 (BTMS)</p><a href="https://www.hanabtms.com/" target="_blank" class="btn" style="background:var(--dark-blue);">BTMS 바로가기</a></div>
+            <div class="promo-box box-theme"><p><strong>[테마]</strong> 국제신문 콜라보 페이지</p><a href="https://bz3.hanabizwel.com/pages/exhibition/detail/410" target="_blank" class="btn" style="background:var(--green);">테마상품 보기</a></div>
         </div>
 
         <h3>🏢 주요 거래처 복지몰</h3>
@@ -153,28 +92,22 @@
             </tbody>
         </table>
 
-       <div class="footer">
+        <div class="footer">
             <div class="footer-address">
                 <div><strong>서울</strong> 종로구 삼봉로 94, 4층 (공평동)</div>
                 <div><strong>대구</strong> 중구 국채보상로 648 호수빌딩 15층</div>
                 <div><strong>부산</strong> 중구 충장대로 7 교보생명빌딩 9층</div>
             </div>
-            
             <div class="admin-links">
                 <a href="private.html">[팀원전용]</a> 
                 <a href="performance.html">[실적증명]</a> 
                 <a href="https://github.com" target="_blank">[페이지수정]</a>
                 <a href="https://www.gabia.com" target="_blank">[도메인관리]</a>
             </div>
-
             <div class="copyright">
                 © 2026 Hanatour Business Corp. Corporate Sales Team 3. All Rights Reserved.
             </div>
         </div>
-    </div> </body>
+    </div>
+</body>
 </html>
-
-
-
-
-
