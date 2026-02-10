@@ -14,10 +14,7 @@
         /* 팀원 카드 섹션 */
         .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; margin-bottom: 30px; }
         .team-card { background: #f0f2f5; padding: 15px 10px; border-radius: 10px; text-align: center; border: 1px solid #eee; }
-        
-        /* 팀원 사진 스타일 */
         .profile-img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; background-color: #ddd; margin-bottom: 10px; border: 3px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        
         .team-card strong { display: block; font-size: 1.1em; color: var(--dark-blue); margin-top: 5px; }
         .team-card .role { font-size: 0.8em; color: #666; margin-bottom: 8px; display: block; }
         .contact-btn { display: block; font-size: 0.85em; text-decoration: none; padding: 3px; border-radius: 4px; transition: 0.2s; }
@@ -38,9 +35,13 @@
         th { background: #f8f9fa; }
         .btn-go { display: inline-block; padding: 5px 12px; background: var(--dark-blue); color: white; text-decoration: none; border-radius: 15px; font-size: 0.8em; }
 
-        /* 하단 정보 */
+        /* 하단 정보 & 주소 들여쓰기 추가 */
         .footer { margin-top: 50px; font-size: 0.85em; color: #555; border-top: 2px solid #eee; padding-top: 25px; }
         .address-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
+        
+        /* 핵심: 들여쓰기 스타일 */
+        .address-detail { padding-left: 36px; color: #777; font-size: 0.95em; margin-top: 2px; }
+
         .admin-links { text-align: right; margin-top: 15px; }
         .admin-links a { font-size: 11px; color: #ccc; text-decoration: none; margin-left: 10px; }
         .admin-links a:hover { color: #888; text-decoration: underline; }
@@ -54,85 +55,24 @@
         </header>
 
         <div class="team-grid">
-            <div class="team-card">
-                <img src="photos/kim.png" alt="김동욱" class="profile-img">
-                <span class="role">부장 / 팀장</span><strong>김동욱</strong>
-                <a href="tel:010-8560-6258" class="contact-btn btn-tel">010-8560-6258</a>
-                <a href="mailto:ugi@hanatour.com" class="contact-btn btn-mail">Email 보내기</a>
-            </div>
-            <div class="team-card">
-                <img src="photos/choi.png" alt="최봉재" class="profile-img">
-                <span class="role">차장 / 수석</span><strong>최봉재</strong>
-                <a href="tel:010-7438-0333" class="contact-btn btn-tel">010-7438-0333</a>
-                <a href="mailto:meg234@hanatour.com" class="contact-btn btn-mail">Email 보내기</a>
-            </div>
-            <div class="team-card">
-                <img src="photos/tae.png" alt="김태근" class="profile-img">
-                <span class="role">과장 / 선임</span><strong>김태근</strong>
-                <a href="tel:010-5584-4616" class="contact-btn btn-tel">010-5584-4616</a>
-                <a href="mailto:ktk1104zzang@hanatour.com" class="contact-btn btn-mail">Email 보내기</a>
-            </div>
-            <div class="team-card">
-                <img src="photos/chae.png" alt="김채스민" class="profile-img">
-                <span class="role">대리 / 선임</span><strong>김채스민</strong>
-                <a href="tel:010-9988-3266" class="contact-btn btn-tel">010-9988-3266</a>
-                <a href="mailto:smings@hanatour.com" class="contact-btn btn-mail">Email 보내기</a>
-            </div>
-            <div class="team-card">
-                <img src="photos/jang.png" alt="장현수" class="profile-img">
-                <span class="role">사원 / 사원</span><strong>장현수</strong>
-                <a href="tel:010-3390-5716" class="contact-btn btn-tel">010-3390-5716</a>
-                <a href="mailto:lovehs99@hanatour.com" class="contact-btn btn-mail">Email 보내기</a>
-            </div>
+            <div class="team-card"><img src="photos/kim.png" class="profile-img"><span class="role">부장 / 팀장</span><strong>김동욱</strong><a href="tel:010-8560-6258" class="contact-btn btn-tel">010-8560-6258</a><a href="mailto:ugi@hanatour.com" class="contact-btn btn-mail">Email 보내기</a></div>
+            <div class="team-card"><img src="photos/choi.png" class="profile-img"><span class="role">차장 / 수석</span><strong>최봉재</strong><a href="tel:010-7438-0333" class="contact-btn btn-tel">010-7438-0333</a><a href="mailto:meg234@hanatour.com" class="contact-btn btn-mail">Email 보내기</a></div>
+            <div class="team-card"><img src="photos/tae.png" class="profile-img"><span class="role">과장 / 선임</span><strong>김태근</strong><a href="tel:010-5584-4616" class="contact-btn btn-tel">010-5584-4616</a><a href="mailto:ktk1104zzang@hanatour.com" class="contact-btn btn-mail">Email 보내기</a></div>
+            <div class="team-card"><img src="photos/chae.png" class="profile-img"><span class="role">대리 / 선임</span><strong>김채스민</strong><a href="tel:010-9988-3266" class="contact-btn btn-tel">010-9988-3266</a><a href="mailto:smings@hanatour.com" class="contact-btn btn-mail">Email 보내기</a></div>
+            <div class="team-card"><img src="photos/jang.png" class="profile-img"><span class="role">사원 / 사원</span><strong>장현수</strong><a href="tel:010-3390-5716" class="contact-btn btn-tel">010-3390-5716</a><a href="mailto:lovehs99@hanatour.com" class="contact-btn btn-mail">Email 보내기</a></div>
         </div>
-
-        <div class="flex-box">
-            <div class="promo-box box-sample">
-                <p><strong>[시연용]</strong> 복지몰 샘플 사이트</p>
-                <a href="https://bz3.hanabizwel.com" target="_blank" class="btn" style="background:var(--primary-color);">샘플 바로가기</a>
-            </div>
-            
-            <div class="promo-box box-btms">
-                <p><strong>[시스템]</strong> 출장관리서비스 (BTMS)</p>
-                <a href="https://www.hanabtms.com/" target="_blank" class="btn" style="background:var(--dark-blue);">BTMS 바로가기</a>
-            </div>
-
-            <div class="promo-box box-theme">
-                <p><strong>[테마]</strong> 국제신문 콜라보 페이지</p>
-                <a href="https://wel.hanabizwel.com/pages/exhibition/detail/599" target="_blank" class="btn" style="background:var(--green);">테마상품 보기</a>
-            </div>
-        </div>
-
-        <h3>🏢 주요 거래처 복지몰</h3>
-        <table>
-            <thead><tr><th>거래처명</th><th>접속</th></tr></thead>
-            <tbody>
-                <tr><td>한국전력국제원자력대학원 (KINGS)</td><td><a href="https://kings.hanabizwel.com/" target="_blank" class="btn-go">접속</a></td></tr>
-                <tr><td>강원랜드 (KL)</td><td><a href="https://kl.hanabizwel.com/" target="_blank" class="btn-go">접속</a></td></tr>
-                <tr><td>강원랜드 사회공헌재단 (KLF)</td><td><a href="https://klf.hanabizwel.com/" target="_blank" class="btn-go">접속</a></td></tr>
-                <tr><td>한국토지주택공사 (LH)</td><td><a href="https://lh.hanabizwel.com/" target="_blank" class="btn-go">접속</a></td></tr>
-                <tr><td>한국전력기술 (KEPCO E&C)</td><td><a href="https://kepcoenc.hanabizwel.com/" target="_blank" class="btn-go">접속</a></td></tr>
-                <tr><td>한동대산학협력단 (한동대)</td><td><a href="https://handong.hanabizwel.com/" target="_blank" class="btn-go">접속</a></td></tr>
-                <tr><td>이노플 (INP)</td><td><a href="https://inp.hanabizwel.com/" target="_blank" class="btn-go">접속</a></td></tr>
-                <tr><td>강림중공업 (KR)</td><td><a href="https://kr.hanabizwel.com/" target="_blank" class="btn-go">접속</a></td></tr>
-                <tr><td>3팀 공용 (KR)</td><td><a href="https://bz3.hanabizwel.com" target="_blank" class="btn-go">접속</a></td></tr>
-            </tbody>
-        </table>
-
-        <h3>⚾ 삼성라이온즈 팬투어</h3>
-        <table>
-            <thead><tr><th>연도별 프로젝트</th><th>공식 링크</th></tr></thead>
-            <tbody>
-                <tr><td><strong>2025년</strong> 삼성라이온즈 팬투어</td><td><a href="https://lions.mice.link" target="_blank" class="btn-go" style="background:var(--samsung-blue);">페이지 이동</a></td></tr>
-                <tr><td><strong>2026년</strong> 삼성라이온즈 팬투어</td><td><a href="https://lions2026.mice.link" target="_blank" class="btn-go" style="background:var(--samsung-blue);">페이지 이동</a></td></tr>
-            </tbody>
-        </table>
 
         <div class="footer">
             <div class="address-grid">
                 <div><strong>서울</strong> 종로구 삼봉로 94, 4층 (공평동, 94빌딩)</div>
-                <div><strong>대구</strong> 중구 국채보상로 648 (동인2가), <br>&nbsp;&nbsp;&nbsp;&nbsp;SHL동성빌딩 15층</div>
-                <div><strong>부산</strong> 중구 충장대로 7 (중앙동), <br>&nbsp;&nbsp;&nbsp;&nbsp;교보생명빌딩 9층</div>
+                <div>
+                    <strong>대구</strong> 중구 국채보상로 648 (동인2가)
+                    <div class="address-detail">호수빌딩 15층</div>
+                </div>
+                <div>
+                    <strong>부산</strong> 중구 충장대로 7 (중앙동)
+                    <div class="address-detail">교보생명빌딩 9층</div>
+                </div>
             </div>
             
             <div class="admin-links">
@@ -148,6 +88,3 @@
     </div>
 </body>
 </html>
-
-
-
