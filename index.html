@@ -22,11 +22,13 @@
         .btn-mail { color: #555; border: 1px solid #ccc; margin-top: 5px; background: white; }
         .btn-mail:hover { background: #eee; }
 
-        /* 홍보 및 샘플 박스 */
+        /* 홍보 및 샘플 박스 - 테두리 색상들 */
         .flex-box { display: flex; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; }
-        .promo-box { flex: 1; min-width: 300px; padding: 20px; border-radius: 10px; text-align: center; border: 2px solid #ddd; }
+        .promo-box { flex: 1; min-width: 250px; padding: 20px; border-radius: 10px; text-align: center; border: 2px solid #ddd; transition: 0.3s; }
         .box-sample { border-color: var(--primary-color); background: #fff4f4; }
+        .box-btms { border-color: var(--dark-blue); background: #f4f7ff; } /* BTMS 테두리 및 배경 추가 */
         .box-theme { border-color: var(--green); background: #f4fff6; }
+        
         .btn { display: inline-block; padding: 10px 20px; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 10px; }
 
         h3 { border-left: 5px solid var(--primary-color); padding-left: 10px; color: var(--dark-blue); margin-top: 40px; }
@@ -35,11 +37,9 @@
         th { background: #f8f9fa; }
         .btn-go { display: inline-block; padding: 5px 12px; background: var(--dark-blue); color: white; text-decoration: none; border-radius: 15px; font-size: 0.8em; }
 
-        /* 하단 정보 & 주소 들여쓰기 추가 */
+        /* 하단 정보 & 주소 들여쓰기 */
         .footer { margin-top: 50px; font-size: 0.85em; color: #555; border-top: 2px solid #eee; padding-top: 25px; }
         .address-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
-        
-        /* 핵심: 들여쓰기 스타일 */
         .address-detail { padding-left: 36px; color: #777; font-size: 0.95em; margin-top: 2px; }
 
         .admin-links { text-align: right; margin-top: 15px; }
@@ -61,6 +61,37 @@
             <div class="team-card"><img src="photos/chae.png" class="profile-img"><span class="role">대리 / 선임</span><strong>김채스민</strong><a href="tel:010-9988-3266" class="contact-btn btn-tel">010-9988-3266</a><a href="mailto:smings@hanatour.com" class="contact-btn btn-mail">Email 보내기</a></div>
             <div class="team-card"><img src="photos/jang.png" class="profile-img"><span class="role">사원 / 사원</span><strong>장현수</strong><a href="tel:010-3390-5716" class="contact-btn btn-tel">010-3390-5716</a><a href="mailto:lovehs99@hanatour.com" class="contact-btn btn-mail">Email 보내기</a></div>
         </div>
+
+        <div class="flex-box">
+            <div class="promo-box box-sample">
+                <p><strong>[시연용]</strong> 복지몰 샘플 사이트</p>
+                <a href="https://wel.hanabizwel.com/pages/exhibition/detail/599" target="_blank" class="btn" style="background:var(--primary-color);">샘플 바로가기</a>
+            </div>
+            <div class="promo-box box-btms">
+                <p><strong>[시스템]</strong> 출장관리서비스 (BTMS)</p>
+                <a href="https://www.hanabtms.com/" target="_blank" class="btn" style="background:var(--dark-blue);">BTMS 바로가기</a>
+            </div>
+            <div class="promo-box box-theme">
+                <p><strong>[테마]</strong> 국제신문 콜라보 페이지</p>
+                <a href="https://wel.hanabizwel.com/pages/exhibition/detail/599" target="_blank" class="btn" style="background:var(--green);">테마상품 보기</a>
+            </div>
+        </div>
+
+        <h3>🏢 주요 거래처 복지몰</h3>
+        <table>
+            <thead><tr><th>거래처명</th><th>접속</th></tr></thead>
+            <tbody>
+                <tr><td>한국전력국제원자력대학원 (KINGS)</td><td><a href="https://kings.hanabizwel.com/" target="_blank" class="btn-go">접속</a></td></tr>
+                <tr><td>강원랜드 (KL)</td><td><a href="https://kl.hanabizwel.com/" target="_blank" class="btn-go">접속</a></td></tr>
+                <tr><td>강원랜드 사회공헌재단 (KLF)</td><td><a href="https://klf.hanabizwel.com/" target="_blank" class="btn-go">접속</a></td></tr>
+                <tr><td>한국토지주택공사 (LH)</td><td><a href="https://lh.hanabizwel.com/" target="_blank" class="btn-go">접속</a></td></tr>
+                <tr><td>한국전력기술 (KEPCO E&C)</td><td><a href="https://kepcoenc.hanabizwel.com/" target="_blank" class="btn-go">접속</a></td></tr>
+                <tr><td>한동대산학협력단 (한동대)</td><td><a href="https://handong.hanabizwel.com/" target="_blank" class="btn-go">접속</a></td></tr>
+                <tr><td>이노플 (INP)</td><td><a href="https://inp.hanabizwel.com/" target="_blank" class="btn-go">접속</a></td></tr>
+                <tr><td>강림중공업 (KR)</td><td><a href="https://kr.hanabizwel.com/" target="_blank" class="btn-go">접속</a></td></tr>
+                <tr style="background: #fdfdfd;"><td><strong>법인영업3팀 공용 샘플</strong></td><td><a href="https://bz3.hanabizwel.com" target="_blank" class="btn-go" style="background:var(--primary-color);">접속</a></td></tr>
+            </tbody>
+        </table>
 
         <div class="footer">
             <div class="address-grid">
