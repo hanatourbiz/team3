@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>실적증명 관리 | 법인영업3팀</title>
+    <title>행사 실적 관리 | 법인영업3팀</title>
     <style>
         :root { --primary-color: #e31a1a; --dark-blue: #003399; --bg-gray: #f8f9fa; }
         body { font-family: 'Pretendard', sans-serif; background-color: var(--bg-gray); margin: 0; padding: 20px; line-height: 1.6; }
@@ -15,8 +15,8 @@
         .btn-home:hover { background: #eee; }
 
         h2 { font-size: 1.2em; color: #333; margin-top: 40px; border-left: 5px solid #ccc; padding-left: 10px; display: flex; align-items: center; }
-        .brand-htb { border-left-color: var(--dark-blue); } /* 비즈니스 강조색 */
-        .brand-hnt { border-left-color: var(--primary-color); } /* 하나투어 강조색 */
+        .brand-htb { border-left-color: var(--dark-blue); }
+        .brand-hnt { border-left-color: var(--primary-color); }
 
         table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.9em; margin-bottom: 20px; }
         th, td { border: 1px solid #dee2e6; padding: 12px 8px; text-align: center; }
@@ -24,74 +24,75 @@
         
         .year-cell { font-weight: bold; color: #444; }
         .count-cell { color: var(--primary-color); font-weight: 600; }
-        
-        .btn-down { display: inline-block; padding: 4px 10px; background: var(--dark-blue); color: white; text-decoration: none; border-radius: 4px; font-size: 0.85em; transition: 0.2s; }
-        .btn-down:hover { background: #000; }
-        .btn-empty { color: #ccc; border: 1px dashed #ccc; padding: 3px 8px; font-size: 0.8em; border-radius: 4px; }
+        .dest-cell { color: #555; }
 
-        .notice { background: #fff9db; padding: 15px; border-radius: 10px; font-size: 0.85em; color: #666; margin-top: 40px; border: 1px solid #ffec99; }
+        .notice { background: #f1f3f5; padding: 15px; border-radius: 10px; font-size: 0.85em; color: #666; margin-top: 40px; }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>📜 주요 행사 실적 및 증명서 관리</h1>
+            <h1>📊 주요 행사 실적 히스토리</h1>
             <a href="index.html" class="btn-home">🏠 홈으로 이동</a>
         </header>
 
-        <h2 class="brand-htb">🔵 (주)하나투어비즈니스 실적</h2>
+        <h2 class="brand-htb">🔵 (주)하나투어비즈니스 주요 실적 (기업/공공)</h2>
         <table>
             <thead>
                 <tr>
-                    <th width="8%">연도</th>
-                    <th width="35%">행사명 (거래처명)</th>
-                    <th width="12%">인원</th>
-                    <th width="25%">목적지</th>
-                    <th width="20%">증명서 다운로드</th>
+                    <th width="10%">연도</th>
+                    <th width="45%">행사명 (거래처명)</th>
+                    <th width="15%">인원</th>
+                    <th width="30%">목적지</th>
                 </tr>
             </thead>
             <tbody>
-                <tr><td class="year-cell">2024</td><td>육군3사관학교</td><td class="count-cell">-</td><td>일본</td><td><a href="files/hb_army3_24.pdf" class="btn-down" download>PDF 다운</a></td></tr>
-                <tr><td class="year-cell">2025</td><td>육군3사관학교</td><td class="count-cell">-</td><td>일본</td><td><a href="files/hb_army3_25.pdf" class="btn-down" download>PDF 다운</a></td></tr>
-                <tr><td class="year-cell">2025</td><td>강원랜드사회공헌재단 (진폐휴양)</td><td class="count-cell">-</td><td>국내/외</td><td><a href="files/hb_klf_25.pdf" class="btn-down" download>PDF 다운</a></td></tr>
-                
-                <script>
-                    for(let i=0; i<17; i++) {
-                        document.write('<tr><td class="year-cell">-</td><td></td><td class="count-cell">-</td><td></td><td><span class="btn-empty">파일없음</span></td></tr>');
-                    }
-                </script>
+                <tr><td class="year-cell">2026</td><td>진주교육대학교 (다문화 교육현장탐방)</td><td class="count-cell">9명</td><td class="dest-cell">말레이시아</td></tr>
+                <tr><td class="year-cell">2025</td><td>명지전문대학교 산학협력단 (전기계열 연수)</td><td class="count-cell">9명</td><td class="dest-cell">일본 도쿄</td></tr>
+                <tr><td class="year-cell">2025</td><td>육군3사관학교 (주변국 군사유적지 탐방)</td><td class="count-cell">-</td><td class="dest-cell">일본</td></tr>
+                <tr><td class="year-cell">2025</td><td>명지전문대학교 산학협력단 (응급구조과 연수)</td><td class="count-cell">13명</td><td class="dest-cell">일본 도쿄</td></tr>
+                <tr><td class="year-cell">2025</td><td>명지전문대학교 산학협력단 (스포츠재활 연수)</td><td class="count-cell">18명</td><td class="dest-cell">일본 도쿄</td></tr>
+                <tr><td class="year-cell">2025</td><td>순천제일대학교 (교직원 역량강화 해외연수)</td><td class="count-cell">126명</td><td class="dest-cell">베트남 하노이/하롱베이</td></tr>
+                <tr><td class="year-cell">2025</td><td>내면고등학교 (수학여행)</td><td class="count-cell">22명</td><td class="dest-cell">국내(대구,부산,경주)</td></tr>
+                <tr><td class="year-cell">2025</td><td>강원랜드사회공헌재단 (진폐휴양프로그램)</td><td class="count-cell">-</td><td class="dest-cell">국내/외</td></tr>
+                <tr><td class="year-cell">2024</td><td>성균관대학교 인재교육원 (글로벌벤치마킹)</td><td class="count-cell">42명</td><td class="dest-cell">미국(샌프란시스코)</td></tr>
+                <tr><td class="year-cell">2024</td><td>삼성전자로지텍 (상해 물류박람회)</td><td class="count-cell">16명</td><td class="dest-cell">중국 상해</td></tr>
+                <tr><td class="year-cell">2024</td><td>경기도일자리재단 (경기청년 사다리 항공권)</td><td class="count-cell">-</td><td class="dest-cell">-</td></tr>
+                <tr><td class="year-cell">2024</td><td>APEC국제교육협력원 (디지털 교육지원사업)</td><td class="count-cell">-</td><td class="dest-cell">전세계</td></tr>
+                <tr><td class="year-cell">2024</td><td>(주)글로벌에이케이 (공군사관학교 해외항법훈련)</td><td class="count-cell">256명</td><td class="dest-cell">미국(괌, 하와이)</td></tr>
+                <tr><td class="year-cell">2024</td><td>KOICA (항공권 발권 위탁운영)</td><td class="count-cell">-</td><td class="dest-cell">전세계</td></tr>
+                <tr><td class="year-cell">2024</td><td>포스에스엠 (주거래 항공권 발권)</td><td class="count-cell">-</td><td class="dest-cell">전세계</td></tr>
             </tbody>
         </table>
 
-        <div style="height: 30px;"></div>
-
-        <h2 class="brand-hnt">🔴 (주)하나투어 실적</h2>
+        <h2 class="brand-hnt">🔴 (주)하나투어 실적 (교육기관/고등학교)</h2>
         <table>
             <thead>
                 <tr>
-                    <th width="8%">연도</th>
-                    <th width="35%">행사명 (거래처명)</th>
-                    <th width="12%">인원</th>
-                    <th width="25%">목적지</th>
-                    <th width="20%">증명서 다운로드</th>
+                    <th width="10%">연도</th>
+                    <th width="45%">행사명 (거래처명)</th>
+                    <th width="15%">인원</th>
+                    <th width="30%">목적지</th>
                 </tr>
             </thead>
             <tbody>
-                <tr><td class="year-cell">2024</td><td>부산일과학고등학교</td><td class="count-cell">99명</td><td>미동부</td><td><a href="files/h_busan_sci_24.pdf" class="btn-down" style="background:#555;" download>PDF 다운</a></td></tr>
-                <tr><td class="year-cell">2025</td><td>부산일과학고등학교</td><td class="count-cell">99명</td><td>미서부</td><td><a href="files/h_busan_sci_25.pdf" class="btn-down" style="background:#555;" download>PDF 다운</a></td></tr>
-                <tr><td class="year-cell">2025</td><td>대구과학고등학교</td><td class="count-cell">-</td><td>미정</td><td><span class="btn-empty">준비중</span></td></tr>
-                <tr><td class="year-cell">2025</td><td>부산소프트웨어 마이스터고</td><td class="count-cell">-</td><td>미정</td><td><span class="btn-empty">준비중</span></td></tr>
-                
-                <script>
-                    for(let i=0; i<16; i++) {
-                        document.write('<tr><td class="year-cell">-</td><td></td><td class="count-cell">-</td><td></td><td><span class="btn-empty">파일없음</span></td></tr>');
-                    }
-                </script>
+                <tr><td class="year-cell">2025</td><td>휘문고등학교 (국외 소규모테마형교육여행)</td><td class="count-cell">403명</td><td class="dest-cell">일본 도쿄</td></tr>
+                <tr><td class="year-cell">2025</td><td>부산일과학고등학교 (국외 현장체험학습)</td><td class="count-cell">98명</td><td class="dest-cell">미국 서부</td></tr>
+                <tr><td class="year-cell">2025</td><td>경복비즈니스고등학교 (산학맞춤반 국외연수)</td><td class="count-cell">6명</td><td class="dest-cell">미국 서부</td></tr>
+                <tr><td class="year-cell">2025</td><td>대전대성고등학교 (1학년 해외 수학여행)</td><td class="count-cell">356명</td><td class="dest-cell">일본 오사카</td></tr>
+                <tr><td class="year-cell">2025</td><td>상산고등학교 (2학년 국외 현장체험학습)</td><td class="count-cell">345명</td><td class="dest-cell">일본 오사카/도쿄</td></tr>
+                <tr><td class="year-cell">2025</td><td>대구과학고등학교 (해외교육현장탐방)</td><td class="count-cell">107명</td><td class="dest-cell">미국 동부</td></tr>
+                <tr><td class="year-cell">2025</td><td>한영외국어고등학교 (소규모테마형교육여행)</td><td class="count-cell">253명</td><td class="dest-cell">일본 오사카</td></tr>
+                <tr><td class="year-cell">2025</td><td>경기외국어고등학교 (숙박형 현장체험학습)</td><td class="count-cell">430명</td><td class="dest-cell">싱가폴/일본/울릉도</td></tr>
+                <tr><td class="year-cell">2024</td><td>부산일과학고등학교 (국외 현장체험학습)</td><td class="count-cell">103명</td><td class="dest-cell">미국 동부</td></tr>
+                <tr><td class="year-cell">2024</td><td>경기외국어고등학교 (PK 국내체험학습)</td><td class="count-cell">210명</td><td class="dest-cell">울릉도</td></tr>
+                <tr><td class="year-cell">2023</td><td>안양외국어고등학교 (해외학술연수)</td><td class="count-cell">-</td><td class="dest-cell">싱가폴/일본</td></tr>
+                <tr><td class="year-cell">2022</td><td>경기외국어고등학교 (국외체험학습)</td><td class="count-cell">365명</td><td class="dest-cell">싱가포르</td></tr>
             </tbody>
         </table>
 
         <div class="notice">
-            💡 <b>실무 가이드:</b> 최근 입찰의 경우 (주)하나투어비즈니스 실적을 우선적으로 제출하되, 규모가 큰 과거 실적은 (주)하나투어 실적을 보완 자료로 활용하시기 바랍니다.
+            💡 법인영업3팀의 주요 행사 운영 실적 리스트입니다. (주)하나투어비즈니스 및 (주)하나투어의 통합 실적을 포함하고 있습니다.
         </div>
     </div>
 </body>
