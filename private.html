@@ -5,36 +5,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>법인영업3팀 | 내부 전용</title>
     <style>
-        body { font-family: 'Pretendard', sans-serif; background: #333; color: white; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .secure-container { background: white; color: #333; padding: 40px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); max-width: 500px; width: 90%; text-align: center; }
-        h2 { color: #e31a1a; }
-        .data-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9em; }
-        .data-table th, .data-table td { border: 1px solid #ddd; padding: 10px; }
-        .btn-box { display: flex; gap: 10px; margin-top: 20px; }
-        .btn-file { flex: 1; padding: 15px; background: #f8f9fa; border: 1px solid #ddd; border-radius: 8px; text-decoration: none; color: #333; font-weight: bold; }
-        .btn-file:hover { background: #eee; }
+        :root { --primary-color: #e31a1a; --dark-blue: #003399; --bg-gray: #f8f9fa; }
+        body { font-family: 'Pretendard', sans-serif; background: #333; color: white; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .secure-container { background: white; color: #333; padding: 40px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); max-width: 700px; width: 95%; text-align: center; margin: 20px; }
+        
+        h2 { color: var(--primary-color); margin-bottom: 25px; }
+        h3 { border-left: 5px solid var(--dark-blue); padding-left: 10px; text-align: left; color: var(--dark-blue); margin-top: 35px; font-size: 1.1em; }
+        
+        /* 테이블 스타일 */
+        .data-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 0.85em; }
+        .data-table th, .data-table td { border: 1px solid #ddd; padding: 10px; text-align: center; }
+        .data-table th { background: #f8f9fa; color: #555; }
+        .num-cell { text-align: right; font-family: 'Consolas', monospace; }
+        .total-row { background: #fff9db; font-weight: bold; }
+
+        /* 접속 정보 카드 스타일 (신규) */
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
+        .info-card { background: #f4f7ff; border: 1px solid #d0d7ef; padding: 15px; border-radius: 10px; text-align: left; }
+        .info-card strong { color: var(--dark-blue); display: block; margin-bottom: 8px; border-bottom: 1px solid #d0d7ef; padding-bottom: 5px; }
+        .info-card p { margin: 5px 0; font-size: 0.9em; color: #555; }
+
+        /* 다운로드 버튼 스타일 (시안성 강화) */
+        .btn-box { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
+        .btn-file { 
+            padding: 12px; background: white; border: 2px solid #eee; border-radius: 12px; 
+            text-decoration: none; color: #333; transition: all 0.2s;
+            display: flex; align-items: center; gap: 12px; text-align: left;
+        }
+        .btn-file:hover { border-color: var(--dark-blue); background: #f8f9fa; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .file-icon { font-size: 1.8em; }
+        .file-info { display: flex; flex-direction: column; }
+        .file-name { font-weight: bold; font-size: 0.9em; }
+        .file-ext { font-size: 0.7em; color: #999; font-weight: normal; }
+        .pdf-icon { color: #e31a1a; }
+        .img-icon { color: #28a745; }
+
+        .footer-link { margin-top: 40px; }
+        .footer-link a { color: #888; text-decoration: none; font-size: 0.85em; }
     </style>
 </head>
 <body>
-    <div id="lock-screen"></div>
-
     <div class="secure-container" id="content" style="display:none;">
-        <h2>📊 2026년 경영 목표</h2>
+        <h2>📊 2026년 경영 목표 및 공무 서류</h2>
+
+        <h3>👤 담당자별 목표 (개인별)</h3>
         <table class="data-table">
-            <tr style="background:#f8f9fa;"><th>항목</th><th>목표치</th></tr>
-            <tr><td>매출 목표</td><td>22,791,369,908원</td></tr>
-            <tr><td>영업수익 목표</td><td>993,913,104원</td></tr>
-            <tr><td>영업이익 목표</td><td>341,166,823원</td></tr>
+            <thead>
+                <tr><th>담당자</th><th>직급</th><th>매출 목표 (원)</th><th>수익 목표 (원)</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>최봉재</td><td>차장</td><td class="num-cell">8,751,613,687</td><td class="num-cell">301,167,732</td></tr>
+                <tr><td>김태근</td><td>과장</td><td class="num-cell">8,326,112,486</td><td class="num-cell">384,348,698</td></tr>
+                <tr><td>김채스민</td><td>대리</td><td class="num-cell">2,703,622,837</td><td class="num-cell">145,973,821</td></tr>
+                <tr><td>장현수</td><td>사원</td><td class="num-cell">3,010,020,897</td><td class="num-cell">162,422,855</td></tr>
+                <tr class="total-row">
+                    <td colspan="2">합계</td>
+                    <td class="num-cell">22,791,369,908</td>
+                    <td class="num-cell">993,913,104</td>
+                </tr>
+            </tbody>
         </table>
 
-        <h3>📂 필수 서류</h3>
-        <div class="btn-box">
-            <a href="biz_business_license.pdf" download class="btn-file">📜 BIZ 사업자등록증</a>
-            <a href="biz_bank_account.pdf" download class="btn-file">🏦 BIZ 통장사본</a>
-            <a href="hnt_business_license.png" download class="btn-file">📜 HNT 사업자등록증</a>
-            <a href="hnt_bank_account.pdf" download class="btn-file">🏦 HNT 통장사본</a>
+        <h3>🔑 시스템 접속 정보</h3>
+        <div class="info-grid">
+            <div class="info-card">
+                <strong>출장관리서비스 (BTMS)</strong>
+                <p>ID: <b>AAA</b></p>
+                <p>PW: <b>1234</b></p>
+            </div>
+            <div class="info-card">
+                <strong>복지몰 샘플</strong>
+                <p>ID: <b>BBB</b></p>
+                <p>PW: <b>4321</b></p>
+            </div>
         </div>
-        <p style="margin-top:20px;"><a href="index.html" style="color:#888; font-size:0.8em;">메인 페이지로 돌아가기</a></p>
+
+        <h3>📂 필수 서류 다운로드</h3>
+        <div class="btn-box">
+            <a href="files/biz_business_license.pdf" download class="btn-file">
+                <span class="file-icon pdf-icon">📄</span>
+                <div class="file-info">
+                    <span class="file-name">BIZ 사업자등록증</span>
+                    <span class="file-ext">PDF Document</span>
+                </div>
+            </a>
+            <a href="files/biz_bank_account.pdf" download class="btn-file">
+                <span class="file-icon pdf-icon">🏦</span>
+                <div class="file-info">
+                    <span class="file-name">BIZ 통장사본</span>
+                    <span class="file-ext">PDF Document</span>
+                </div>
+            </a>
+            <a href="files/hnt_business_license.png" download class="btn-file">
+                <span class="file-icon img-icon">🖼️</span>
+                <div class="file-info">
+                    <span class="file-name">HNT 사업자등록증</span>
+                    <span class="file-ext">PNG Image File</span>
+                </div>
+            </a>
+            <a href="files/hnt_bank_account.pdf" download class="btn-file">
+                <span class="file-icon pdf-icon">🏦</span>
+                <div class="file-info">
+                    <span class="file-name">HNT 통장사본</span>
+                    <span class="file-ext">PDF Document</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="footer-link">
+            <a href="index.html">← 메인 페이지로 돌아가기</a>
+        </div>
     </div>
 
     <script>
