@@ -36,14 +36,41 @@
         th { background: #f8f9fa; }
         .btn-go { display: inline-block; padding: 5px 12px; background: var(--dark-blue); color: white; text-decoration: none; border-radius: 15px; font-size: 0.8em; }
 
-        /* 하단 정보 & 주소 들여쓰기 */
-        .footer { margin-top: 50px; font-size: 0.85em; color: #555; border-top: 2px solid #eee; padding-top: 25px; }
-        .address-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
-        .address-detail { padding-left: 36px; color: #777; font-size: 0.95em; margin-top: 2px; }
+        /* 하단 정보 디자인 개선 */
+        .footer { 
+            margin-top: 50px; 
+            padding-top: 30px; 
+            border-top: 2px solid #eee; 
+            text-align: center; /* 모든 요소 중앙 정렬 */
+        }
 
-        .admin-links { text-align: right; margin-top: 15px; }
-        .admin-links a { font-size: 11px; color: #ccc; text-decoration: none; margin-left: 10px; }
-        .admin-links a:hover { color: #888; text-decoration: underline; }
+        .footer-address { 
+            display: flex; 
+            justify-content: center; 
+            flex-wrap: wrap; 
+            gap: 10px; 
+            margin-bottom: 15px; 
+            font-size: 0.85em; 
+            color: #666; 
+        }
+
+        .footer-address div { display: flex; align-items: center; }
+
+        /* 주소 사이 구분선 (|) 넣기 */
+        .footer-address div:not(:last-child):after {
+            content: "|";
+            margin: 0 15px;
+            color: #ddd;
+            font-weight: normal;
+        }
+
+        .footer-address strong { color: var(--dark-blue); margin-right: 5px; }
+
+        .admin-links { margin-top: 20px; }
+        .admin-links a { font-size: 11px; color: #bbb; text-decoration: none; margin: 0 8px; }
+        .admin-links a:hover { color: var(--primary-color); text-decoration: underline; }
+
+        .copyright { margin-top: 15px; font-size: 11px; color: #999; letter-spacing: 0.5px; }
     </style>
 </head>
 <body>
@@ -126,33 +153,27 @@
             </tbody>
         </table>
 
-        <div class="footer">
-            <div class="address-grid">
-                <div><strong>서울</strong> 종로구 삼봉로 94, 4층 (공평동, 94빌딩)</div>
-                <div>
-                    <strong>대구</strong> 중구 국채보상로 648 (동인2가)
-                    <div class="address-detail">호수빌딩 15층</div>
-                </div>
-                <div>
-                    <strong>부산</strong> 중구 충장대로 7 (중앙동)
-                    <div class="address-detail">교보생명빌딩 9층</div>
-                </div>
+       <div class="footer">
+            <div class="footer-address">
+                <div><strong>서울</strong> 종로구 삼봉로 94, 4층 (공평동)</div>
+                <div><strong>대구</strong> 중구 국채보상로 648 호수빌딩 15층</div>
+                <div><strong>부산</strong> 중구 충장대로 7 교보생명빌딩 9층</div>
             </div>
             
             <div class="admin-links">
-    <a href="private.html" style="margin-right:15px;">[팀원전용]</a> 
-    <a href="performance.html" style="margin-right:20px;">[실적증명]</a> 
-    
-    <a href="https://github.com" target="_blank">[페이지수정]</a>
-    <a href="https://www.gabia.com" target="_blank">[도메인관리]</a>
-</div>
+                <a href="private.html">[팀원전용]</a> 
+                <a href="performance.html">[실적증명]</a> 
+                <a href="https://github.com" target="_blank">[페이지수정]</a>
+                <a href="https://www.gabia.com" target="_blank">[도메인관리]</a>
+            </div>
 
             <div class="copyright">
-                © 2026 Hanatour Business Corp. Corporate Sales Team 3.
+                © 2026 Hanatour Business Corp. Corporate Sales Team 3. All Rights Reserved.
             </div>
         </div>
     </div> </body>
 </html>
+
 
 
 
