@@ -1,1 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>법인영업3팀 | 내부 전용</title>
+    <style>
+        body { font-family: 'Pretendard', sans-serif; background: #333; color: white; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .secure-container { background: white; color: #333; padding: 40px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); max-width: 500px; width: 90%; text-align: center; }
+        h2 { color: #e31a1a; }
+        .data-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9em; }
+        .data-table th, .data-table td { border: 1px solid #ddd; padding: 10px; }
+        .btn-box { display: flex; gap: 10px; margin-top: 20px; }
+        .btn-file { flex: 1; padding: 15px; background: #f8f9fa; border: 1px solid #ddd; border-radius: 8px; text-decoration: none; color: #333; font-weight: bold; }
+        .btn-file:hover { background: #eee; }
+    </style>
+</head>
+<body>
+    <div id="lock-screen"></div>
 
+    <div class="secure-container" id="content" style="display:none;">
+        <h2>📊 2026년 경영 목표</h2>
+        <table class="data-table">
+            <tr style="background:#f8f9fa;"><th>항목</th><th>목표치</th></tr>
+            <tr><td>매출 목표</td><td>22,791,369,908원</td></tr>
+            <tr><td>영업수익 목표</td><td>993,913,104원</td></tr>
+            <tr><td>영업이익 목표</td><td>341,166,823원</td></tr>
+        </table>
+
+        <h3>📂 필수 서류</h3>
+        <div class="btn-box">
+            <a href="bank_account.pdf" download class="btn-file">🏦 통장사본</a>
+            <a href="business_license.pdf" download class="btn-file">📜 사업자등록증</a>
+        </div>
+        <p style="margin-top:20px;"><a href="index.html" style="color:#888; font-size:0.8em;">메인 페이지로 돌아가기</a></p>
+    </div>
+
+    <script>
+        (function() {
+            const pw = prompt("보안 암호를 입력하세요 (6258):");
+            if (pw === "6258") {
+                document.getElementById('content').style.display = 'block';
+            } else {
+                alert("접근 권한이 없습니다.");
+                window.location.href = "index.html";
+            }
+        })();
+    </script>
+</body>
+</html>
