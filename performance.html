@@ -15,19 +15,17 @@
         .btn-home:hover { background: #eee; }
 
         h2 { font-size: 1.2em; color: #333; margin-top: 40px; border-left: 5px solid #ccc; padding-left: 10px; display: flex; align-items: center; }
-        .brand-hnt { border-left-color: var(--primary-color); }
-        .brand-htb { border-left-color: var(--dark-blue); }
+        .brand-htb { border-left-color: var(--dark-blue); } /* 비즈니스 강조색 */
+        .brand-hnt { border-left-color: var(--primary-color); } /* 하나투어 강조색 */
 
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.9em; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.9em; margin-bottom: 20px; }
         th, td { border: 1px solid #dee2e6; padding: 12px 8px; text-align: center; }
         th { background: #f8f9fa; color: #555; font-weight: 600; }
         
-        /* 실적 구분 강조 */
         .year-cell { font-weight: bold; color: #444; }
         .count-cell { color: var(--primary-color); font-weight: 600; }
         
-        /* 다운로드 버튼 스타일 */
-        .btn-down { display: inline-block; padding: 4px 10px; background: #555; color: white; text-decoration: none; border-radius: 4px; font-size: 0.85em; transition: 0.2s; }
+        .btn-down { display: inline-block; padding: 4px 10px; background: var(--dark-blue); color: white; text-decoration: none; border-radius: 4px; font-size: 0.85em; transition: 0.2s; }
         .btn-down:hover { background: #000; }
         .btn-empty { color: #ccc; border: 1px dashed #ccc; padding: 3px 8px; font-size: 0.8em; border-radius: 4px; }
 
@@ -41,32 +39,7 @@
             <a href="index.html" class="btn-home">🏠 홈으로 이동</a>
         </header>
 
-        <h2 class="brand-hnt">🔴 (주)하나투어 법인영업 실적</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th width="8%">연도</th>
-                    <th width="35%">행사명 (거래처명)</th>
-                    <th width="12%">인원</th>
-                    <th width="25%">목적지</th>
-                    <th width="20%">증명서 다운로드</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td class="year-cell">2024</td><td>부산일과학고등학교</td><td class="count-cell">99명</td><td>미동부</td><td><a href="files/h_busan_sci_24.pdf" class="btn-down" download>PDF 다운</a></td></tr>
-                <tr><td class="year-cell">2025</td><td>부산일과학고등학교</td><td class="count-cell">99명</td><td>미서부</td><td><a href="files/h_busan_sci_25.pdf" class="btn-down" download>PDF 다운</a></td></tr>
-                <tr><td class="year-cell">2025</td><td>대구과학고등학교</td><td class="count-cell">-</td><td>미정</td><td><span class="btn-empty">준비중</span></td></tr>
-                <tr><td class="year-cell">2025</td><td>부산소프트웨어 마이스터고</td><td class="count-cell">-</td><td>미정</td><td><span class="btn-empty">준비중</span></td></tr>
-                
-                <script>
-                    for(let i=0; i<16; i++) {
-                        document.write('<tr><td class="year-cell">-</td><td></td><td class="count-cell">-</td><td></td><td><span class="btn-empty">파일없음</span></td></tr>');
-                    }
-                </script>
-            </tbody>
-        </table>
-
-        <h2 class="brand-htb">🔵 (주)하나투어비즈니스 전용 실적</h2>
+        <h2 class="brand-htb">🔵 (주)하나투어비즈니스 실적</h2>
         <table>
             <thead>
                 <tr>
@@ -90,8 +63,35 @@
             </tbody>
         </table>
 
+        <div style="height: 30px;"></div>
+
+        <h2 class="brand-hnt">🔴 (주)하나투어 실적</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th width="8%">연도</th>
+                    <th width="35%">행사명 (거래처명)</th>
+                    <th width="12%">인원</th>
+                    <th width="25%">목적지</th>
+                    <th width="20%">증명서 다운로드</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td class="year-cell">2024</td><td>부산일과학고등학교</td><td class="count-cell">99명</td><td>미동부</td><td><a href="files/h_busan_sci_24.pdf" class="btn-down" style="background:#555;" download>PDF 다운</a></td></tr>
+                <tr><td class="year-cell">2025</td><td>부산일과학고등학교</td><td class="count-cell">99명</td><td>미서부</td><td><a href="files/h_busan_sci_25.pdf" class="btn-down" style="background:#555;" download>PDF 다운</a></td></tr>
+                <tr><td class="year-cell">2025</td><td>대구과학고등학교</td><td class="count-cell">-</td><td>미정</td><td><span class="btn-empty">준비중</span></td></tr>
+                <tr><td class="year-cell">2025</td><td>부산소프트웨어 마이스터고</td><td class="count-cell">-</td><td>미정</td><td><span class="btn-empty">준비중</span></td></tr>
+                
+                <script>
+                    for(let i=0; i<16; i++) {
+                        document.write('<tr><td class="year-cell">-</td><td></td><td class="count-cell">-</td><td></td><td><span class="btn-empty">파일없음</span></td></tr>');
+                    }
+                </script>
+            </tbody>
+        </table>
+
         <div class="notice">
-            💡 <b>실무 가이드:</b> 위 리스트는 입찰 제안서 작성 시 실적 증빙용으로 사용됩니다. 증명서 파일은 <code>files</code> 폴더 내에 해당 파일명으로 업로드되어 있어야 다운로드가 가능합니다.
+            💡 <b>실무 가이드:</b> 최근 입찰의 경우 (주)하나투어비즈니스 실적을 우선적으로 제출하되, 규모가 큰 과거 실적은 (주)하나투어 실적을 보완 자료로 활용하시기 바랍니다.
         </div>
     </div>
 </body>
