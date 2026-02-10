@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실적증명 관리 | 법인영업3팀</title>
+    <style>
+        :root { --primary-color: #e31a1a; --dark-blue: #003399; --bg-gray: #f8f9fa; }
+        body { font-family: 'Pretendard', sans-serif; background-color: var(--bg-gray); margin: 0; padding: 20px; line-height: 1.6; }
+        .container { max-width: 1000px; margin: auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        
+        header { border-bottom: 2px solid var(--primary-color); padding-bottom: 15px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; }
+        h1 { color: var(--dark-blue); font-size: 1.6em; margin: 0; }
+        .btn-home { text-decoration: none; color: #666; font-size: 0.9em; padding: 6px 12px; border: 1px solid #ccc; border-radius: 5px; background: white; transition: 0.2s; }
+        .btn-home:hover { background: #eee; }
+
+        h2 { font-size: 1.2em; color: #333; margin-top: 40px; border-left: 5px solid #ccc; padding-left: 10px; display: flex; align-items: center; }
+        .brand-hnt { border-left-color: var(--primary-color); }
+        .brand-htb { border-left-color: var(--dark-blue); }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.9em; }
+        th, td { border: 1px solid #dee2e6; padding: 12px 8px; text-align: center; }
+        th { background: #f8f9fa; color: #555; font-weight: 600; }
+        
+        /* 실적 구분 강조 */
+        .year-cell { font-weight: bold; color: #444; }
+        .count-cell { color: var(--primary-color); font-weight: 600; }
+        
+        /* 다운로드 버튼 스타일 */
+        .btn-down { display: inline-block; padding: 4px 10px; background: #555; color: white; text-decoration: none; border-radius: 4px; font-size: 0.85em; transition: 0.2s; }
+        .btn-down:hover { background: #000; }
+        .btn-empty { color: #ccc; border: 1px dashed #ccc; padding: 3px 8px; font-size: 0.8em; border-radius: 4px; }
+
+        .notice { background: #fff9db; padding: 15px; border-radius: 10px; font-size: 0.85em; color: #666; margin-top: 40px; border: 1px solid #ffec99; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📜 주요 행사 실적 및 증명서 관리</h1>
+            <a href="index.html" class="btn-home">🏠 홈으로 이동</a>
+        </header>
+
+        <h2 class="brand-hnt">🔴 (주)하나투어 법인영업 실적</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th width="8%">연도</th>
+                    <th width="35%">행사명 (거래처명)</th>
+                    <th width="12%">인원</th>
+                    <th width="25%">목적지</th>
+                    <th width="20%">증명서 다운로드</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td class="year-cell">2024</td><td>부산일과학고등학교</td><td class="count-cell">99명</td><td>미동부</td><td><a href="files/h_busan_sci_24.pdf" class="btn-down" download>PDF 다운</a></td></tr>
+                <tr><td class="year-cell">2025</td><td>부산일과학고등학교</td><td class="count-cell">99명</td><td>미서부</td><td><a href="files/h_busan_sci_25.pdf" class="btn-down" download>PDF 다운</a></td></tr>
+                <tr><td class="year-cell">2025</td><td>대구과학고등학교</td><td class="count-cell">-</td><td>미정</td><td><span class="btn-empty">준비중</span></td></tr>
+                <tr><td class="year-cell">2025</td><td>부산소프트웨어 마이스터고</td><td class="count-cell">-</td><td>미정</td><td><span class="btn-empty">준비중</span></td></tr>
+                
+                <script>
+                    for(let i=0; i<16; i++) {
+                        document.write('<tr><td class="year-cell">-</td><td></td><td class="count-cell">-</td><td></td><td><span class="btn-empty">파일없음</span></td></tr>');
+                    }
+                </script>
+            </tbody>
+        </table>
+
+        <h2 class="brand-htb">🔵 (주)하나투어비즈니스 전용 실적</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th width="8%">연도</th>
+                    <th width="35%">행사명 (거래처명)</th>
+                    <th width="12%">인원</th>
+                    <th width="25%">목적지</th>
+                    <th width="20%">증명서 다운로드</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td class="year-cell">2024</td><td>육군3사관학교</td><td class="count-cell">-</td><td>일본</td><td><a href="files/hb_army3_24.pdf" class="btn-down" download>PDF 다운</a></td></tr>
+                <tr><td class="year-cell">2025</td><td>육군3사관학교</td><td class="count-cell">-</td><td>일본</td><td><a href="files/hb_army3_25.pdf" class="btn-down" download>PDF 다운</a></td></tr>
+                <tr><td class="year-cell">2025</td><td>강원랜드사회공헌재단 (진폐휴양)</td><td class="count-cell">-</td><td>국내/외</td><td><a href="files/hb_klf_25.pdf" class="btn-down" download>PDF 다운</a></td></tr>
+                
+                <script>
+                    for(let i=0; i<17; i++) {
+                        document.write('<tr><td class="year-cell">-</td><td></td><td class="count-cell">-</td><td></td><td><span class="btn-empty">파일없음</span></td></tr>');
+                    }
+                </script>
+            </tbody>
+        </table>
+
+        <div class="notice">
+            💡 <b>실무 가이드:</b> 위 리스트는 입찰 제안서 작성 시 실적 증빙용으로 사용됩니다. 증명서 파일은 <code>files</code> 폴더 내에 해당 파일명으로 업로드되어 있어야 다운로드가 가능합니다.
+        </div>
+    </div>
+</body>
+</html>
