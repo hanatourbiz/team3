@@ -22,13 +22,12 @@
         .btn-mail { color: #555; border: 1px solid #ccc; margin-top: 5px; background: white; }
         .btn-mail:hover { background: #eee; }
 
-        /* 홍보 및 샘플 박스 - 테두리 색상들 */
+        /* 홍보 및 샘플 박스 */
         .flex-box { display: flex; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; }
-        .promo-box { flex: 1; min-width: 250px; padding: 20px; border-radius: 10px; text-align: center; border: 2px solid #ddd; transition: 0.3s; }
+        .promo-box { flex: 1; min-width: 250px; padding: 20px; border-radius: 10px; text-align: center; border: 2px solid #ddd; }
         .box-sample { border-color: var(--primary-color); background: #fff4f4; }
-        .box-btms { border-color: var(--dark-blue); background: #f4f7ff; } /* BTMS 테두리 및 배경 추가 */
+        .box-btms { border-color: var(--dark-blue); background: #f4f7ff; }
         .box-theme { border-color: var(--green); background: #f4fff6; }
-        
         .btn { display: inline-block; padding: 10px 20px; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 10px; }
 
         h3 { border-left: 5px solid var(--primary-color); padding-left: 10px; color: var(--dark-blue); margin-top: 40px; }
@@ -55,11 +54,36 @@
         </header>
 
         <div class="team-grid">
-            <div class="team-card"><img src="photos/kim.png" class="profile-img"><span class="role">부장 / 팀장</span><strong>김동욱</strong><a href="tel:010-8560-6258" class="contact-btn btn-tel">010-8560-6258</a><a href="mailto:ugi@hanatour.com" class="contact-btn btn-mail">Email 보내기</a></div>
-            <div class="team-card"><img src="photos/choi.png" class="profile-img"><span class="role">차장 / 수석</span><strong>최봉재</strong><a href="tel:010-7438-0333" class="contact-btn btn-tel">010-7438-0333</a><a href="mailto:meg234@hanatour.com" class="contact-btn btn-mail">Email 보내기</a></div>
-            <div class="team-card"><img src="photos/tae.png" class="profile-img"><span class="role">과장 / 선임</span><strong>김태근</strong><a href="tel:010-5584-4616" class="contact-btn btn-tel">010-5584-4616</a><a href="mailto:ktk1104zzang@hanatour.com" class="contact-btn btn-mail">Email 보내기</a></div>
-            <div class="team-card"><img src="photos/chae.png" class="profile-img"><span class="role">대리 / 선임</span><strong>김채스민</strong><a href="tel:010-9988-3266" class="contact-btn btn-tel">010-9988-3266</a><a href="mailto:smings@hanatour.com" class="contact-btn btn-mail">Email 보내기</a></div>
-            <div class="team-card"><img src="photos/jang.png" class="profile-img"><span class="role">사원 / 사원</span><strong>장현수</strong><a href="tel:010-3390-5716" class="contact-btn btn-tel">010-3390-5716</a><a href="mailto:lovehs99@hanatour.com" class="contact-btn btn-mail">Email 보내기</a></div>
+            <div class="team-card">
+                <img src="photos/kim.png" alt="김동욱" class="profile-img">
+                <span class="role">부장 / 팀장</span><strong>김동욱</strong>
+                <a href="tel:010-8560-6258" class="contact-btn btn-tel">010-8560-6258</a>
+                <a href="mailto:ugi@hanatour.com" class="contact-btn btn-mail">Email 보내기</a>
+            </div>
+            <div class="team-card">
+                <img src="photos/choi.png" alt="최봉재" class="profile-img">
+                <span class="role">차장 / 수석</span><strong>최봉재</strong>
+                <a href="tel:010-7438-0333" class="contact-btn btn-tel">010-7438-0333</a>
+                <a href="mailto:meg234@hanatour.com" class="contact-btn btn-mail">Email 보내기</a>
+            </div>
+            <div class="team-card">
+                <img src="photos/tae.png" alt="김태근" class="profile-img">
+                <span class="role">과장 / 선임</span><strong>김태근</strong>
+                <a href="tel:010-5584-4616" class="contact-btn btn-tel">010-5584-4616</a>
+                <a href="mailto:ktk1104zzang@hanatour.com" class="contact-btn btn-mail">Email 보내기</a>
+            </div>
+            <div class="team-card">
+                <img src="photos/chae.png" alt="김채스민" class="profile-img">
+                <span class="role">대리 / 선임</span><strong>김채스민</strong>
+                <a href="tel:010-9988-3266" class="contact-btn btn-tel">010-9988-3266</a>
+                <a href="mailto:smings@hanatour.com" class="contact-btn btn-mail">Email 보내기</a>
+            </div>
+            <div class="team-card">
+                <img src="photos/jang.png" alt="장현수" class="profile-img">
+                <span class="role">사원 / 사원</span><strong>장현수</strong>
+                <a href="tel:010-3390-5716" class="contact-btn btn-tel">010-3390-5716</a>
+                <a href="mailto:lovehs99@hanatour.com" class="contact-btn btn-mail">Email 보내기</a>
+            </div>
         </div>
 
         <div class="flex-box">
@@ -93,6 +117,15 @@
             </tbody>
         </table>
 
+        <h3>⚾ 삼성라이온즈 팬투어</h3>
+        <table>
+            <thead><tr><th>연도별 프로젝트</th><th>공식 링크</th></tr></thead>
+            <tbody>
+                <tr><td><strong>2025년</strong> 삼성라이온즈 팬투어</td><td><a href="https://lions.mice.link" target="_blank" class="btn-go" style="background:var(--samsung-blue);">페이지 이동</a></td></tr>
+                <tr><td><strong>2026년</strong> 삼성라이온즈 팬투어</td><td><a href="https://lions2026.mice.link" target="_blank" class="btn-go" style="background:var(--samsung-blue);">페이지 이동</a></td></tr>
+            </tbody>
+        </table>
+
         <div class="footer">
             <div class="address-grid">
                 <div><strong>서울</strong> 종로구 삼봉로 94, 4층 (공평동, 94빌딩)</div>
@@ -116,6 +149,5 @@
                 © 2026 Hanatour Business Corp. Corporate Sales Team 3.
             </div>
         </div>
-    </div>
-</body>
+    </div> </body>
 </html>
