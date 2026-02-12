@@ -10,7 +10,9 @@
         .container { max-width: 900px; margin: 30px auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         
         header { text-align: center; border-bottom: 2px solid var(--primary-color); padding-bottom: 20px; margin-bottom: 30px; }
-        h1 { color: var(--dark-blue); margin: 0; font-size: 1.8em; }
+        
+        /* 로고 이미지 크기 조절을 위해 추가한 스타일입니다 */
+        .logo-img { max-height: 50px; width: auto; vertical-align: middle; }
         
         .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; margin-bottom: 30px; }
         .team-card { background: #f0f2f5; padding: 15px 10px; border-radius: 10px; text-align: center; border: 1px solid #eee; }
@@ -47,7 +49,7 @@
 <body>
     <div class="container">
         <header>
-            <h1>하나투어 비즈니스</h1>
+            <img src="photos/logo.png" alt="하나투어 비즈니스" class="logo-img">
         </header>
 
         <div style="width: 100%; margin-bottom: 40px; text-align: center;">
@@ -109,9 +111,9 @@
                 <tr style="background: #fdfdfd;">
                     <td colspan="2">
                         <div class="client-cell" style="justify-content: center;">
-    법인영업3팀 공용
+                            법인영업3팀 공용
                             <a href="https://bz3.hanabizwel.com/" target="_blank" class="btn-go" style="background:var(--dark-blue); margin-left: 30px;">접속</a>
-</div>
+                        </div>
                     </td>
                 </tr>
             </tbody>
@@ -127,31 +129,4 @@
                 </tr>
                 <tr>
                     <td><strong>2026년</strong> 삼성라이온즈 팬투어</td>
-                    <td><a href="https://lions2026.mice.link" target="_blank" class="btn-go" style="background:var(--samsung-blue);">페이지</a></td>
-                </tr>
-                <tr>
-                    <td><strong>2025년</strong> 오사카 엑스포 기획전</td>
-                    <td><a href="https://bz3.hanabizwel.com/pages/exhibition/detail/410" target="_blank" class="btn-go" style="background:var(--samsung-blue);">페이지</a></td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="footer">
-            <div class="footer-address">
-                <div><strong>서울</strong> 종로구 삼봉로 94, 4층</div>
-                <div><strong>대구</strong> 중구 국채보상로 648, 15층</div>
-                <div><strong>부산</strong> 중구 충장대로 7, 9층</div>
-            </div>
-            <div class="admin-links">
-                <a href="private.html">[팀원전용]</a> 
-                <a href="performance.html">[행사실적]</a> 
-                <a href="https://github.com" target="_blank">[페이지수정]</a>
-                <a href="https://www.gabia.com" target="_blank">[도메인관리]</a>
-            </div>
-            <div class="copyright">© 2026 Hanatour Business Corp. Corporate Sales Team 3. All Rights Reserved.</div>
-        </div>
-    </div>
-</body>
-</html>
-
-
+                    <td><a href="https://lions2026.mice.link" target="_blank
