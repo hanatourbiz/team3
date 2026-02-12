@@ -9,7 +9,6 @@
         body { font-family: 'Pretendard', sans-serif; line-height: 1.6; margin: 0; color: #333; background-color: var(--bg-gray); }
         .container { max-width: 900px; margin: 30px auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         
-        /* 1. 헤더 수정 */
         header { text-align: center; border-bottom: 2px solid var(--primary-color); padding-bottom: 20px; margin-bottom: 30px; }
         h1 { color: var(--dark-blue); margin: 0; font-size: 1.8em; }
         
@@ -27,23 +26,21 @@
         .promo-box { flex: 1; min-width: 250px; padding: 20px; border-radius: 10px; text-align: center; border: 2px solid #ddd; }
         .box-sample { border-color: var(--primary-color); background: #fff4f4; }
         .box-btms { border-color: var(--dark-blue); background: #f4f7ff; }
-        .box-theme { border-color: var(--green); background: #f4fff6; }
         .btn { display: inline-block; padding: 10px 20px; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 10px; }
 
         h3 { border-left: 5px solid var(--primary-color); padding-left: 10px; color: var(--dark-blue); margin-top: 40px; }
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.9em; }
-        th, td { border: 1px solid #dee2e6; padding: 10px; text-align: center; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.9em; table-layout: fixed; }
+        th, td { border: 1px solid #dee2e6; padding: 12px 10px; vertical-align: middle; }
         th { background: #f8f9fa; }
-        .btn-go { display: inline-block; padding: 5px 12px; background: var(--dark-blue); color: white; text-decoration: none; border-radius: 15px; font-size: 0.8em; }
+        
+        /* 거래처 표 버튼 정렬용 */
+        .client-cell { display: flex; justify-content: space-between; align-items: center; text-align: left; }
+        .btn-go { display: inline-block; padding: 5px 12px; background: var(--dark-blue); color: white; text-decoration: none; border-radius: 15px; font-size: 0.8em; white-space: nowrap; margin-left: 10px; }
 
         .footer { margin-top: 50px; padding-top: 30px; border-top: 2px solid #eee; text-align: center; }
         .footer-address { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 15px; font-size: 0.85em; color: #666; }
         .footer-address div { display: flex; align-items: center; }
         .footer-address div:not(:last-child):after { content: "|"; margin: 0 15px; color: #ddd; }
-        .footer-address strong { color: var(--dark-blue); margin-right: 5px; }
-        .admin-links { margin-top: 20px; }
-        .admin-links a { font-size: 11px; color: #bbb; text-decoration: none; margin: 0 8px; }
-        .admin-links a:hover { color: var(--primary-color); text-decoration: underline; }
         .copyright { margin-top: 15px; font-size: 11px; color: #999; letter-spacing: 0.5px; }
     </style>
 </head>
@@ -60,10 +57,11 @@
                     <span style="font-size: 1.1em; font-weight: 600; letter-spacing: 1px;">대표이사 직속 4개 주요 부문, 총 126명의 전문가 그룹</span>
                 </div>
             </div>
-            <p style="font-size: 0.95em; color: #555; margin-top: 15px; line-height: 1.6;">
-                하나투어 비즈니스는 체계적인 조직 구성을 바탕으로 고객사에게 최적화된 M.I.C.E 및 법인 영업 서비스를 제공합니다.<br>
-                <strong>강원, 영남지역을 담당하는 5명의 M.I.C.E 전문가</strong>가 여러분과 함께합니다.
-            </p>
+            <div style="margin-top: 20px;">
+                <p style="font-size: 0.95em; color: #555; margin-bottom: 10px;">하나투어 비즈니스는 체계적인 조직 구성을 바탕으로 고객사에게 최적화된 M.I.C.E 및 법인 영업 서비스를 제공합니다.</p>
+                <hr style="width: 50px; border: 0; border-top: 2px solid #eee; margin: 15px auto;">
+                <p style="font-size: 0.95em; color: #333;"><strong>강원, 영남지역을 담당하는 5명의 M.I.C.E 전문가</strong>가 여러분과 함께합니다.</p>
+            </div>
         </div>
 
         <div class="team-grid">
@@ -93,23 +91,23 @@
             <colgroup><col width="50%"><col width="50%"></colgroup>
             <tbody>
                 <tr>
-                    <td>KINGS (한국전력원자력대학원) <a href="https://kings.hanabizwel.com/" target="_blank" class="btn-go">접속</a></td>
-                    <td>강원랜드 (KL) <a href="https://kl.hanabizwel.com/" target="_blank" class="btn-go">접속</a></td>
+                    <td><div class="client-cell"><span>KINGS (한국전력원자력대)</span> <a href="https://kings.hanabizwel.com/" target="_blank" class="btn-go">접속</a></div></td>
+                    <td><div class="client-cell"><span>강원랜드 (KL)</span> <a href="https://kl.hanabizwel.com/" target="_blank" class="btn-go">접속</a></div></td>
                 </tr>
                 <tr>
-                    <td>강원랜드 사회공헌재단 (KLF) <a href="https://klf.hanabizwel.com/" target="_blank" class="btn-go">접속</a></td>
-                    <td>한국토지주택공사 (LH) <a href="https://lh.hanabizwel.com/" target="_blank" class="btn-go">접속</a></td>
+                    <td><div class="client-cell"><span>강원랜드 사회공헌재단</span> <a href="https://klf.hanabizwel.com/" target="_blank" class="btn-go">접속</a></div></td>
+                    <td><div class="client-cell"><span>한국토지주택공사 (LH)</span> <a href="https://lh.hanabizwel.com/" target="_blank" class="btn-go">접속</a></div></td>
                 </tr>
                 <tr>
-                    <td>한국전력기술 (KEPCO E&C) <a href="https://kepcoenc.hanabizwel.com/" target="_blank" class="btn-go">접속</a></td>
-                    <td>한동대산학협력단 (한동대) <a href="https://handong.hanabizwel.com/" target="_blank" class="btn-go">접속</a></td>
+                    <td><div class="client-cell"><span>한국전력기술 (KEPCO)</span> <a href="https://kepcoenc.hanabizwel.com/" target="_blank" class="btn-go">접속</a></div></td>
+                    <td><div class="client-cell"><span>한동대 산학협력단</span> <a href="https://handong.hanabizwel.com/" target="_blank" class="btn-go">접속</a></div></td>
                 </tr>
                 <tr>
-                    <td>이노플 (INP) <a href="https://inp.hanabizwel.com/" target="_blank" class="btn-go">접속</a></td>
-                    <td>강림중공업 (KR) <a href="https://kr.hanabizwel.com/" target="_blank" class="btn-go">접속</a></td>
+                    <td><div class="client-cell"><span>이노플 (INP)</span> <a href="https://inp.hanabizwel.com/" target="_blank" class="btn-go">접속</a></div></td>
+                    <td><div class="client-cell"><span>강림중공업 (KR)</span> <a href="https://kr.hanabizwel.com/" target="_blank" class="btn-go">접속</a></div></td>
                 </tr>
                 <tr style="background: #fdfdfd;">
-                    <td colspan="2"><strong>법인영업3팀 공용 샘플</strong> <a href="https://bz3.hanabizwel.com/" target="_blank" class="btn-go" style="background:var(--primary-color);">접속</a></td>
+                    <td colspan="2"><div class="client-cell" style="justify-content: center;"><strong>법인영업3팀 공용 샘플</strong> <a href="https://bz3.hanabizwel.com/" target="_blank" class="btn-go" style="background:var(--primary-color);">접속</a></div></td>
                 </tr>
             </tbody>
         </table>
@@ -120,27 +118,23 @@
             <tbody>
                 <tr><td><strong>2025년</strong> 삼성라이온즈 팬투어</td><td><a href="https://lions.mice.link" target="_blank" class="btn-go" style="background:var(--samsung-blue);">페이지 이동</a></td></tr>
                 <tr><td><strong>2026년</strong> 삼성라이온즈 팬투어</td><td><a href="https://lions2026.mice.link" target="_blank" class="btn-go" style="background:var(--samsung-blue);">페이지 이동</a></td></tr>
-                <tr><td><strong>국제신문</strong> 콜라보 테마상품</td><td><a href="https://bz3.hanabizwel.com/pages/exhibition/detail/410" target="_blank" class="btn-go" style="background:var(--green);">페이지 이동</a></td></tr>
+                <tr><td><strong>2025 오사카 엑스포</strong> 기획전</td><td><a href="https://bz3.hanabizwel.com/pages/exhibition/detail/410" target="_blank" class="btn-go" style="background:var(--samsung-blue);">페이지 이동</a></td></tr>
             </tbody>
         </table>
 
         <div class="footer">
             <div class="footer-address">
-                <div><strong>서울</strong> 종로구 삼봉로 94, 4층 (공평동)</div>
-                <div><strong>대구</strong> 중구 국채보상로 648 SHL동성빌딩 15층</div>
-                <div><strong>부산</strong> 중구 충장대로 7 교보생명빌딩 9층</div>
+                <div><strong>서울</strong> 종로구 삼봉로 94, 4층</div>
+                <div><strong>대구</strong> 중구 국채보상로 648 15층</div>
+                <div><strong>부산</strong> 중구 충장대로 7 9층</div>
             </div>
-            <div class="admin-links">
-                <a href="private.html">[팀원전용]</a> 
-                <a href="performance.html">[행사실적]</a> 
-                <a href="https://github.com" target="_blank">[페이지수정]</a>
-                <a href="https://www.gabia.com" target="_blank">[도메인관리]</a>
+            <div class="admin-links" style="margin-top: 20px;">
+                <a href="private.html" style="font-size: 11px; color: #bbb; text-decoration: none; margin: 0 8px;">[팀원전용]</a> 
+                <a href="performance.html" style="font-size: 11px; color: #bbb; text-decoration: none; margin: 0 8px;">[행사실적]</a> 
+                <a href="https://github.com" target="_blank" style="font-size: 11px; color: #bbb; text-decoration: none; margin: 0 8px;">[페이지수정]</a>
             </div>
-            <div class="copyright">
-                © 2026 Hanatour Business Corp. Corporate Sales Team 3. All Rights Reserved.
-            </div>
+            <div class="copyright">© 2026 Hanatour Business Corp. Corporate Sales Team 3.</div>
         </div>
     </div>
 </body>
 </html>
-
