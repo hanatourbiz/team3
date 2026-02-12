@@ -5,45 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>하나투어 비즈니스 | 법인영업3팀</title>
     <style>
-        :root { --primary-color: #e31a1a; --dark-blue: #003399; --bg-gray: #f8f9fa; --samsung-blue: #074ca1; --green: #28a745; }
-        body { font-family: 'Pretendard', sans-serif; line-height: 1.6; margin: 0; color: #333; background-color: var(--bg-gray); }
-        .container { max-width: 900px; margin: 30px auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        /* 색상 테마를 다크 블루와 차분한 그레이로 통일 */
+        :root { 
+            --primary-color: #e31a1a; 
+            --dark-blue: #1a2a4e; /* 더 깊고 신뢰감 있는 네이비 */
+            --point-blue: #34495e;
+            --bg-gray: #f2f4f7; 
+            --border-color: #e1e4e8;
+            --text-main: #2c3e50;
+        }
         
-        header { text-align: center; border-bottom: 2px solid var(--primary-color); padding-bottom: 20px; margin-bottom: 30px; }
+        body { font-family: 'Pretendard', sans-serif; line-height: 1.6; margin: 0; color: var(--text-main); background-color: var(--bg-gray); }
+        .container { max-width: 900px; margin: 40px auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         
-        /* 로고 이미지 크기 조절을 위해 추가한 스타일입니다 */
-        .logo-img { max-height: 50px; width: auto; vertical-align: middle; }
+        header { text-align: center; border-bottom: 1px solid var(--border-color); padding-bottom: 25px; margin-bottom: 35px; }
+        .logo-img { max-height: 45px; width: auto; }
         
-        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; margin-bottom: 30px; }
-        .team-card { background: #f0f2f5; padding: 15px 10px; border-radius: 10px; text-align: center; border: 1px solid #eee; }
-        .profile-img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; background-color: #ddd; margin-bottom: 10px; border: 3px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .team-card strong { display: block; font-size: 1.1em; color: var(--dark-blue); margin-top: 5px; }
-        .team-card .role { font-size: 0.8em; color: #666; margin-bottom: 8px; display: block; }
-        .contact-btn { display: block; font-size: 0.85em; text-decoration: none; padding: 3px; border-radius: 4px; transition: 0.2s; }
+        /* 팀원 카드 영역: 그림자 제거하고 깔끔하게 변경 */
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; margin-bottom: 40px; }
+        .team-card { background: #fff; padding: 20px 10px; border-radius: 8px; text-align: center; border: 1px solid var(--border-color); transition: 0.3s; }
+        .team-card:hover { border-color: var(--dark-blue); transform: translateY(-3px); }
+        .profile-img { width: 75px; height: 75px; border-radius: 50%; object-fit: cover; background-color: #eee; margin-bottom: 12px; border: 2px solid #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .team-card strong { display: block; font-size: 1.05em; color: var(--dark-blue); margin-top: 5px; }
+        .team-card .role { font-size: 0.8em; color: #888; margin-bottom: 10px; display: block; }
+        .contact-btn { display: block; font-size: 0.85em; text-decoration: none; padding: 4px; border-radius: 4px; }
         .btn-tel { color: var(--primary-color); font-weight: bold; }
-        .btn-mail { color: #555; border: 1px solid #ccc; margin-top: 5px; background: white; }
+        .btn-mail { color: #777; border: 1px solid #ddd; margin-top: 6px; background: #fafafa; }
 
-        .flex-box { display: flex; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; }
-        .promo-box { flex: 1; min-width: 250px; padding: 20px; border-radius: 10px; text-align: center; border: 2px solid #ddd; }
-        .box-sample { border-color: var(--primary-color); background: #fff4f4; }
-        .box-btms { border-color: var(--dark-blue); background: #f4f7ff; }
-        .btn { display: inline-block; padding: 10px 20px; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 10px; }
+        /* 거슬렸던 박스 영역: 화이트 톤으로 통일하고 디자인 일원화 */
+        .flex-box { display: flex; gap: 20px; margin-bottom: 40px; flex-wrap: wrap; }
+        .promo-box { flex: 1; min-width: 250px; padding: 25px; border-radius: 8px; text-align: center; border: 1px solid var(--border-color); background: #fff; }
+        .promo-box strong { font-size: 1.1em; color: var(--dark-blue); }
+        .promo-box p { margin: 10px 0 15px; font-size: 0.9em; color: #666; }
+        .btn { display: inline-block; padding: 10px 24px; color: white; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 0.9em; transition: 0.2s; }
+        .btn-navy { background: var(--dark-blue); }
+        .btn-navy:hover { background: #001a4d; }
 
-        h3 { border-left: 5px solid var(--primary-color); padding-left: 10px; color: var(--dark-blue); margin-top: 40px; }
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.9em; }
-        th, td { border: 1px solid #dee2e6; padding: 10px; text-align: center; }
-        th { background: #f8f9fa; }
+        /* 섹션 제목 스타일 */
+        h3 { font-size: 1.2em; border-left: 4px solid var(--dark-blue); padding-left: 12px; color: var(--dark-blue); margin-top: 45px; margin-bottom: 15px; }
         
-        .client-cell { display: flex; justify-content: space-between; align-items: center; padding: 0 15px; }
-        .btn-go { display: inline-block; padding: 5px 12px; background: var(--dark-blue); color: white; text-decoration: none; border-radius: 15px; font-size: 0.8em; }
+        /* 테이블 스타일: 선을 연하게 하고 폰트 정리 */
+        table { width: 100%; border-collapse: collapse; font-size: 0.9em; border-top: 2px solid var(--dark-blue); }
+        th, td { border: 1px solid #eee; padding: 12px; text-align: center; }
+        tr:hover { background-color: #fcfcfc; }
+        
+        .client-cell { display: flex; justify-content: space-between; align-items: center; padding: 0 10px; }
+        .btn-go { display: inline-block; padding: 4px 14px; background: #f1f3f5; color: var(--dark-blue); text-decoration: none; border-radius: 4px; font-size: 0.8em; border: 1px solid var(--border-color); font-weight: 500; }
+        .btn-go:hover { background: var(--dark-blue); color: white; }
 
-        .footer { margin-top: 50px; padding-top: 30px; border-top: 2px solid #eee; text-align: center; }
-        .footer-address { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 15px; font-size: 0.85em; color: #666; }
-        .footer-address div:not(:last-child):after { content: "|"; margin: 0 15px; color: #ddd; }
+        .footer { margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--border-color); text-align: center; }
+        .footer-address { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 15px; font-size: 0.8em; color: #888; }
+        .footer-address div:not(:last-child):after { content: "|"; margin: 0 12px; color: #eee; }
         .admin-links { margin-top: 20px; }
         .admin-links a { font-size: 11px; color: #bbb; text-decoration: none; margin: 0 8px; }
-        .admin-links a:hover { color: var(--primary-color); }
-        .copyright { margin-top: 15px; font-size: 11px; color: #999; }
+        .copyright { margin-top: 15px; font-size: 11px; color: #aaa; letter-spacing: 0.5px; }
     </style>
 </head>
 <body>
@@ -52,38 +67,39 @@
             <img src="photos/logo.png" alt="하나투어 비즈니스" class="logo-img">
         </header>
 
-        <div style="width: 100%; margin-bottom: 40px; text-align: center;">
-            <div style="position: relative; overflow: hidden; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.15);">
-                <img src="photos/all_staff.JPG" alt="하나투어비즈니스 전직원" style="width: 100%; display: block; object-fit: cover;">
-                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.7)); padding: 20px; color: white;">
-                    <span style="font-size: 1.1em; font-weight: 600; letter-spacing: 1px;">대표이사 직속 4개 주요 부문, 총 126명의 전문가 그룹</span>
+        <div style="width: 100%; margin-bottom: 45px; text-align: center;">
+            <div style="position: relative; overflow: hidden; border-radius: 10px;">
+                <img src="photos/all_staff.JPG" alt="하나투어비즈니스 전직원" style="width: 100%; display: block; filter: brightness(0.9);">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(26, 42, 78, 0.85); padding: 15px; color: white;">
+                    <span style="font-size: 1em; font-weight: 500; letter-spacing: 0.5px;">대표이사 직속 전문가 그룹, 총 126명의 비즈니스 파트너</span>
                 </div>
             </div>
-            <div style="margin-top: 20px;">
-                <p style="font-size: 0.95em; color: #555; margin-bottom: 10px;">하나투어 비즈니스는 체계적인 조직 구성을 바탕으로 고객사에게 최적화된 M.I.C.E 및 법인 영업 서비스를 제공합니다.</p>
-                <hr style="width: 50px; border: 0; border-top: 2px solid #eee; margin: 15px auto;">
-                <p style="font-size: 0.95em; color: #333;"><strong>강원, 영남지역을 담당하는 5명의 M.I.C.E 전문가</strong>가 여러분과 함께합니다.</p>
+            <div style="margin-top: 25px; padding: 0 20px;">
+                <p style="font-size: 0.95em; color: #666; word-break: keep-all;">하나투어 비즈니스는 체계적인 조직력을 바탕으로 기업 맞춤형 M.I.C.E 및 차별화된 법인 서비스를 제공합니다.</p>
+                <p style="font-size: 1em; color: var(--dark-blue); margin-top: 10px;"><strong>강원·영남 지역 M.I.C.E 전문가</strong>가 최상의 솔루션을 제안합니다.</p>
             </div>
         </div>
 
         <div class="team-grid">
-            <div class="team-card"><img src="photos/kim.png" class="profile-img"><span class="role">부장 / 팀장</span><strong>김동욱</strong><a href="tel:010-8560-6258" class="contact-btn btn-tel">010-8560-6258</a><a href="mailto:ugi@hanatour.com" class="contact-btn btn-mail">Email 보내기</a></div>
-            <div class="team-card"><img src="photos/choi.png" class="profile-img"><span class="role">차장 / 수석</span><strong>최봉재</strong><a href="tel:010-7438-0333" class="contact-btn btn-tel">010-7438-0333</a><a href="mailto:meg234@hanatour.com" class="contact-btn btn-mail">Email 보내기</a></div>
-            <div class="team-card"><img src="photos/tae.png" class="profile-img"><span class="role">과장 / 선임</span><strong>김태근</strong><a href="tel:010-5584-4616" class="contact-btn btn-tel">010-5584-4616</a><a href="mailto:ktk1104zzang@hanatour.com" class="contact-btn btn-mail">Email 보내기</a></div>
-            <div class="team-card"><img src="photos/chae.png" class="profile-img"><span class="role">대리 / 선임</span><strong>김채스민</strong><a href="tel:010-9988-3266" class="contact-btn btn-tel">010-9988-3266</a><a href="mailto:smings@hanatour.com" class="contact-btn btn-mail">Email 보내기</a></div>
-            <div class="team-card"><img src="photos/jang.png" class="profile-img"><span class="role">사원 / 사원</span><strong>장현수</strong><a href="tel:010-3390-5716" class="contact-btn btn-tel">010-3390-5716</a><a href="mailto:lovehs99@hanatour.com" class="contact-btn btn-mail">Email 보내기</a></div>
+            <div class="team-card"><img src="photos/kim.png" class="profile-img"><span class="role">부장 / 팀장</span><strong>김동욱</strong><a href="tel:010-8560-6258" class="contact-btn btn-tel">010-8560-6258</a><a href="mailto:ugi@hanatour.com" class="contact-btn btn-mail">Email</a></div>
+            <div class="team-card"><img src="photos/choi.png" class="profile-img"><span class="role">차장 / 수석</span><strong>최봉재</strong><a href="tel:010-7438-0333" class="contact-btn btn-tel">010-7438-0333</a><a href="mailto:meg234@hanatour.com" class="contact-btn btn-mail">Email</a></div>
+            <div class="team-card"><img src="photos/tae.png" class="profile-img"><span class="role">과장 / 선임</span><strong>김태근</strong><a href="tel:010-5584-4616" class="contact-btn btn-tel">010-5584-4616</a><a href="mailto:ktk1104zzang@hanatour.com" class="contact-btn btn-mail">Email</a></div>
+            <div class="team-card"><img src="photos/chae.png" class="profile-img"><span class="role">대리 / 선임</span><strong>김채스민</strong><a href="tel:010-9988-3266" class="contact-btn btn-tel">010-9988-3266</a><a href="mailto:smings@hanatour.com" class="contact-btn btn-mail">Email</a></div>
+            <div class="team-card"><img src="photos/jang.png" class="profile-img"><span class="role">사원 / 사원</span><strong>장현수</strong><a href="tel:010-3390-5716" class="contact-btn btn-tel">010-3390-5716</a><a href="mailto:lovehs99@hanatour.com" class="contact-btn btn-mail">Email</a></div>
         </div>
 
         <div class="flex-box">
-            <div class="promo-box box-sample">
-                <p><strong>복지몰 샘플</strong> </p>
-                <a href="https://wel.hanabizwel.com/pages/exhibition/detail/599" target="_blank" class="btn" style="background:var(--primary-color);">샘플 바로가기</a>
+            <div class="promo-box">
+                <strong>복지몰 서비스 샘플</strong>
+                <p>기업 맞춤형 복지몰 구성을 확인해보세요.</p>
+                <a href="https://wel.hanabizwel.com/pages/exhibition/detail/599" target="_blank" class="btn btn-navy">샘플 확인하기</a>
             </div>
-            <div class="promo-box box-btms">
-                <p><strong>출장관리서비스</strong>(BTMS)</p>
-                <div style="display: flex; gap: 8px; justify-content: center; margin-top: 10px;">
-                    <a href="https://www.hanabtms.com/" target="_blank" class="btn" style="background:var(--dark-blue); flex: 1; margin-top: 0; font-size: 0.9em;">💻 PC 버전</a>
-                    <a href="https://m.hanabtms.com/" target="_blank" class="btn" style="background:#4b5563; flex: 1; margin-top: 0; font-size: 0.9em;">📱 모바일</a>
+            <div class="promo-box">
+                <strong>출장관리시스템 (BTMS)</strong>
+                <p>효율적인 업무 출장을 위한 스마트 솔루션</p>
+                <div style="display: flex; gap: 8px; justify-content: center;">
+                    <a href="https://www.hanabtms.com/" target="_blank" class="btn btn-navy" style="flex:1; padding: 10px 0;">PC 버전</a>
+                    <a href="https://m.hanabtms.com/" target="_blank" class="btn btn-navy" style="flex:1; padding: 10px 0; background:#5a67d8;">모바일</a>
                 </div>
             </div>
         </div>
@@ -108,11 +124,11 @@
                     <td><div class="client-cell"><span>이노플 (INP)</span> <a href="https://inp.hanabizwel.com/" target="_blank" class="btn-go">접속</a></div></td>
                     <td><div class="client-cell"><span>강림중공업 (KR)</span> <a href="https://kr.hanabizwel.com/" target="_blank" class="btn-go">접속</a></div></td>
                 </tr>
-                <tr style="background: #fdfdfd;">
+                <tr style="background: #f8f9fa;">
                     <td colspan="2">
                         <div class="client-cell" style="justify-content: center;">
-                            법인영업3팀 공용
-                            <a href="https://bz3.hanabizwel.com/" target="_blank" class="btn-go" style="background:var(--dark-blue); margin-left: 30px;">접속</a>
+                            <strong style="color: var(--dark-blue);">법인영업3팀 공용 복지몰</strong>
+                            <a href="https://bz3.hanabizwel.com/" target="_blank" class="btn-go" style="background:var(--dark-blue); color: white; margin-left: 25px; padding: 6px 20px;">접속하기</a>
                         </div>
                     </td>
                 </tr>
@@ -121,19 +137,19 @@
 
         <h3>⚾ 테마형 여행상품</h3>
         <table>
-            <colgroup><col width="70%"><col width="30%"></colgroup>
+            <colgroup><col width="75%"><col width="25%"></colgroup>
             <tbody>
                 <tr>
-                    <td><strong>2025년</strong> 삼성라이온즈 팬투어</td>
-                    <td><a href="https://lions.mice.link" target="_blank" class="btn-go" style="background:var(--samsung-blue);">페이지</a></td>
+                    <td style="text-align: left; padding-left: 20px;">2025년 삼성라이온즈 팬투어</td>
+                    <td><a href="https://lions.mice.link" target="_blank" class="btn-go">이동</a></td>
                 </tr>
                 <tr>
-                    <td><strong>2026년</strong> 삼성라이온즈 팬투어</td>
-                    <td><a href="https://lions2026.mice.link" target="_blank" class="btn-go" style="background:var(--samsung-blue);">페이지</a></td>
+                    <td style="text-align: left; padding-left: 20px;">2026년 삼성라이온즈 팬투어</td>
+                    <td><a href="https://lions2026.mice.link" target="_blank" class="btn-go">이동</a></td>
                 </tr>
                 <tr>
-                    <td><strong>2025년</strong> 오사카 엑스포 기획전</td>
-                    <td><a href="https://bz3.hanabizwel.com/pages/exhibition/detail/410" target="_blank" class="btn-go" style="background:var(--samsung-blue);">페이지</a></td>
+                    <td style="text-align: left; padding-left: 20px;">2025년 오사카 엑스포 기획전</td>
+                    <td><a href="https://bz3.hanabizwel.com/pages/exhibition/detail/410" target="_blank" class="btn-go">이동</a></td>
                 </tr>
             </tbody>
         </table>
@@ -145,10 +161,7 @@
                 <div><strong>부산</strong> 중구 충장대로 7, 9층</div>
             </div>
             <div class="admin-links">
-                <a href="private.html">[팀원전용]</a> 
-                <a href="performance.html">[행사실적]</a> 
-                <a href="https://github.com" target="_blank">[페이지수정]</a>
-                <a href="https://www.gabia.com" target="_blank">[도메인관리]</a>
+                <a href="private.html">팀원전용</a> | <a href="performance.html">행사실적</a> | <a href="https://github.com" target="_blank">Page Edit</a>
             </div>
             <div class="copyright">© 2026 Hanatour Business Corp. Corporate Sales Team 3. All Rights Reserved.</div>
         </div>
