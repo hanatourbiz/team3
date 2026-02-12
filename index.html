@@ -20,7 +20,6 @@
         .contact-btn { display: block; font-size: 0.85em; text-decoration: none; padding: 3px; border-radius: 4px; transition: 0.2s; }
         .btn-tel { color: var(--primary-color); font-weight: bold; }
         .btn-mail { color: #555; border: 1px solid #ccc; margin-top: 5px; background: white; }
-        .btn-mail:hover { background: #eee; }
 
         .flex-box { display: flex; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; }
         .promo-box { flex: 1; min-width: 250px; padding: 20px; border-radius: 10px; text-align: center; border: 2px solid #ddd; }
@@ -29,19 +28,21 @@
         .btn { display: inline-block; padding: 10px 20px; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 10px; }
 
         h3 { border-left: 5px solid var(--primary-color); padding-left: 10px; color: var(--dark-blue); margin-top: 40px; }
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.9em; table-layout: fixed; }
-        th, td { border: 1px solid #dee2e6; padding: 12px 10px; vertical-align: middle; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.9em; }
+        th, td { border: 1px solid #dee2e6; padding: 10px; text-align: center; }
         th { background: #f8f9fa; }
         
-        /* 거래처 표 버튼 정렬용 */
-        .client-cell { display: flex; justify-content: space-between; align-items: center; text-align: left; }
-        .btn-go { display: inline-block; padding: 5px 12px; background: var(--dark-blue); color: white; text-decoration: none; border-radius: 15px; font-size: 0.8em; white-space: nowrap; margin-left: 10px; }
+        /* 1. 복지몰 버튼 들여쓰기 조정 */
+        .client-cell { display: flex; justify-content: space-between; align-items: center; padding: 0 15px; }
+        .btn-go { display: inline-block; padding: 5px 12px; background: var(--dark-blue); color: white; text-decoration: none; border-radius: 15px; font-size: 0.8em; }
 
         .footer { margin-top: 50px; padding-top: 30px; border-top: 2px solid #eee; text-align: center; }
         .footer-address { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 15px; font-size: 0.85em; color: #666; }
-        .footer-address div { display: flex; align-items: center; }
         .footer-address div:not(:last-child):after { content: "|"; margin: 0 15px; color: #ddd; }
-        .copyright { margin-top: 15px; font-size: 11px; color: #999; letter-spacing: 0.5px; }
+        .admin-links { margin-top: 20px; }
+        .admin-links a { font-size: 11px; color: #bbb; text-decoration: none; margin: 0 8px; }
+        .admin-links a:hover { color: var(--primary-color); }
+        .copyright { margin-top: 15px; font-size: 11px; color: #999; }
     </style>
 </head>
 <body>
@@ -73,11 +74,11 @@
         </div>
 
         <div class="flex-box">
-            <div class="promo-box box-sample" style="flex: 1;">
+            <div class="promo-box box-sample">
                 <p><strong>[시연용]</strong> 복지몰 샘플 사이트</p>
                 <a href="https://wel.hanabizwel.com/pages/exhibition/detail/599" target="_blank" class="btn" style="background:var(--primary-color);">샘플 바로가기</a>
             </div>
-            <div class="promo-box box-btms" style="flex: 1.2;">
+            <div class="promo-box box-btms">
                 <p><strong>[시스템]</strong> 출장관리서비스 (BTMS)</p>
                 <div style="display: flex; gap: 8px; justify-content: center; margin-top: 10px;">
                     <a href="https://www.hanabtms.com/" target="_blank" class="btn" style="background:var(--dark-blue); flex: 1; margin-top: 0; font-size: 0.9em;">💻 PC 버전</a>
@@ -114,11 +115,20 @@
 
         <h3>⚾ 테마형 여행상품</h3>
         <table>
-            <thead><tr><th>연도별 및 콜라보 프로젝트</th><th>공식 링크</th></tr></thead>
+            <colgroup><col width="70%"><col width="30%"></colgroup>
             <tbody>
-                <tr><td><strong>2025년</strong> 삼성라이온즈 팬투어</td><td><a href="https://lions.mice.link" target="_blank" class="btn-go" style="background:var(--samsung-blue);">페이지 이동</a></td></tr>
-                <tr><td><strong>2026년</strong> 삼성라이온즈 팬투어</td><td><a href="https://lions2026.mice.link" target="_blank" class="btn-go" style="background:var(--samsung-blue);">페이지 이동</a></td></tr>
-                <tr><td><strong>2025 오사카 엑스포</strong> 기획전</td><td><a href="https://bz3.hanabizwel.com/pages/exhibition/detail/410" target="_blank" class="btn-go" style="background:var(--samsung-blue);">페이지 이동</a></td></tr>
+                <tr>
+                    <td><strong>2025년</strong> 삼성라이온즈 팬투어</td>
+                    <td><a href="https://lions.mice.link" target="_blank" class="btn-go" style="background:var(--samsung-blue);">페이지 이동</a></td>
+                </tr>
+                <tr>
+                    <td><strong>2026년</strong> 삼성라이온즈 팬투어</td>
+                    <td><a href="https://lions2026.mice.link" target="_blank" class="btn-go" style="background:var(--samsung-blue);">페이지 이동</a></td>
+                </tr>
+                <tr>
+                    <td><strong>2025 오사카 엑스포</strong> 기획전</td>
+                    <td><a href="https://bz3.hanabizwel.com/pages/exhibition/detail/410" target="_blank" class="btn-go" style="background:var(--samsung-blue);">페이지 이동</a></td>
+                </tr>
             </tbody>
         </table>
 
@@ -128,12 +138,13 @@
                 <div><strong>대구</strong> 중구 국채보상로 648 15층</div>
                 <div><strong>부산</strong> 중구 충장대로 7 9층</div>
             </div>
-            <div class="admin-links" style="margin-top: 20px;">
-                <a href="private.html" style="font-size: 11px; color: #bbb; text-decoration: none; margin: 0 8px;">[팀원전용]</a> 
-                <a href="performance.html" style="font-size: 11px; color: #bbb; text-decoration: none; margin: 0 8px;">[행사실적]</a> 
-                <a href="https://github.com" target="_blank" style="font-size: 11px; color: #bbb; text-decoration: none; margin: 0 8px;">[페이지수정]</a>
+            <div class="admin-links">
+                <a href="private.html">[팀원전용]</a> 
+                <a href="performance.html">[행사실적]</a> 
+                <a href="https://github.com" target="_blank">[페이지수정]</a>
+                <a href="https://www.gabia.com" target="_blank">[도메인관리]</a>
             </div>
-            <div class="copyright">© 2026 Hanatour Business Corp. Corporate Sales Team 3.</div>
+            <div class="copyright">© 2026 Hanatour Business Corp. Corporate Sales Team 3. All Rights Reserved.</div>
         </div>
     </div>
 </body>
