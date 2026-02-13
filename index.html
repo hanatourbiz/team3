@@ -191,13 +191,22 @@
     </div>
 
     <script>
+        // [팝업 스위치] true: 보임 / false: 안 보임
+        const showPopup = true; 
+
         window.onload = function() {
-            document.getElementById('myModal').style.display = "block";
+            // 스위치가 true일 때만 실행됩니다.
+            if (showPopup) {
+                const modal = document.getElementById('myModal');
+                if (modal) modal.style.display = "block";
+            }
         }
+
         function closeModal() {
             document.getElementById('myModal').style.display = "none";
         }
     </script>
 </body>
 </html>
+
 
