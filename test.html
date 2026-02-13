@@ -6,6 +6,8 @@
     <style>
         :root { --dark-blue: #1a2a4e; --point-red: #e31a1a; --beige: #bca896; }
         body { font-family: 'Pretendard', sans-serif; background: #f0f2f5; margin: 0; padding: 20px; }
+        
+        /* 관리자 패널 */
         .admin-panel { max-width: 1100px; margin: 0 auto 30px; background: #fff; padding: 25px; border-radius: 12px; border: 2px solid var(--dark-blue); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         .input-group { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 25px; }
         .section-title { font-size: 0.95em; font-weight: bold; color: var(--point-red); margin-bottom: 10px; border-left: 4px solid var(--point-red); padding-left: 10px; margin-top: 25px; }
@@ -14,40 +16,84 @@
         label { font-size: 0.85em; font-weight: bold; color: #333; margin-bottom: 5px; display: block; }
         input, select { width: 100%; padding: 7px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.85em; box-sizing: border-box; }
         .print-btn { background: var(--point-red); color: white; padding: 15px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 20px; font-size: 1.1em; }
-        .page { width: 210mm; min-height: 297mm; padding: 0; margin: 0 auto; background: white; position: relative; overflow: hidden; color: #333; box-shadow: 0 0 20px rgba(0,0,0,0.1); }
-        .date-bar { background: #3d3229; color: white; padding: 15px 50px; font-size: 1.2em; letter-spacing: 0.5px; font-weight: 600; text-align: center; border-bottom: 4px solid var(--beige); }
+
+        /* A4 안내문 페이지 설정 */
+        .page { 
+            width: 210mm; 
+            height: 297mm; /* 높이 고정 */
+            padding: 0; 
+            margin: 0 auto; 
+            background: white; 
+            position: relative; 
+            color: #333; 
+            box-shadow: 0 0 20px rgba(0,0,0,0.1); 
+            display: flex; 
+            flex-direction: column; 
+            overflow: hidden; /* 영역 이탈 방지 */
+            box-sizing: border-box;
+        }
+
+        .date-bar { background: #3d3229; color: white; padding: 12px 50px; font-size: 1.15em; letter-spacing: 0.5px; font-weight: 600; text-align: center; border-bottom: 4px solid var(--beige); flex-shrink: 0; }
         .date-bar b { color: #ffd6a5; }
-        .header { background: var(--dark-blue); color: white; padding: 45px 50px; position: relative; display: flex; justify-content: space-between; align-items: flex-start; }
-        .header h1 { font-size: 3.2em; margin: 0; line-height: 1.1; font-weight: 800; letter-spacing: -1px; }
-        .logo-client { max-width: 150px; max-height: 60px; filter: brightness(0) invert(1); object-fit: contain; }
-        .content-body { padding: 30px 50px; background: #fcfaf8; }
-        .intro-section { display: flex; gap: 40px; margin-bottom: 25px; align-items: center; border: 1px solid #e0d6cd; background: #fff; padding: 25px; border-radius: 12px; }
-        .company-logo-main { width: 220px; object-fit: contain; }
-        .intro-text-box { flex: 1; font-size: 0.95em; line-height: 1.7; color: #444; border-left: 2px solid #eee; padding-left: 25px; }
-        .team-section { margin-bottom: 20px; }
-        .team-label { background: var(--beige); color: white; padding: 5px 15px; font-weight: bold; border-radius: 5px 5px 0 0; display: inline-block; font-size: 0.8em; }
+
+        .header { background: var(--dark-blue); color: white; padding: 35px 50px; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
+        .header h1 { font-size: 2.8em; margin: 0; line-height: 1.1; font-weight: 800; letter-spacing: -1px; }
+        .logo-client { max-width: 220px; max-height: 80px; filter: brightness(0) invert(1); object-fit: contain; }
+
+        .content-body { padding: 25px 50px; background: #fcfaf8; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        
+        .intro-section { display: flex; gap: 30px; margin-bottom: 15px; align-items: center; border: 1px solid #e0d6cd; background: #fff; padding: 20px; border-radius: 12px; flex-shrink: 0; }
+        .company-logo-main { width: 200px; object-fit: contain; }
+        
+        /* 소개 문구 정렬 수정 부분 */
+        .intro-text-box { 
+            flex: 1; 
+            font-size: 0.92em; 
+            line-height: 1.8; /* 줄 간격 최적화 */
+            color: #444; 
+            border-left: 2px solid #eee; 
+            padding-left: 20px; 
+            text-align: justify; /* 양쪽 정렬 */
+            word-break: keep-all; /* 단어 단위 줄바꿈으로 깔끔하게 유지 */
+        }
+
+        .team-section { margin-bottom: 15px; }
+        .team-label { background: var(--beige); color: white; padding: 4px 12px; font-weight: bold; border-radius: 5px 5px 0 0; display: inline-block; font-size: 0.75em; }
         .staff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; border-top: 2px solid var(--beige); padding-top: 10px; }
-        .staff-card { background: white; border: 1px solid #e0d6cd; padding: 8px; border-radius: 40px 10px 10px 40px; display: flex; align-items: center; gap: 10px; height: 75px; box-sizing: border-box; }
-        .staff-card img { width: 55px; height: 55px; border-radius: 50%; object-fit: cover; background: #eee; flex-shrink: 0; border: 1px solid #ddd; }
-        .staff-info { font-size: 0.72em; line-height: 1.3; }
+        .staff-card { background: white; border: 1px solid #e0d6cd; padding: 8px; border-radius: 40px 10px 10px 40px; display: flex; align-items: center; gap: 10px; height: 70px; box-sizing: border-box; }
+        .staff-card img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; background: #eee; flex-shrink: 0; border: 1px solid #ddd; }
+        .staff-info { font-size: 0.7em; line-height: 1.3; }
         .staff-info b { font-size: 1.1em; color: var(--dark-blue); }
-        .section-header { text-align: center; margin: 30px 0 15px; }
-        .section-header span { background: #fef3c7; padding: 6px 25px; font-weight: bold; font-size: 1.1em; border-radius: 20px; color: #856404; }
-        .promise-container { border: 2px solid #d1d5db; border-radius: 12px; padding: 20px; margin-bottom: 25px; background: white; display: flex; flex-direction: column; gap: 15px; }
-        .promise-item { display: flex; flex-direction: column; gap: 5px; }
-        .promise-title { font-size: 1.4em; font-weight: 900; color: #222; font-family: 'Arial Black', sans-serif; }
-        .promise-desc { font-size: 0.9em; color: #444; line-height: 1.5; }
-        .special-title { font-size: 1.2em; font-weight: bold; color: var(--dark-blue); margin-bottom: 15px; text-align: center; }
-        .service-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: #ccc; border: 1px solid #ccc; margin-bottom: 20px; }
-        .service-item { background: #fff; padding: 15px 5px; text-align: center; min-height: 50px; display: flex; align-items: center; justify-content: center; }
-        .service-item span { font-size: 0.85em; color: #333; font-weight: 500; line-height: 1.3; }
-        .emergency-notice { background: #eee5de; padding: 12px; text-align: center; border-radius: 8px; font-size: 0.9em; margin-top: 10px; color: #444; }
+
+        .section-header { text-align: center; margin: 15px 0 10px; }
+        .section-header span { background: #fef3c7; padding: 5px 25px; font-weight: bold; font-size: 1em; border-radius: 20px; color: #856404; }
+        
+        .promise-container { border: 2px solid #d1d5db; border-radius: 12px; padding: 15px; margin-bottom: 15px; background: white; display: flex; flex-direction: column; gap: 10px; }
+        .promise-item { display: flex; flex-direction: column; gap: 2px; }
+        .promise-title { font-size: 1.2em; font-weight: 900; color: #222; font-family: 'Arial Black', sans-serif; }
+        .promise-desc { font-size: 0.85em; color: #444; line-height: 1.4; text-align: justify; word-break: keep-all; }
+        
+        .special-title { font-size: 1.1em; font-weight: bold; color: var(--dark-blue); margin-bottom: 10px; text-align: center; }
+        .service-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: #ccc; border: 1px solid #ccc; margin-bottom: 15px; }
+        .service-item { background: #fff; padding: 10px 5px; text-align: center; min-height: 45px; display: flex; align-items: center; justify-content: center; }
+        .service-item span { font-size: 0.8em; color: #333; font-weight: 500; line-height: 1.3; }
+        
+        .emergency-notice { background: #eee5de; padding: 10px; text-align: center; border-radius: 8px; font-size: 0.85em; color: #444; }
         .emergency-notice b { color: #a67c52; }
-        .footer-index { position: absolute; bottom: 0; left: 0; right: 0; background: #f8f9fa; border-top: 1px solid #ddd; padding: 25px 50px 35px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; }
+
+        .footer-index { background: #f8f9fa; border-top: 1px solid #ddd; padding: 20px 50px 30px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; flex-shrink: 0; }
         .index-item { border-left: 2px solid var(--beige); padding-left: 15px; }
-        .index-item h4 { margin: 0 0 5px; font-size: 0.9em; color: var(--dark-blue); }
-        .index-item p { margin: 0; font-size: 0.75em; color: #666; line-height: 1.5; }
-        @media print { body { padding: 0; background: none; } .admin-panel { display: none !important; } .page { margin: 0; border: none; box-shadow: none; width: 210mm; } }
+        .index-item h4 { margin: 0 0 5px; font-size: 0.85em; color: var(--dark-blue); }
+        .index-item p { margin: 0; font-size: 0.72em; color: #666; line-height: 1.5; }
+
+        /* 인쇄 시 전용 설정 */
+        @page { size: A4; margin: 0; }
+        @media print {
+            body { padding: 0; background: none; }
+            .admin-panel { display: none !important; }
+            .page { margin: 0; border: none; box-shadow: none; width: 210mm; height: 297mm; }
+            * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
     </style>
 </head>
 <body>
@@ -77,18 +123,21 @@
                 <img src="photos/logo2.png" class="company-logo-main" onerror="this.src='https://via.placeholder.com/220x80?text=HanaTour+Business'">
                 <div class="intro-text-box">
                     <strong><span class="v-client-inline"></span> 임직원 여러분, 안녕하십니까.</strong><br>
-                    하나투어비즈니스는 23년 연속 업계 1위 하나투어가 출자한 법인 전문 여행사로, 글로벌 네트워크와 전문 인력을 통해 고객사의 업무 효율을 높이는 신뢰받는 비즈니스 여행 파트너가 되겠습니다.
+                    하나투어비즈니스는 국내 최대 여행기업 하나투어가 100% 출자한 법인 여행 서비스 전문 조직으로, 23년 연속 업계 1위 그룹의 글로벌 네트워크와 전문 인력을 기반으로 기업 및 공공기관 대상 비즈니스 여행을 안정적이고 체계적으로 운영하는 전문 파트너입니다. 앞으로도 고객사의 업무 효율과 임직원 편의를 높이는 신뢰받는 비즈니스 여행 파트너로서 최적의 서비스를 제공하겠습니다.
                 </div>
             </div>
+            
             <div class="team-section"><div class="team-label">MANAGEMENT & SUPPORT (총괄/영업관리)</div><div class="staff-grid" id="view-mgt"></div></div>
             <div class="team-section"><div class="team-label">AIR SERVICE (항공)</div><div class="staff-grid" id="view-air"></div></div>
             <div class="team-section"><div class="team-label">HOTEL & VISA SERVICE (호텔/비자)</div><div class="staff-grid" id="view-etc"></div></div>
+            
             <div class="section-header"><span>하나투어비즈니스의 세 가지 약속</span></div>
             <div class="promise-container">
                 <div class="promise-item"><div class="promise-title">Customer Satisfaction</div><div class="promise-desc">30여 년간 축적된 차별화된 출장 컨설팅 노하우를 바탕으로, 친절·신속·정확한 고객 중심 서비스를 제공하겠습니다.</div></div>
                 <div class="promise-item"><div class="promise-title">Safety & Security</div><div class="promise-desc">출장 전·중·후 긴급 상황 발생 시, <span class="v-client-inline"></span> 임직원 전담 서비스팀과 24시간 긴급지원센터를 통해 빈틈없는 대응으로 임직원 분들의 안전을 약속 드립니다.</div></div>
                 <div class="promise-item"><div class="promise-title">Efficiency & Usability</div><div class="promise-desc">실시간 출장 예약 시스템(BTMS)을 제공하여, <span class="v-client-inline"></span> 임직원분들께서 언제 어디서든 출장 정보를 편리하고 신속하게 확인하실 수 있도록 지원하고, 업무 효율성과 편의성을 높이겠습니다.</div></div>
             </div>
+            
             <div class="special-title">하나투어비즈니스만의 특별 제공 서비스</div>
             <div class="service-grid">
                 <div class="service-item"><span>주요 공지 및 이벤트<br>전용 홈페이지 운영</span></div>
@@ -98,10 +147,11 @@
             </div>
             <div class="emergency-notice">주말·공휴일 등 업무 시간 외에는 <b>24시간 긴급 출장 서비스 센터</b>를 운영합니다. ( ☎ <b>1577-2770</b> )</div>
         </div>
+        
         <div class="footer-index">
-            <div class="index-item"><h4>SEOUL (본사)</h4><p>서울 중구 인사동 5길 25<br>Tel: 02-1577-1234</p></div>
-            <div class="index-item"><h4>DAEGU (영업3팀)</h4><p>대구 중구 국채보상로 648<br>Tel: 053-421-2334</p></div>
-            <div class="index-item"><h4>BUSAN (영남)</h4><p>부산 중구 중앙대로 102<br>Tel: 051-469-0000</p></div>
+            <div class="index-item"><h4>SEOUL </h4><p>서울 중구 인사동 5길 25<br>Tel: 02-1577-1234</p></div>
+            <div class="index-item"><h4>DAEGU </h4><p>대구 중구 국채보상로 648<br>Tel: 053-421-2334</p></div>
+            <div class="index-item"><h4>BUSAN </h4><p>부산 중구 중앙대로 102<br>Tel: 051-469-0000</p></div>
         </div>
     </div>
 
@@ -111,37 +161,41 @@
         const pools = {
             mgt: [
                 {n:"김동욱(서비스 총괄)", v:"서비스 총괄/김동욱 팀장/010-8560-6258"},
-                {n:"김동욱(영업 관리)", v:"영업 관리/김동욱 팀장/010-8560-6258"},
                 {n:"최봉재(서비스 총괄)", v:"서비스 총괄/최봉재 수석/010-7438-0333"},
-                {n:"최봉재(영업 관리)", v:"영업 관리/최봉재 수석/010-7438-0333"},
                 {n:"김태근(서비스 총괄)", v:"서비스 총괄/김태근 선임/010-5584-4616"},
-                {n:"김태근(영업 관리)", v:"영업 관리/김태근 선임/010-5584-4616"},
+                {n:"김채스민(서비스 총괄)", v:"서비스 총괄/김채스민 선임/010-5584-4616"},
+                {n:"장현수(서비스 총괄)", v:"서비스 총괄/장현수 사원/010-5584-4616"},
+                {n:"최봉재(지원 관리)", v:"지원 관리/최봉재 수석/010-7438-0333"},
+                {n:"김태근(지원 관리)", v:"지원 관리/김태근 선임/010-5584-4616"},
                 {n:"김채스민(지원 관리)", v:"지원 관리/김채스민 선임/010-5584-4616"},
                 {n:"장현수(지원 관리)", v:"지원 관리/장현수 사원/010-5584-4616"}
             ],
             air: [
                 {n:"이정민 선임", v:"항공 담당/이정민 선임/02-1234-0001"},
                 {n:"김서준 선임", v:"항공 담당/김서준 선임/02-1234-0002"},
-                {n:"박현우 선임", v:"항공 담당/박현우 선임/02-1234-0003"}
+                {n:"박현우 선임", v:"항공 담당/박현우 선임/02-1234-0003"},
+                {n:"홍길동 선임", v:"항공 담당/박현우 선임/02-1234-0003"},
+                {n:"임꺽정 선임", v:"항공 담당/박현우 선임/02-1234-0003"}
             ],
             etc: [
                 {n:"정마음 선임", v:"호텔 담당/정마음 선임/02-1234-1001"},
                 {n:"송하준 선임", v:"호텔 담당/송하준 선임/02-1234-1002"},
-                {n:"장현수 선임", v:"비자 담당/장현수 선임/02-1234-2001"}
+                {n:"한아름 선임", v:"비자 담당/장현수 선임/02-1234-2001"},
+                {n:"조아름 선임", v:"비자 담당/장현수 선임/02-1234-2001"}
             ]
         };
 
         const config = [
-            { id: 'mgt', title: '총괄/관리', count: 3, pool: pools.mgt, target: 'mgt-inputs', view: 'view-mgt' },
-            { id: 'air', title: '항공 담당', count: 3, pool: pools.air, target: 'air-inputs', view: 'view-air' },
-            { id: 'etc', title: '호텔/비자', count: 3, pool: pools.etc, target: 'etc-inputs', view: 'view-etc' }
+            { id: 'mgt', title: '총괄/관리', pool: pools.mgt, target: 'mgt-inputs', view: 'view-mgt' },
+            { id: 'air', title: '항공 담당', pool: pools.air, target: 'air-inputs', view: 'view-air' },
+            { id: 'etc', title: '호텔/비자', pool: pools.etc, target: 'etc-inputs', view: 'view-etc' }
         ];
 
         function init() {
             document.getElementById('in-date').value = "2026년 2월 13일(금)";
             config.forEach(sec => {
                 const container = document.getElementById(sec.target);
-                for(let i=0; i<sec.count; i++) {
+                for(let i=0; i<3; i++) {
                     container.innerHTML += `
                         <div class="staff-input-unit">
                             <label>${sec.title} ${i+1}</label>
@@ -166,7 +220,7 @@
             config.forEach(sec => {
                 const view = document.getElementById(sec.view);
                 view.innerHTML = '';
-                for(let i=0; i<sec.count; i++) {
+                for(let i=0; i<3; i++) {
                     const val = document.getElementById(`${sec.id}-n-${i}`).value;
                     if(val) {
                         const [tag, name, tel] = val.split('/');
