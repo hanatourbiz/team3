@@ -226,22 +226,38 @@
         }
 
         function renderAll() {
-            config.forEach(sec => {
-                const view = document.getElementById(sec.view);
-                view.innerHTML = '';
-                for(let i=0; i<sec.count; i++) {
-                    const val = document.getElementById(`${sec.id}-n-${i}`).value;
-                    if(val) {
-                        const [tag, name, tel] = val.split('/');
-                        view.innerHTML += `
-                            <div class="staff-card">
-                                <img src="https://via.placeholder.com/60?text=User">
-                                <div class="staff-info"><b>${name||''}</b><br>${tag||''}<br>${tel||''}</div>
-                            </div>`;
-                    }
-                }
-            });
+    // 성함에 따른 사진 파일명 매핑 (여기에 추가하시면 됩니다)
+    const photoMap = {
+        "김동욱": "kim.png",
+        "최봉재": "choi.png",
+        "김태근": "tae.png",
+        "장현수": "jang.png",
+        "김채스민": "chae.png"
+    };
+
+    config.forEach(sec => {
+        const view = document.getElementById(sec.view);
+        view.innerHTML = '';
+        for(let i=0; i<sec.count; i++) {
+            const val = document.getElementById(`${sec.id}-n-${i}`).value;
+            if(val) {
+                const [tag, name, tel] = val.split('/');
+                
+                // '김동욱 팀장'에서 성함인 '김동욱'만 추출
+                const pureName = name ? name.split(' ')[0] : "";
+                // 매핑된 파일이 있으면 사용, 없으면 기본 아이콘 표시
+                const fileName = photoMap[pureName] || "user.png"; 
+                const photoSrc = `photos/${fileName}`;
+
+                view.innerHTML += `
+                    <div class="staff-card">
+                        <img src="${photoSrc}" onerror="this.src='https://via.placeholder.com/60?text=User'">
+                        <div class="staff-info"><b>${name||''}</b><br>${tag||''}<br>${tel||''}</div>
+                    </div>`;
+            }
         }
+    });
+}
 
         function updateView() {
             const date = document.getElementById('in-date').value;
