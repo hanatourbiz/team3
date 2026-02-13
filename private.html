@@ -19,13 +19,26 @@
         .num-cell { text-align: right; font-family: 'Consolas', monospace; }
         .total-row { background: #fff9db; font-weight: bold; }
 
-        /* 접속 정보 카드 스타일 (신규) */
+        /* 접속 정보 카드 스타일 */
         .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
         .info-card { background: #f4f7ff; border: 1px solid #d0d7ef; padding: 15px; border-radius: 10px; text-align: left; }
         .info-card strong { color: var(--dark-blue); display: block; margin-bottom: 8px; border-bottom: 1px solid #d0d7ef; padding-bottom: 5px; }
         .info-card p { margin: 5px 0; font-size: 0.9em; color: #555; }
 
-        /* 다운로드 버튼 스타일 (시안성 강화) */
+        /* [추가] 안내문 생성기 전용 링크 스타일 */
+        .maker-link-box { 
+            background: linear-gradient(135deg, var(--dark-blue), #0055ff); 
+            color: white; padding: 20px; border-radius: 12px; margin-top: 15px; 
+            display: flex; justify-content: space-between; align-items: center; 
+            text-decoration: none; transition: transform 0.2s;
+        }
+        .maker-link-box:hover { transform: scale(1.02); box-shadow: 0 5px 15px rgba(0,51,153,0.3); }
+        .maker-txt { text-align: left; }
+        .maker-txt strong { font-size: 1.1em; display: block; }
+        .maker-txt span { font-size: 0.85em; opacity: 0.8; }
+        .maker-icon { font-size: 2em; }
+
+        /* 다운로드 버튼 스타일 */
         .btn-box { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
         .btn-file { 
             padding: 12px; background: white; border: 2px solid #eee; border-radius: 12px; 
@@ -65,6 +78,15 @@
                 </tr>
             </tbody>
         </table>
+
+        <h3>📄 제안용 공문 제작</h3>
+        <a href="print_notice.html" class="maker-link-box">
+            <div class="maker-txt">
+                <strong>출장 전담 여행사 변경 안내문 제작</strong>
+                <span>업체명/로고/담당자 선택 후 즉시 출력 및 PDF 저장</span>
+            </div>
+            <div class="maker-icon">🖨️</div>
+        </a>
 
         <h3>🔑 시스템 접속 정보</h3>
         <div class="info-grid">
