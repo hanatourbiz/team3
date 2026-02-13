@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>하나투어 비즈니스 | 법인영업3팀</title>
     <style>
-        /* 색상 테마를 다크 블루와 차분한 그레이로 통일 */
+        /* 색상 테마 */
         :root { 
             --primary-color: #e31a1a; 
-            --dark-blue: #1a2a4e; /* 더 깊고 신뢰감 있는 네이비 */
+            --dark-blue: #1a2a4e; 
             --point-blue: #34495e;
             --bg-gray: #f2f4f7; 
             --border-color: #e1e4e8;
@@ -21,7 +21,15 @@
         header { text-align: center; border-bottom: 1px solid var(--border-color); padding-bottom: 25px; margin-bottom: 35px; }
         .logo-img { max-height: 45px; width: auto; }
         
-        /* 팀원 카드 영역: 그림자 제거하고 깔끔하게 변경 */
+        /* 팝업(모달) 스타일 */
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); }
+        .modal-content { background: #fff; margin: 10% auto; padding: 35px 25px; border-radius: 15px; width: 85%; max-width: 450px; text-align: center; position: relative; box-shadow: 0 15px 40px rgba(0,0,0,0.3); }
+        .modal-header { font-size: 1.3em; font-weight: bold; color: var(--dark-blue); margin-bottom: 15px; }
+        .modal-body { font-size: 0.95em; color: #555; margin-bottom: 25px; line-height: 1.7; }
+        .modal-close { background: var(--dark-blue); color: white; padding: 12px 35px; border-radius: 6px; text-decoration: none; font-size: 0.9em; font-weight: bold; cursor: pointer; border: none; transition: 0.3s; }
+        .modal-close:hover { background: var(--primary-color); }
+
+        /* 팀원 카드 */
         .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; margin-bottom: 40px; }
         .team-card { background: #fff; padding: 20px 10px; border-radius: 8px; text-align: center; border: 1px solid var(--border-color); transition: 0.3s; }
         .team-card:hover { border-color: var(--dark-blue); transform: translateY(-3px); }
@@ -32,34 +40,17 @@
         .btn-tel { color: var(--primary-color); font-weight: bold; }
         .btn-mail { color: #777; border: 1px solid #ddd; margin-top: 6px; background: #fafafa; }
 
-        /* 거슬렸던 박스 영역: 화이트 톤으로 통일하고 디자인 일원화 */
         .flex-box { display: flex; gap: 20px; margin-bottom: 40px; flex-wrap: wrap; }
         .promo-box { flex: 1; min-width: 250px; padding: 25px; border-radius: 8px; text-align: center; border: 1px solid var(--border-color); background: #fff; }
         .promo-box strong { font-size: 1.1em; color: var(--dark-blue); }
         .promo-box p { margin: 10px 0 15px; font-size: 0.9em; color: #666; }
-        .btn { 
-            display: inline-block; 
-            width: 140px; 
-            text-align: center; 
-            padding: 10px 0; 
-            color: white; 
-            text-decoration: none; 
-            border-radius: 4px; 
-            font-weight: bold; 
-            font-size: 0.9em; 
-            transition: 0.2s; 
-            background: #6c86ad; /* 기존 네이비보다 연하고 차분한 색상 */
-        }
-        .btn:hover { background: #556d91; } /* 마우스 올리면 살짝 진해짐 */
+        .btn { display: inline-block; width: 140px; text-align: center; padding: 10px 0; color: white; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 0.9em; transition: 0.2s; background: #6c86ad; }
+        .btn:hover { background: #556d91; }
 
-        /* 섹션 제목 스타일 */
         h3 { font-size: 1.2em; border-left: 4px solid var(--dark-blue); padding-left: 12px; color: var(--dark-blue); margin-top: 45px; margin-bottom: 15px; }
-        
-        /* 테이블 스타일: 선을 연하게 하고 폰트 정리 */
         table { width: 100%; border-collapse: collapse; font-size: 0.9em; border-top: 2px solid var(--dark-blue); }
         th, td { border: 1px solid #eee; padding: 12px; text-align: center; }
         tr:hover { background-color: #fcfcfc; }
-        
         .client-cell { display: flex; justify-content: space-between; align-items: center; padding: 0 10px; }
         .btn-go { display: inline-block; padding: 4px 14px; background: #f1f3f5; color: var(--dark-blue); text-decoration: none; border-radius: 4px; font-size: 0.8em; border: 1px solid var(--border-color); font-weight: 500; }
         .btn-go:hover { background: var(--dark-blue); color: white; }
@@ -73,6 +64,22 @@
     </style>
 </head>
 <body>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div style="font-size: 2.5em; margin-bottom: 10px;">🧧</div>
+            <div class="modal-header">2026년 새해 복 많이 받으십시오</div>
+            <div class="modal-body">
+                안녕하십니까, 하나투어 비즈니스 <br>
+                <strong>법인영업 3팀장 김동욱</strong>입니다.<br><br>
+                지난 한 해 보내주신 성원과 신뢰에 깊이 감사드립니다.<br>
+                2026년 丙午年(병오년) 설을 맞아,<br>
+                귀사의 무궁한 발전과 가정의 평안을 기원합니다.<br><br>
+                <strong>"저희와 함께 낭만이 깃드는 한 해가 되길 소망합니다."</strong>
+            </div>
+            <button class="modal-close" onclick="closeModal()">새해 복 많이 받으세요</button>
+        </div>
+    </div>
+
     <div class="container">
         <header>
             <img src="photos/logo.png" alt="하나투어 비즈니스" class="logo-img">
@@ -82,7 +89,6 @@
             <div style="overflow: hidden; border-radius: 10px 10px 0 0; border: 1px solid var(--border-color); border-bottom: none;">
                 <img src="photos/all_staff.JPG" alt="하나투어비즈니스 전직원" style="width: 100%; display: block;">
             </div>
-            
             <div style="background: rgba(26, 42, 78, 0.05); padding: 12px; border-radius: 0 0 10px 10px; border: 1px solid var(--border-color);">
                 <span style="font-size: 0.95em; font-weight: 600; color: var(--dark-blue); letter-spacing: -0.02em;">
                     대표이사 직속 전문가 그룹, 총 126명의 비즈니스 파트너
@@ -91,9 +97,7 @@
 
             <div style="margin-top: 25px; padding: 0 20px;">
                 <p style="font-size: 0.95em; color: #666; word-break: keep-all; margin: 0;">하나투어 비즈니스는 체계적인 조직력을 바탕으로 차별화된 기업 맞춤형 서비스를 제공합니다.</p>
-                
                 <div style="width: 40px; height: 2px; background-color: var(--border-color); margin: 15px auto;"></div>
-                
                 <p style="font-size: 1em; color: var(--dark-blue); margin-top: 0;"><strong>법인영업 3팀은 강원·영남 지역을 담당하는 M.I.C.E 전문가 5명의 땀과 눈물 그리고 낭만으로 구성되어 있습니다.</strong></p>
             </div>
         </div>
@@ -110,14 +114,14 @@
             <div class="promo-box">
                 <strong>복지몰 서비스</strong>
                 <p>기업 맞춤형 복지몰 구성 샘플</p>
-                <a href="https://wel.hanabizwel.com/pages/exhibition/detail/599" target="_blank" class="btn btn">확인하기</a>
+                <a href="https://wel.hanabizwel.com/pages/exhibition/detail/599" target="_blank" class="btn">확인하기</a>
             </div>
             <div class="promo-box">
                 <strong>출장관리시스템(BTMS)</strong>
                 <p>효율적인 업무 출장을 위한 스마트 솔루션</p>
                 <div style="display: flex; gap: 8px; justify-content: center;">
                     <a href="https://www.hanabtms.com/" target="_blank" class="btn">PC 버전</a>
-<a href="https://m.hanabtms.com/" target="_blank" class="btn">모바일</a>
+                    <a href="https://m.hanabtms.com/" target="_blank" class="btn">모바일</a>
                 </div>
             </div>
         </div>
@@ -127,7 +131,7 @@
             <colgroup><col width="50%"><col width="50%"></colgroup>
             <tbody>
                 <tr>
-                    <td><div class="client-cell"><span>한국전력국제원자력대학원대학교</span> <a href="https://kings.hanabizwel.com/" target="_blank" class="btn-go">접속</a></div></td>
+                    <td><div class="client-cell"><span>한국전력국제원자력대학교</span> <a href="https://kings.hanabizwel.com/" target="_blank" class="btn-go">접속</a></div></td>
                     <td><div class="client-cell"><span>강원랜드</span> <a href="https://kl.hanabizwel.com/" target="_blank" class="btn-go">접속</a></div></td>
                 </tr>
                 <tr>
@@ -185,18 +189,14 @@
             <div class="copyright">© 2026 Hanatour Business Corp. Corporate Sales Team 3. All Rights Reserved.</div>
         </div>
     </div>
+
+    <script>
+        window.onload = function() {
+            document.getElementById('myModal').style.display = "block";
+        }
+        function closeModal() {
+            document.getElementById('myModal').style.display = "none";
+        }
+    </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
