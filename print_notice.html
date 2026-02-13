@@ -7,13 +7,14 @@
         :root { --dark-blue: #1a2a4e; --point-red: #e31a1a; --beige: #bca896; }
         body { font-family: 'Pretendard', sans-serif; background: #f0f2f5; margin: 0; padding: 20px; }
         
-        /* 설정 패널 (인쇄 시 숨김) */
+        /* 설정 패널 */
         .admin-panel { max-width: 1100px; margin: 0 auto 30px; background: #fff; padding: 25px; border-radius: 12px; border: 2px solid var(--dark-blue); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .input-group { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-bottom: 25px; }
-        .section-title { font-size: 0.9em; font-weight: bold; color: var(--point-red); margin-bottom: 10px; border-left: 4px solid var(--point-red); padding-left: 10px; margin-top: 20px; }
-        .staff-input-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; background: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #eee; }
+        .input-group { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px; }
+        .section-title { font-size: 0.95em; font-weight: bold; color: var(--point-red); margin-bottom: 10px; border-left: 4px solid var(--point-red); padding-left: 10px; margin-top: 25px; }
+        .staff-input-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; background: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #eee; }
         .staff-input-unit { background: white; padding: 10px; border: 1px solid #ddd; border-radius: 8px; display: flex; flex-direction: column; gap: 5px; }
-        input, select { width: 100%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.85em; box-sizing: border-box; }
+        label { font-size: 0.8em; font-weight: bold; color: #555; }
+        input, select { width: 100%; padding: 7px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.85em; box-sizing: border-box; }
         .print-btn { background: var(--point-red); color: white; padding: 15px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 20px; font-size: 1.1em; }
 
         /* 안내문 디자인 (A4) */
@@ -35,7 +36,6 @@
         .staff-info { font-size: 0.68em; line-height: 1.2; }
         .staff-info b { font-size: 1.05em; color: var(--dark-blue); }
 
-        /* 세 가지 약속 */
         .section-header { text-align: center; margin: 15px 0 10px; }
         .section-header span { background: #fef3c7; padding: 4px 20px; font-weight: bold; font-size: 1em; border-radius: 20px; }
         .promise-container { border: 1px solid #d1d5db; border-radius: 12px; padding: 15px; margin-bottom: 15px; background: white; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
@@ -44,83 +44,74 @@
         .promise-txt strong { font-size: 0.95em; color: var(--dark-blue); display: block; }
         .promise-txt p { margin: 0; font-size: 0.75em; color: #666; }
 
-        /* 특별 제공 서비스 */
         .special-title { font-size: 1em; font-weight: bold; color: var(--dark-blue); margin-bottom: 8px; text-align: center; }
         .service-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; text-align: center; margin-bottom: 15px; }
         .service-item { background: #fff; padding: 8px; border: 1px solid #eee; border-radius: 8px; }
         .service-item b { font-size: 0.75em; color: var(--point-red); display: block; margin-bottom: 2px; }
         .service-item span { font-size: 0.65em; color: #777; line-height: 1.2; display: block; }
 
-        /* 하단 거점 정보 */
         .footer-index { position: absolute; bottom: 0; left: 0; right: 0; background: #f8f9fa; border-top: 1px solid #ddd; padding: 20px 50px 30px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
         .index-item { border-left: 2px solid var(--beige); padding-left: 12px; }
         .index-item h4 { margin: 0 0 5px; font-size: 0.85em; color: var(--dark-blue); }
         .index-item p { margin: 0; font-size: 0.7em; color: #666; line-height: 1.4; }
 
-        @media print { 
-            body { padding: 0; background: none; }
-            .admin-panel { display: none !important; } 
-            .page { margin: 0; border: none; box-shadow: none; width: 210mm; } 
-        }
+        @media print { body { padding: 0; background: none; } .admin-panel { display: none !important; } .page { margin: 0; border: none; box-shadow: none; width: 210mm; } }
     </style>
 </head>
 <body>
 
     <div class="admin-panel">
-        <h2 style="margin-top:0;">📋 안내문 생성 관리자 모드 (풀버전)</h2>
+        <h2 style="margin-top:0;">📋 업체별 전담 서비스팀 구성 관리</h2>
         <div class="input-group">
-            <div><label>상대 업체명 (샘플 제공)</label>
-                <input type="text" id="in-client" value="LH 한국토지주택공사" oninput="updateView()">
-            </div>
+            <div><label>상대 업체명</label><input type="text" id="in-client" value="LH 한국토지주택공사" oninput="updateView()"></div>
             <div><label>업체 로고 업로드</label><input type="file" onchange="loadLogo(event)"></div>
         </div>
 
-        <div class="section-title">✈️ 팀원 설정 (선택 또는 직접 입력)</div>
-        <p style="font-size:0.8em; color: #666; margin: -5px 0 10px 10px;">* 리스트에서 선택하면 자동 입력되며, '직접 입력'을 통해 수정도 가능합니다.</p>
-        
         <div id="input-containers">
-            <div class="section-title">항공팀 (5명)</div>
+            <div class="section-title">👤 서비스 총괄 및 영업관리 (우리팀원 선택)</div>
+            <div class="staff-input-grid" id="mgt-inputs"></div>
+
+            <div class="section-title">✈️ 항공 서비스팀 (항공 담당자 선택)</div>
             <div class="staff-input-grid" id="air-inputs"></div>
-            <div class="section-title">호텔팀 (3명)</div>
-            <div class="staff-input-grid" id="hotel-inputs"></div>
-            <div class="section-title">비자/지원팀 (3명)</div>
-            <div class="staff-input-grid" id="visa-inputs"></div>
+
+            <div class="section-title">🏨 호텔 & 🛂 비자 서비스팀 (각 담당자 선택)</div>
+            <div class="staff-input-grid" id="etc-inputs"></div>
         </div>
 
-        <button class="print-btn" onclick="window.print()">🖨️ 인쇄하기 (PDF 저장)</button>
+        <button class="print-btn" onclick="window.print()">🖨️ 설정 완료 및 인쇄하기 (PDF 저장)</button>
     </div>
 
     <div class="page">
         <div class="header">
             <img id="view-logo" src="" class="logo-client" style="display:none;">
-            <div style="font-size: 1em; font-weight: bold; margin-bottom: 12px;">HANATOUR BUSINESS</div>
-            <h1><span id="view-client">LH 한국토지주택공사</span><br>출장 전담 서비스 안내</h1>
+            <div style="font-size: 1em; font-weight: bold; margin-bottom: 12px; letter-spacing: 1px;">HANATOUR BUSINESS</div>
+            <h1><span id="view-client">LH 한국토지주택공사</span><br>전담 서비스팀 구성</h1>
         </div>
 
         <div class="content-body">
             <div class="intro-box">
-                <img src="photos/logo.png" class="intro-logo" onerror="this.src='https://via.placeholder.com/180x60?text=HTB+LOGO'">
+                <img src="https://via.placeholder.com/180x60?text=HTB+LOGO" class="intro-logo">
                 <div class="intro-text">
-                    <span class="v-client-inline">LH 한국토지주택공사</span> 임직원 여러분 안녕하십니까? 하나투어비즈니스는 각 분야별 전담 인력을 통해 귀사에 최적화된 원스톱 출장 솔루션을 제공하겠습니다.
+                    <span class="v-client-inline">LH 한국토지주택공사</span> 임직원 여러분, 하나투어비즈니스는 귀사만을 위한 전담 조직을 구성하여 최상의 서비스를 약속드립니다.
                 </div>
             </div>
 
+            <div class="team-section"><div class="team-label">MANAGEMENT & SUPPORT (총괄/영업관리)</div><div class="staff-grid" id="view-mgt"></div></div>
             <div class="team-section"><div class="team-label">AIR SERVICE (항공)</div><div class="staff-grid" id="view-air"></div></div>
-            <div class="team-section"><div class="team-label">HOTEL SERVICE (호텔)</div><div class="staff-grid" id="view-hotel"></div></div>
-            <div class="team-section"><div class="team-label">VISA & SUPPORT (비자/지원)</div><div class="staff-grid" id="view-visa"></div></div>
+            <div class="team-section"><div class="team-label">HOTEL & VISA SERVICE (호텔/비자)</div><div class="staff-grid" id="view-etc"></div></div>
 
             <div class="section-header"><span>하나투어비즈니스의 약속</span></div>
             <div class="promise-container">
-                <div class="promise-item"><span class="promise-icon">👍</span><div class="promise-txt"><strong>CS 만족</strong><p>노하우를 담은 친절/신속 서비스</p></div></div>
-                <div class="promise-item"><span class="promise-icon">🛡️</span><div class="promise-txt"><strong>안전 지원</strong><p>24시간 긴급지원센터 운영</p></div></div>
+                <div class="promise-item"><span class="promise-icon">👍</span><div class="promise-txt"><strong>CS 만족</strong><p>법인영업3팀의 노하우를 담은 신속 응대</p></div></div>
+                <div class="promise-item"><span class="promise-icon">🛡️</span><div class="promise-txt"><strong>안전 지원</strong><p>365일 24시간 긴급지원센터 운영</p></div></div>
             </div>
 
-            <div class="special-title">차별화된 특별 서비스</div>
+            <div class="special-title">차별화된 특별 제공 서비스</div>
             <div class="service-grid">
-                <div class="service-item"><b>BTMS 구축</b><span>실시간 예약 시스템</span></div>
-                <div class="service-item"><b>문화행사 초청</b><span>공연/전시 우선권</span></div>
-                <div class="service-item"><b>임직원 할인</b><span>개인여행 상시 할인</span></div>
-                <div class="service-item"><b>웰컴 팩</b><span>출장 필수품 증정</span></div>
+                <div class="service-item"><b>BTMS 시스템</b><span>실시간 관리 솔루션</span></div>
+                <div class="service-item"><b>문화행사 초청</b><span>우수 고객 특별 이벤트</span></div>
+                <div class="service-item"><b>임직원 할인</b><span>개인 휴가 상품 상시 할인</span></div>
+                <div class="service-item"><b>웰컴 팩</b><span>출장 필수 파우치 증정</span></div>
             </div>
         </div>
 
@@ -132,56 +123,76 @@
     </div>
 
     <script>
-        // 팀원 풀 (선택용)
-        const staffPool = [
-            {n:"김동욱 팀장", v:"총괄/김동욱 팀장/010-8560-6258"},
-            {n:"최봉재 수석", v:"관리/최봉재 수석/010-7438-0333"},
-            {n:"김태근 선임", v:"항공/김태근 선임/010-5584-4616"},
-            {n:"가상-이정민", v:"항공/이정민 선임/02-1234-0001"},
-            {n:"가상-송하준", v:"호텔/송하준 선임/02-1234-0002"},
-            {n:"가상-장현수", v:"비자/장현수 선임/02-1234-0003"}
-        ];
-
-        const config = {
-            air: { count: 5, target: 'air-inputs', def: '항공/담당자/02-000-0000' },
-            hotel: { count: 3, target: 'hotel-inputs', def: '호텔/담당자/02-000-0000' },
-            visa: { count: 3, target: 'visa-inputs', def: '비자/담당자/02-000-0000' }
+        // 카테고리별 팀원 데이터 풀
+        const pools = {
+            mgt: [
+                {n:"김동욱 팀장", v:"서비스 총괄/김동욱 팀장/010-8560-6258"},
+                {n:"최봉재 수석", v:"영업 관리/최봉재 수석/010-7438-0333"},
+                {n:"김태근 선임", v:"지원 관리/김태근 선임/010-5584-4616"}
+            ],
+            air: [
+                {n:"가상-이정민", v:"항공 담당/이정민 선임/02-1234-0001"},
+                {n:"가상-김서준", v:"항공 담당/김서준 선임/02-1234-0002"},
+                {n:"가상-박현우", v:"항공 담당/박현우 선임/02-1234-0003"},
+                {n:"가상-최윤서", v:"항공 담당/최윤서 선임/02-1234-0004"},
+                {n:"가상-한지민", v:"항공 담당/한지민 선임/02-1234-0005"}
+            ],
+            etc: [
+                {n:"가상-정마음(호텔)", v:"호텔 담당/정마음 선임/02-1234-1001"},
+                {n:"가상-송하준(호텔)", v:"호텔 담당/송하준 선임/02-1234-1002"},
+                {n:"가상-유리나(호텔)", v:"호텔 담당/유리나 선임/02-1234-1003"},
+                {n:"가상-장현수(비자)", v:"비자 담당/장현수 선임/02-1234-2001"},
+                {n:"가상-강도훈(비자)", v:"비자 담당/강도훈 선임/02-1234-2002"},
+                {n:"가상-임세아(비자)", v:"비자 담당/임세아 선임/02-1234-2003"}
+            ]
         };
 
+        const config = [
+            { id: 'mgt', title: '총괄/영업관리', count: 3, pool: pools.mgt, target: 'mgt-inputs', view: 'view-mgt' },
+            { id: 'air', title: '항공 담당', count: 5, pool: pools.air, target: 'air-inputs', view: 'view-air' },
+            { id: 'etc', title: '호텔/비자 담당', count: 3, pool: pools.etc, target: 'etc-inputs', view: 'view-etc' }
+        ];
+
         function init() {
-            Object.keys(config).forEach(key => {
-                const container = document.getElementById(config[key].target);
-                for(let i=0; i<config[key].count; i++) {
+            config.forEach(sec => {
+                const container = document.getElementById(sec.target);
+                for(let i=0; i<sec.count; i++) {
                     container.innerHTML += `
                         <div class="staff-input-unit">
-                            <select onchange="fillInput(this, '${key}', ${i})">
-                                <option value="">팀원 선택</option>
-                                ${staffPool.map(s => `<option value="${s.v}">${s.n}</option>`).join('')}
+                            <label>${sec.title} ${i+1}</label>
+                            <select onchange="fillInput(this, '${sec.id}', ${i})">
+                                <option value="">담당자 선택</option>
+                                ${sec.pool.map(s => `<option value="${s.v}">${s.n}</option>`).join('')}
                                 <option value="DIRECT">직접 입력</option>
                             </select>
-                            <input type="text" id="${key}-n-${i}" value="${config[key].def}" oninput="renderAll()">
+                            <input type="text" id="${sec.id}-n-${i}" placeholder="직책/성함/연락처" oninput="renderAll()">
                         </div>`;
                 }
             });
             renderAll();
         }
 
-        function fillInput(sel, key, i) {
-            if(sel.value && sel.value !== "DIRECT") document.getElementById(`${key}-n-${i}`).value = sel.value;
+        function fillInput(sel, id, i) {
+            if(sel.value && sel.value !== "DIRECT") {
+                document.getElementById(`${id}-n-${i}`).value = sel.value;
+            }
             renderAll();
         }
 
         function renderAll() {
-            Object.keys(config).forEach(key => {
-                const view = document.getElementById(`view-${key}`);
+            config.forEach(sec => {
+                const view = document.getElementById(sec.view);
                 view.innerHTML = '';
-                for(let i=0; i<config[key].count; i++) {
-                    const [tag, name, tel] = document.getElementById(`${key}-n-${i}`).value.split('/');
-                    view.innerHTML += `
-                        <div class="staff-card">
-                            <img src="https://via.placeholder.com/50?text=User">
-                            <div class="staff-info"><b>${name||'담당자'}</b><br>${tag||key}<br>${tel||''}</div>
-                        </div>`;
+                for(let i=0; i<sec.count; i++) {
+                    const val = document.getElementById(`${sec.id}-n-${i}`).value;
+                    if(val) {
+                        const [tag, name, tel] = val.split('/');
+                        view.innerHTML += `
+                            <div class="staff-card">
+                                <img src="https://via.placeholder.com/50?text=User">
+                                <div class="staff-info"><b>${name||''}</b><br>${tag||''}<br>${tel||''}</div>
+                            </div>`;
+                    }
                 }
             });
         }
