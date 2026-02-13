@@ -2,149 +2,153 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>출장 안내문 생성기 | 법인영업3팀</title>
+    <title>출장 전담 여행사 변경 안내문 제작</title>
     <style>
         :root { --dark-blue: #1a2a4e; --primary-red: #e31a1a; }
-        body { font-family: 'Pretendard', sans-serif; background: #f0f2f5; margin: 0; padding: 20px; color: #333; }
-
-        /* 입력 설정 영역 (화면에서만 보임) */
-        .admin-panel { max-width: 900px; margin: 0 auto 30px; background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid var(--dark-blue); }
-        .admin-panel h2 { margin-top: 0; color: var(--dark-blue); font-size: 1.2em; border-bottom: 2px solid #eee; padding-bottom: 10px; }
-        .input-group { display: flex; gap: 15px; margin-bottom: 15px; flex-wrap: wrap; }
+        body { font-family: 'Pretendard', sans-serif; background: #f0f2f5; margin: 0; padding: 20px; }
+        
+        /* 설정 패널 */
+        .admin-panel { max-width: 900px; margin: 0 auto 30px; background: #fff; padding: 25px; border-radius: 12px; border: 2px solid var(--dark-blue); }
+        .admin-panel h2 { margin-top: 0; color: var(--dark-blue); font-size: 1.1em; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .input-group { display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; }
         .input-item { flex: 1; min-width: 200px; }
         label { display: block; font-size: 0.85em; font-weight: bold; margin-bottom: 5px; color: #666; }
-        input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; }
+        input, select { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
         
-        .print-btn { background: var(--primary-red); color: white; padding: 15px 40px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1em; width: 100%; margin-top: 10px; }
-        .print-btn:hover { background: #c01515; }
+        .print-btn { background: var(--primary-red); color: white; padding: 15px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 10px; }
 
-        /* 인쇄될 안내문 디자인 (A4 규격) */
-        .page { width: 210mm; min-height: 297mm; padding: 20mm; margin: 0 auto; background: white; box-sizing: border-box; position: relative; }
+        /* A4 안내문 디자인 (원본 이미지와 흡사하게) */
+        .page { width: 210mm; height: 297mm; padding: 15mm; margin: 0 auto; background: white; box-sizing: border-box; color: #333; position: relative; }
         
-        .header { background: var(--dark-blue); color: white; padding: 50px 40px; border-radius: 10px; position: relative; overflow: hidden; }
-        .header h1 { font-size: 2.8em; margin: 0; line-height: 1.2; font-weight: 800; }
-        .header p { margin-top: 20px; font-size: 1.2em; opacity: 0.9; }
-        .client-logo-preview { position: absolute; top: 40px; right: 40px; max-width: 150px; max-height: 60px; filter: brightness(0) invert(1); }
+        /* 상단 헤더: 이미지 느낌의 꽉 찬 네이비 */
+        .header { background: var(--dark-blue); color: white; padding: 60px 50px; border-radius: 5px; position: relative; }
+        .logo-placeholder { position: absolute; top: 40px; right: 50px; max-width: 140px; max-height: 50px; object-fit: contain; filter: brightness(0) invert(1); }
+        .header .sub-top { font-size: 1.1em; font-weight: 300; letter-spacing: 1px; margin-bottom: 20px; }
+        .header h1 { font-size: 3.2em; margin: 0; line-height: 1.1; font-weight: 800; }
+        .header .desc { margin-top: 25px; font-size: 1.25em; font-weight: 300; opacity: 0.9; }
 
-        .section-title { font-size: 1.5em; font-weight: bold; color: var(--dark-blue); margin: 40px 0 20px; border-bottom: 2px solid var(--dark-blue); padding-bottom: 10px; }
-        
-        /* 담당자 그리드 */
-        .staff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        .staff-item { border: 1px solid #eee; padding: 15px; border-radius: 8px; text-align: center; }
-        .staff-name { display: block; font-size: 1.1em; font-weight: bold; margin-bottom: 5px; }
-        .staff-role { font-size: 0.85em; color: #888; margin-bottom: 8px; display: block; }
-        .staff-tel { font-size: 0.9em; color: var(--primary-red); font-weight: bold; }
+        .section-title { font-size: 1.4em; font-weight: bold; color: var(--dark-blue); margin: 40px 0 20px; display: flex; align-items: center; }
+        .section-title::after { content: ''; flex: 1; height: 1px; background: #eee; margin-left: 15px; }
 
-        /* 서비스 아이콘 영역 */
-        .service-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 30px; }
-        .service-item { background: #f8f9fa; padding: 20px; border-radius: 10px; display: flex; align-items: center; gap: 15px; }
-        .icon { font-size: 2em; }
-        .service-text strong { display: block; color: var(--dark-blue); margin-bottom: 5px; }
-        .service-text span { font-size: 0.85em; color: #666; }
+        /* 서비스 약속 (이미지 레이아웃) */
+        .promises { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-bottom: 30px; }
+        .promise-card { border: 1px solid #eee; padding: 20px; text-align: center; border-radius: 8px; }
+        .promise-card strong { display: block; margin-bottom: 10px; color: var(--dark-blue); }
+        .promise-card span { font-size: 0.85em; color: #777; line-height: 1.4; }
 
-        /* 인쇄 시 설정 */
+        /* 팀원 카드 그리드 */
+        .staff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .staff-card { border: 1px solid #eee; padding: 15px; border-radius: 8px; display: flex; align-items: center; gap: 12px; }
+        .staff-card img { width: 50px; height: 60px; object-fit: cover; border-radius: 4px; background: #f4f4f4; }
+        .staff-info { line-height: 1.3; }
+        .staff-info .name { font-weight: bold; font-size: 1em; }
+        .staff-info .role { font-size: 0.8em; color: #888; display: block; }
+        .staff-info .tel { font-size: 0.85em; color: var(--primary-red); font-weight: bold; margin-top: 4px; display: block; }
+
+        /* 제공 서비스 아이콘 섹션 */
+        .service-list { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .service-box { background: #f8f9fa; padding: 15px; border-radius: 8px; display: flex; align-items: center; gap: 15px; }
+        .service-box .icon { font-size: 1.8em; }
+        .service-box .txt strong { display: block; font-size: 0.95em; color: var(--dark-blue); }
+        .service-box .txt span { font-size: 0.8em; color: #666; }
+
         @media print {
             body { background: white; padding: 0; }
             .admin-panel { display: none; }
-            .page { margin: 0; box-shadow: none; width: 100%; height: 100%; }
+            .page { margin: 0; border: none; }
         }
     </style>
 </head>
 <body>
 
     <div class="admin-panel">
-        <h2>📋 안내문 정보 입력 (거래처 맞춤형)</h2>
+        <h2>⚙️ 안내문 제작 설정</h2>
         <div class="input-group">
             <div class="input-item">
                 <label>대상 업체명</label>
-                <input type="text" id="in-client" placeholder="예: 현대스틸파이프" oninput="updateText()">
+                <input type="text" id="in-client" placeholder="예: 현대스틸파이프" oninput="updateView()">
             </div>
             <div class="input-item">
-                <label>업체 로고 URL (선택)</label>
-                <input type="text" id="in-logo" placeholder="이미지 주소 입력" oninput="updateLogo()">
+                <label>회사 로고 업로드</label>
+                <input type="file" accept="image/*" onchange="loadLogo(event)">
             </div>
             <div class="input-item">
-                <label>시작 일자</label>
-                <input type="text" id="in-date" placeholder="예: 2026년 2월 16일(월)" oninput="updateText()">
+                <label>운영 시작일</label>
+                <input type="text" id="in-date" placeholder="예: 2026년 02월 16일(월)" oninput="updateView()">
             </div>
         </div>
-
-        <label>전담 서비스팀 구성 (성함 / 직급 / 연락처)</label>
-        <div class="input-group">
-            <input type="text" class="in-staff" placeholder="김동욱 / 팀장 / 010-8560-6258" oninput="updateStaff()">
-            <input type="text" class="in-staff" placeholder="최봉재 / 수석 / 010-7438-0333" oninput="updateStaff()">
-            <input type="text" class="in-staff" placeholder="김태근 / 선임 / 010-5584-4616" oninput="updateStaff()">
+        
+        <label>전담 서비스팀 구성 (사진 파일명이 이름과 동일해야 함)</label>
+        <div class="input-group" id="staff-select-area">
+            <select class="staff-sel" onchange="updateStaff()"><option value="">팀원 선택</option><option value="김동욱/팀장/010-8560-6258/kim.png">김동욱 팀장</option><option value="최봉재/수석/010-7438-0333/choi.png">최봉재 수석</option><option value="김태근/선임/010-5584-4616/tae.png">김태근 선임</option></select>
+            <select class="staff-sel" onchange="updateStaff()"><option value="">팀원 선택</option><option value="김채스민/선임/010-9988-3266/chae.png">김채스민 선임</option><option value="장현수/사원/010-3390-5716/jang.png">장현수 사원</option></select>
+            <select class="staff-sel" onchange="updateStaff()"><option value="">항공/호텔 담당 선택</option><option value="항공담당/선임/010-1234-5678/air.png">항공 담당</option><option value="호텔담당/선임/010-1234-5678/hotel.png">호텔 담당</option></select>
         </div>
 
-        <button class="print-btn" onclick="window.print()">🖨️ 설정 완료 및 인쇄하기 (PDF 저장)</button>
+        <button class="print-btn" onclick="window.print()">🖨️ 인쇄 및 PDF 저장</button>
     </div>
 
-    <div class="page" id="print-page">
+    <div class="page">
         <div class="header">
-            <img id="view-logo" src="" class="client-logo-preview">
-            <div style="font-size: 1em; font-weight: bold; margin-bottom: 15px; letter-spacing: 2px;">HANATOUR BUSINESS</div>
+            <img id="view-logo" src="" class="logo-placeholder" style="display:none;">
+            <div class="sub-top">HANATOUR BUSINESS</div>
             <h1><span id="view-client">OOOOO</span><br>출장 전담 여행사 변경 안내</h1>
-            <p><span id="view-date">2026년 O월 O일</span>부터 전담 여행사가 하나투어비즈니스로 새롭게 운영됩니다.</p>
+            <div class="desc"><span id="view-date">2026년 02월 16일(월)</span>부터 전담 여행사가<br>하나투어비즈니스로 새롭게 운영됩니다.</div>
+        </div>
+
+        <div class="section-title">하나투어비즈니스의 약속</div>
+        <div class="promises">
+            <div class="promise-card"><strong>신속한 응대</strong><span>요청 후 30분 이내<br>최적의 스케줄 제안</span></div>
+            <div class="promise-card"><strong>운임 경쟁력</strong><span>기업 전용 요금 및<br>실시간 최저가 보장</span></div>
+            <div class="promise-card"><strong>전문가 케어</strong><span>26년 경력 노하우의<br>M.I.C.E 전담팀 배치</span></div>
         </div>
 
         <div class="section-title">전담 서비스팀 명단</div>
-        <div class="staff-grid" id="view-staff-grid">
+        <div class="staff-grid" id="staff-view">
             </div>
 
-        <div class="section-title">하나투어비즈니스의 약속</div>
-        <div class="service-grid">
-            <div class="service-item">
-                <div class="icon">🚀</div>
-                <div class="service-text"><strong>최적의 운임 제공</strong><span>AI 기반 실시간 최저가 항공권 및 호텔 운임 검색 시스템 가동</span></div>
-            </div>
-            <div class="service-item">
-                <div class="icon">📱</div>
-                <div class="service-text"><strong>스마트 BTMS 시스템</strong><span>PC와 모바일 어디서나 간편한 예약 및 사후 정산 관리</span></div>
-            </div>
-            <div class="service-item">
-                <div class="icon">📞</div>
-                <div class="service-text"><strong>24/7 긴급 대응</strong><span>해외 출장 중 발생하는 모든 상황에 대한 즉각적인 현지 지원</span></div>
-            </div>
-            <div class="service-item">
-                <div class="icon">🎁</div>
-                <div class="service-text"><strong>임직원 전용 복지 혜택</strong><span>임직원 및 직계가족 여행 시 특별 할인가 및 우대 혜택 제공</span></div>
-            </div>
+        <div class="section-title">주요 제공 서비스</div>
+        <div class="service-list">
+            <div class="service-box"><div class="icon">✈️</div><div class="txt"><strong>실시간 항공/호텔 예약</strong><span>전 세계 실시간 가용 좌석 및 최저가 운임 조회</span></div></div>
+            <div class="service-box"><div class="icon">💻</div><div class="txt"><strong>BTMS 시스템 제공</strong><span>출장 신청부터 정산까지 원스톱 관리 솔루션</span></div></div>
+            <div class="service-box"><div class="icon">🚨</div><div class="txt"><strong>24시간 비상 대응</strong><span>시차 상관없는 해외 긴급 상황 실시간 지원</span></div></div>
+            <div class="service-box"><div class="icon">🎁</div><div class="txt"><strong>임직원 특전</strong><span>임직원 개인 여행 시 추가 할인 및 우대 혜택</span></div></div>
         </div>
 
-        <div style="margin-top: 50px; text-align: center; color: #888; font-size: 0.9em;">
-            <p>본 안내문은 하나투어비즈니스 법인영업3팀에서 발행하였습니다.</p>
+        <div style="position: absolute; bottom: 40px; left: 0; right: 0; text-align: center; font-size: 0.85em; color: #999;">
+            주식회사 하나투어비즈니스 법인영업3팀 | 대구광역시 중구 국채보상로 648 호수빌딩 15층
         </div>
     </div>
 
     <script>
-        function updateText() {
+        function updateView() {
             document.getElementById('view-client').innerText = document.getElementById('in-client').value || 'OOOOO';
-            document.getElementById('view-date').innerText = document.getElementById('in-date').value || '2026년 O월 O일';
+            document.getElementById('view-date').innerText = document.getElementById('in-date').value || '2026년 02월 16일(월)';
         }
 
-        function updateLogo() {
-            const logoImg = document.getElementById('view-logo');
-            logoImg.src = document.getElementById('in-logo').value;
-            logoImg.style.display = document.getElementById('in-logo').value ? 'block' : 'none';
+        function loadLogo(event) {
+            const output = document.getElementById('view-logo');
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.style.display = 'block';
         }
 
         function updateStaff() {
-            const inputs = document.querySelectorAll('.in-staff');
-            const grid = document.getElementById('view-staff-grid');
-            grid.innerHTML = '';
-
-            inputs.forEach(input => {
-                if(input.value.includes('/')) {
-                    const parts = input.value.split('/');
-                    const html = `
-                        <div class="staff-item">
-                            <span class="staff-name">${parts[0].trim()}</span>
-                            <span class="staff-role">${parts[1].trim()}</span>
-                            <span class="staff-tel">${parts[2] ? parts[2].trim() : ''}</span>
+            const selects = document.querySelectorAll('.staff-sel');
+            const view = document.getElementById('staff-view');
+            view.innerHTML = '';
+            selects.forEach(sel => {
+                if(sel.value) {
+                    const [name, role, tel, img] = sel.value.split('/');
+                    view.innerHTML += `
+                        <div class="staff-card">
+                            <img src="photos/${img}" alt="${name}">
+                            <div class="staff-info">
+                                <span class="role">${role}</span>
+                                <span class="name">${name}</span>
+                                <span class="tel">${tel}</span>
+                            </div>
                         </div>
                     `;
-                    grid.innerHTML += html;
                 }
             });
         }
