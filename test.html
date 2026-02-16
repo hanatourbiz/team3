@@ -7,7 +7,7 @@
         :root { --dark-blue: #1a2a4e; --point-red: #e31a1a; --beige: #bca896; }
         body { font-family: 'Pretendard', sans-serif; background: #f0f2f5; margin: 0; padding: 20px; }
         
-        /* 관리자 패널 */
+        /* 설정 패널 */
         .admin-panel { max-width: 1100px; margin: 0 auto 30px; background: #fff; padding: 25px; border-radius: 12px; border: 2px solid var(--dark-blue); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         .input-group { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 25px; }
         .section-title { font-size: 0.95em; font-weight: bold; color: var(--point-red); margin-bottom: 10px; border-left: 4px solid var(--point-red); padding-left: 10px; margin-top: 25px; }
@@ -17,92 +17,63 @@
         input, select { width: 100%; padding: 7px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.85em; box-sizing: border-box; }
         .print-btn { background: var(--point-red); color: white; padding: 15px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 20px; font-size: 1.1em; }
 
-        /* A4 안내문 페이지 설정 */
-        .page { 
-            width: 210mm; 
-            height: 297mm; 
-            padding: 0; 
-            margin: 0 auto; 
-            background: white; 
-            position: relative; 
-            color: #333; 
-            box-shadow: 0 0 20px rgba(0,0,0,0.1); 
-            display: flex; 
-            flex-direction: column; 
-            overflow: hidden; 
-            box-sizing: border-box;
-        }
-
-        .date-bar { background: #3d3229; color: white; padding: 10px 50px; font-size: 1.1em; font-weight: 600; text-align: center; border-bottom: 3px solid var(--beige); flex-shrink: 0; }
-        .header { background: var(--dark-blue); color: white; padding: 25px 50px; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
-        .header h1 { font-size: 2.3em; margin: 0; line-height: 1.1; font-weight: 800; letter-spacing: -1px; }
-        .logo-client { max-width: 180px; max-height: 60px; filter: brightness(0) invert(1); object-fit: contain; }
-
-        .content-body { 
-            padding: 15px 50px; 
-            background: #fcfaf8; 
-            flex: 1; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: space-between; 
-            min-height: 0;
-        }
+        /* 안내문 디자인 (A4) */
+        .page { width: 210mm; min-height: 297mm; padding: 0; margin: 0 auto; background: white; position: relative; overflow: hidden; color: #333; box-shadow: 0 0 20px rgba(0,0,0,0.1); }
+        .date-bar { background: #3d3229; color: white; padding: 12px 50px; font-size: 1.1em; letter-spacing: 0.5px; font-weight: 300; }
+        .header { background: var(--dark-blue); color: white; padding: 45px 50px; position: relative; display: flex; justify-content: space-between; align-items: flex-start; }
+        .header h1 { font-size: 3.2em; margin: 0; line-height: 1.1; font-weight: 800; letter-spacing: -1px; }
+        .logo-client { max-width: 150px; max-height: 60px; filter: brightness(0) invert(1); object-fit: contain; }
         
-        .intro-section { display: flex; gap: 20px; align-items: center; border: 1px solid #e0d6cd; background: #fff; padding: 12px; border-radius: 12px; flex-shrink: 0; }
-        .company-logo-main { width: 160px; object-fit: contain; }
-        .intro-text-box { flex: 1; font-size: 0.85em; line-height: 1.6; color: #444; border-left: 2px solid #eee; padding-left: 15px; text-align: justify; word-break: keep-all; }
+        .content-body { padding: 30px 50px; background: #fcfaf8; }
+        .intro-section { display: flex; gap: 30px; margin-bottom: 25px; align-items: flex-start; border-bottom: 1px solid #eee; padding-bottom: 25px; }
+        .company-logo-main { width: 220px; object-fit: contain; }
+        .intro-text-box { flex: 1; font-size: 0.9em; line-height: 1.7; color: #444; }
 
-        .team-section { margin-bottom: 0px; flex: 0 1 auto; }
-        .team-label { background: var(--beige); color: white; padding: 2px 10px; font-weight: bold; border-radius: 5px 5px 0 0; display: inline-block; font-size: 0.7em; }
-        .staff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; border-top: 2px solid var(--beige); padding-top: 5px; }
-        .staff-card { background: white; border: 1px solid #e0d6cd; padding: 5px; border-radius: 40px 10px 10px 40px; display: flex; align-items: center; gap: 8px; height: 58px; box-sizing: border-box; }
-        .staff-card img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
-        .staff-info { font-size: 0.62em; line-height: 1.2; }
+        .team-section { margin-bottom: 20px; }
+        .team-label { background: var(--beige); color: white; padding: 5px 15px; font-weight: bold; border-radius: 5px 5px 0 0; display: inline-block; font-size: 0.8em; }
+        .staff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; border-top: 2px solid var(--beige); padding-top: 10px; }
+        .staff-card { background: white; border: 1px solid #e0d6cd; padding: 8px; border-radius: 40px 10px 10px 40px; display: flex; align-items: center; gap: 10px; height: 75px; box-sizing: border-box; }
+        .staff-card img { width: 55px; height: 55px; border-radius: 50%; object-fit: cover; background: #eee; flex-shrink: 0; }
+        .staff-info { font-size: 0.72em; line-height: 1.3; }
+        .staff-info b { font-size: 1.1em; color: var(--dark-blue); }
 
-        .section-header { text-align: center; margin: 5px 0; flex-shrink: 0; }
-        .section-header span { background: #fef3c7; padding: 3px 20px; font-weight: bold; font-size: 0.9em; border-radius: 20px; color: #856404; }
-        
-        .promise-container { border: 2px solid #d1d5db; border-radius: 10px; padding: 12px; background: white; display: flex; flex-direction: column; gap: 8px; flex-shrink: 1; }
-        .promise-item { display: flex; flex-direction: column; gap: 2px; }
-        .promise-title { font-size: 1em; font-weight: 900; color: #222; display: flex; align-items: center; gap: 6px; }
-        /* 검정색 사각 아이콘 설정 */
-        .promise-title::before { content: ""; display: inline-block; width: 8px; height: 8px; background-color: #000; }
-        .promise-desc { font-size: 0.75em; color: #444; line-height: 1.4; text-align: justify; word-break: keep-all; padding-left: 14px; }
-        
-        .service-area { flex-shrink: 0; }
-        .special-title { font-size: 0.95em; font-weight: bold; color: var(--dark-blue); margin: 8px 0 5px; text-align: center; }
-        .service-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: #ccc; border: 1px solid #ccc; }
-        .service-item { background: #fff; padding: 6px 3px; text-align: center; min-height: 35px; display: flex; align-items: center; justify-content: center; }
-        .service-item span { font-size: 0.7em; color: #333; font-weight: 500; line-height: 1.2; }
-        
-        .emergency-notice { background: #eee5de; padding: 7px; text-align: center; border-radius: 8px; font-size: 0.75em; color: #444; flex-shrink: 0; margin-top: 5px; }
+        /* 섹션 복구 */
+        .section-header { text-align: center; margin: 25px 0 15px; }
+        .section-header span { background: #fef3c7; padding: 6px 25px; font-weight: bold; font-size: 1em; border-radius: 20px; color: #856404; }
+        .promise-container { border: 1px solid #d1d5db; border-radius: 12px; padding: 20px; margin-bottom: 20px; background: white; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .promise-item { display: flex; gap: 12px; align-items: center; }
+        .promise-icon { font-size: 1.8em; }
+        .promise-txt strong { font-size: 1em; color: var(--dark-blue); display: block; margin-bottom: 2px; }
+        .promise-txt p { margin: 0; font-size: 0.8em; color: #666; }
 
-        .footer-index { background: #f8f9fa; border-top: 1px solid #ddd; padding: 15px 50px 20px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; flex-shrink: 0; }
-        .index-item { border-left: 2px solid var(--beige); padding-left: 12px; }
-        .index-item h4 { margin: 0 0 2px; font-size: 0.75em; color: var(--dark-blue); }
-        .index-item p { margin: 0; font-size: 0.65em; color: #666; line-height: 1.3; }
+        .special-title { font-size: 1.1em; font-weight: bold; color: var(--dark-blue); margin-bottom: 12px; text-align: center; }
+        .service-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; text-align: center; margin-bottom: 20px; }
+        .service-item { background: #fff; padding: 12px; border: 1px solid #eee; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.03); }
+        .service-item b { font-size: 0.85em; color: var(--point-red); display: block; margin-bottom: 4px; }
+        .service-item span { font-size: 0.75em; color: #777; line-height: 1.3; display: block; }
 
-        @page { size: A4; margin: 0; }
-        @media print {
-            body { padding: 0; background: none; }
-            .admin-panel { display: none !important; }
-            .page { margin: 0; border: none; box-shadow: none; width: 210mm; height: 297mm; }
-            * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-        }
+        .footer-index { position: absolute; bottom: 0; left: 0; right: 0; background: #f8f9fa; border-top: 1px solid #ddd; padding: 25px 50px 35px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; }
+        .index-item { border-left: 2px solid var(--beige); padding-left: 15px; }
+        .index-item h4 { margin: 0 0 5px; font-size: 0.9em; color: var(--dark-blue); }
+        .index-item p { margin: 0; font-size: 0.75em; color: #666; line-height: 1.5; }
+
+        @media print { body { padding: 0; background: none; } .admin-panel { display: none !important; } .page { margin: 0; border: none; box-shadow: none; width: 210mm; } }
     </style>
 </head>
 <body>
+
     <div class="admin-panel">
-        <h2 style="margin-top:0;">📋 전담 서비스 안내문 생성기</h2>
+        <h2 style="margin-top:0;">📋 전담 서비스 안내문 생성기 (항공팀 업데이트)</h2>
         <div class="input-group">
-            <div><label>날짜 입력</label><input type="text" id="in-date" oninput="updateView()"></div>
-            <div><label>업체명</label><input type="text" id="in-client" value="LH 한국토지주택공사" oninput="updateView()"></div>
-            <div><label>업체 로고</label><input type="file" onchange="loadLogo(event)"></div>
+            <div><label>발령일/날짜 입력</label><input type="text" id="in-date" oninput="updateView()"></div>
+            <div><label>상대 업체명</label><input type="text" id="in-client" value="LH 한국토지주택공사" oninput="updateView()"></div>
+            <div><label>상대 업체 로고</label><input type="file" onchange="loadLogo(event)"></div>
         </div>
+
         <div id="input-containers">
-            <div class="section-title">👤 서비스 총괄 및 영업관리</div>
+            <div class="section-title">👤 서비스 총괄 및 영업관리 (우리팀원)</div>
             <div class="staff-input-grid" id="mgt-inputs"></div>
-            <div class="section-title">✈️ 항공 서비스팀</div>
+            <div class="section-title">✈️ 항공 서비스팀 (신규 명단 13명 적용)</div>
             <div class="staff-input-grid" id="air-inputs"></div>
             <div class="section-title">🏨 호텔 & 🛂 비자 서비스팀</div>
             <div class="staff-input-grid" id="etc-inputs"></div>
@@ -111,71 +82,144 @@
     </div>
 
     <div class="page">
-        <div class="date-bar"><b><span id="view-date"></span></b>부터 <b><span class="v-client-inline"></span></b> 출장 전담 여행사가<br>하나투어비즈니스로 새롭게 운영됩니다.</div>
-        <div class="header"><h1><span id="view-client"></span><br>전담 서비스팀 구성</h1><img id="view-logo" src="" class="logo-client" style="display:none;"></div>
-        
+        <div class="date-bar"><span id="view-date"></span>부터 <span class="v-client-inline">업체명</span> 출장 전담 여행사가 하나투어비즈니스로 새롭게 운영됩니다.</div>
+        <div class="header">
+            <h1><span id="view-client">LH 한국토지주택공사</span><br>전담 서비스팀 구성</h1>
+            <img id="view-logo" src="" class="logo-client" style="display:none;">
+        </div>
+
         <div class="content-body">
             <div class="intro-section">
-                <img src="photos/logo2.png" class="company-logo-main" onerror="this.src='https://via.placeholder.com/220x80?text=HanaTour+Business'">
+                <img src="photos/logo.png" class="company-logo-main" onerror="this.src='https://via.placeholder.com/220x80?text=HanaTour+Business'">
                 <div class="intro-text-box">
-                    <strong><span class="v-client-inline"></span> 임직원 여러분, 안녕하십니까.</strong><br>
-                    국내 최대 여행기업 하나투어가 출자한 법인 전문 조직으로서, 최적의 비즈니스 여행 서비스를 제공하겠습니다.
+                    <strong><span class="v-client-inline">LH 한국토지주택공사</span> 임직원 여러분, 안녕하십니까.</strong><br>
+                    하나투어비즈니스는 국내 최대 여행기업 하나투어가 100% 출자한 법인 여행 서비스 전문 조직으로, 23년 연속 업계 1위 그룹의 글로벌 네트워크와 전문 인력을 기반으로 기업 및 공공기관 대상 비즈니스 여행을 안정적이고 체계적으로 운영하는 전문 파트너입니다.
                 </div>
             </div>
-            
-            <div class="team-section"><div class="team-label">MANAGEMENT & SUPPORT</div><div class="staff-grid" id="view-mgt"></div></div>
-            <div class="team-section"><div class="team-label">AIR SERVICE</div><div class="staff-grid" id="view-air"></div></div>
-            <div class="team-section"><div class="team-label">HOTEL & VISA SERVICE</div><div class="staff-grid" id="view-etc"></div></div>
-            
-            <div class="section-header"><span>하나투어비즈니스의 세 가지 약속</span></div>
+
+            <div class="team-section"><div class="team-label">MANAGEMENT & SUPPORT (총괄/영업관리)</div><div class="staff-grid" id="view-mgt"></div></div>
+            <div class="team-section"><div class="team-label">AIR SERVICE (항공)</div><div class="staff-grid" id="view-air"></div></div>
+            <div class="team-section"><div class="team-label">HOTEL & VISA SERVICE (호텔/비자)</div><div class="staff-grid" id="view-etc"></div></div>
+
+            <div class="section-header"><span>하나투어비즈니스의 약속</span></div>
             <div class="promise-container">
-                <div class="promise-item">
-                    <div class="promise-title">Customer Satisfaction</div>
-                    <div class="promise-desc">차별화된 컨설팅 노하우로 친절·신속·정확한 고객 중심 서비스를 제공하겠습니다.</div>
-                </div>
-                <div class="promise-item">
-                    <div class="promise-title">Safety & Security</div>
-                    <div class="promise-desc">24시간 긴급지원센터를 통해 임직원 분들의 안전을 빈틈없이 약속 드립니다.</div>
-                </div>
-                <div class="promise-item">
-                    <div class="promise-title">Efficiency & Usability</div>
-                    <div class="promise-desc">실시간 예약 시스템(BTMS)을 제공하여 업무 효율성과 편의성을 높이겠습니다.</div>
-                </div>
+                <div class="promise-item"><span class="promise-icon">👍</span><div class="promise-txt"><strong>CS 만족</strong><p>법인영업3팀의 노하우를 바탕으로 한 신속 응대</p></div></div>
+                <div class="promise-item"><span class="promise-icon">🛡️</span><div class="promise-txt"><strong>안전 지원</strong><p>해외 긴급 상황 발생 시 24시간 긴급지원센터 가동</p></div></div>
             </div>
-            
-            <div class="service-area">
-                <div class="special-title">하나투어비즈니스만의 특별 제공 서비스</div>
-                <div class="service-grid">
-                    <div class="service-item"><span>전용 홈페이지 운영</span></div>
-                    <div class="service-item"><span>연계 문화행사 초청</span></div>
-                    <div class="service-item"><span>개인여행 맞춤 할인</span></div>
-                    <div class="service-item"><span>여행 파우치 제공</span></div>
-                </div>
+
+            <div class="special-title">차별화된 특별 제공 서비스</div>
+            <div class="service-grid">
+                <div class="service-item"><b>BTMS 2.0</b><span>법인 전용 예약 시스템</span></div>
+                <div class="service-item"><b>문화행사 초청</b><span>하나투어 주관 행사</span></div>
+                <div class="service-item"><b>임직원 할인</b><span>개인 여행 시 상시 혜택</span></div>
+                <div class="service-item"><b>Welcome Pack</b><span>첫 출장 시 필수품 증정</span></div>
             </div>
-            
-            <div class="emergency-notice">업무 시간 외 <b>24시간 긴급 서비스 센터</b> ( ☎ 1577-2770 )</div>
         </div>
-        
+
         <div class="footer-index">
-            <div class="index-item"><h4>SEOUL </h4><p>서울 중구 인사동 5길 25</p></div>
-            <div class="index-item"><h4>DAEGU </h4><p>대구 중구 국채보상로 648</p></div>
-            <div class="index-item"><h4>BUSAN </h4><p>부산 중구 중앙대로 102</p></div>
+            <div class="index-item"><h4>SEOUL (본사)</h4><p>서울 중구 인사동 5길 25</p></div>
+            <div class="index-item"><h4>DAEGU (영업3팀)</h4><p>대구 중구 국채보상로 648</p></div>
+            <div class="index-item"><h4>BUSAN (영남)</h4><p>부산 중구 중앙대로 102</p></div>
         </div>
     </div>
 
     <script>
-        const photoMap = { "김동욱": "kim.png", "최봉재": "choi.png", "김태근": "tae.png", "장현수": "jang.png", "김채스민": "chae.png", "이정민": "lee.png", "김서준": "seo.png", "박현우": "park.png", "정마음": "jung.png", "송하준": "song.png" };
+        function getTodayDisplay() {
+            const now = new Date();
+            const days = ['일', '월', '화', '수', '목', '금', '토'];
+            return `${now.getFullYear()}년 ${now.getMonth() + 1}월 ${now.getDate()}일(${days[now.getDay()]})`;
+        }
+
         const pools = {
-            mgt: [{n:"김동욱(서비스 총괄)", v:"서비스 총괄/김동욱 팀장/010-8560-6258"},{n:"최봉재(서비스 총괄)", v:"서비스 총괄/최봉재 수석/010-7438-0333"},{n:"김태근(서비스 총괄)", v:"서비스 총괄/김태근 선임/010-5584-4616"},{n:"김채스민(서비스 총괄)", v:"서비스 총괄/김채스민 선임/010-5584-4616"},{n:"장현수(서비스 총괄)", v:"서비스 총괄/장현수 사원/010-5584-4616"},{n:"최봉재(지원 관리)", v:"지원 관리/최봉재 수석/010-7438-0333"},{n:"김태근(지원 관리)", v:"지원 관리/김태근 선임/010-5584-4616"},{n:"김채스민(지원 관리)", v:"지원 관리/김채스민 선임/010-5584-4616"},{n:"장현수(지원 관리)", v:"지원 관리/장현수 사원/010-5584-4616"}],
-            air: [{n:"이정민 선임", v:"항공 담당/이정민 선임/02-1234-0001"},{n:"김서준 선임", v:"항공 담당/김서준 선임/02-1234-0002"},{n:"박현우 선임", v:"항공 담당/박현우 선임/02-1234-0003"},{n:"홍길동 선임", v:"항공 담당/박현우 선임/02-1234-0003"},{n:"임꺽정 선임", v:"항공 담당/박현우 선임/02-1234-0003"}],
-            etc: [{n:"정마음 선임", v:"호텔 담당/정마음 선임/02-1234-1001"},{n:"송하준 선임", v:"호텔 담당/송하준 선임/02-1234-1002"},{n:"한아름 선임", v:"비자 담당/한아름 선임/02-1234-2001"},{n:"조아름 선임", v:"비자 담당/조아름 선임/02-1234-2001"}]
+            mgt: [
+                {n:"김동욱 팀장", v:"서비스 총괄/김동욱 팀장/010-8560-6258"},
+                {n:"최봉재 수석", v:"영업 관리/최봉재 수석/010-7438-0333"},
+                {n:"김태근 선임", v:"지원 관리/김태근 선임/010-5584-4616"}
+            ],
+            air: [
+                {n:"강경단 부장", v:"항공/강경단 부장(수석)/air1@hanatour.com"},
+                {n:"박선희 부장", v:"항공/박선희 부장(수석)/air1@hanatour.com"},
+                {n:"신희철 부장", v:"항공/신희철 부장(수석)/air1@hanatour.com"},
+                {n:"윤혜경 부장", v:"항공/윤혜경 부장(수석)/air1@hanatour.com"},
+                {n:"김희선 차장", v:"항공/김희선 차장(수석)/air1@hanatour.com"},
+                {n:"신정애 차장", v:"항공/신정애 차장(수석)/air1@hanatour.com"},
+                {n:"김나리 과장", v:"항공/김나리 과장(선임)/air1@hanatour.com"},
+                {n:"박정아 과장", v:"항공/박정아 과장(선임)/air1@hanatour.com"},
+                {n:"이선민 과장", v:"항공/이선민 과장(선임)/air1@hanatour.com"},
+                {n:"정선화 과장", v:"항공/정선화 과장(선임)/air1@hanatour.com"},
+                {n:"안소영 대리", v:"항공/안소영 대리(선임)/air1@hanatour.com"},
+                {n:"이옥주 대리", v:"항공/이옥주 대리(선임)/air1@hanatour.com"},
+                {n:"김서영 사원", v:"항공/김서영 사원(선임)/air1@hanatour.com"}
+            ],
+            etc: [
+                {n:"호텔-정마음", v:"호텔 담당/정마음 선임/02-1234-1001"},
+                {n:"비자-장현수", v:"비자 담당/장현수 선임/02-1234-2001"}
+            ]
         };
-        const config = [{ id: 'mgt', title: '총괄/관리', pool: pools.mgt, target: 'mgt-inputs', view: 'view-mgt' },{ id: 'air', title: '항공 담당', pool: pools.air, target: 'air-inputs', view: 'view-air' },{ id: 'etc', title: '호텔/비자', pool: pools.etc, target: 'etc-inputs', view: 'view-etc' }];
-        function init() { document.getElementById('in-date').value = "2026년 2월 13일(금)"; config.forEach(sec => { const container = document.getElementById(sec.target); for(let i=0; i<3; i++) { container.innerHTML += `<div class="staff-input-unit"><label>${sec.title} ${i+1}</label><select onchange="fillInput(this, '${sec.id}', ${i})"><option value="">담당자 선택</option>${sec.pool.map(s => `<option value="${s.v}">${s.n}</option>`).join('')}<option value="DIRECT">직접 입력</option></select><input type="text" id="${sec.id}-n-${i}" placeholder="직책/성함/연락처" oninput="renderAll()"></div>`; } }); updateView(); renderAll(); }
-        function fillInput(sel, id, i) { if(sel.value && sel.value !== "DIRECT") document.getElementById(`${id}-n-${i}`).value = sel.value; renderAll(); }
-        function renderAll() { config.forEach(sec => { const view = document.getElementById(sec.view); view.innerHTML = ''; for(let i=0; i<3; i++) { const val = document.getElementById(`${sec.id}-n-${i}`).value; if(val) { const [tag, name, tel] = val.split('/'); const pureName = name ? name.trim().split(' ')[0] : ""; const photoSrc = `photos/${photoMap[pureName] || pureName + '.png'}`; view.innerHTML += `<div class="staff-card"><img src="${photoSrc}" onerror="this.src='https://via.placeholder.com/60?text=User'"><div class="staff-info"><b>${name||''}</b><br>${tag||''}<br>${tel||''}</div></div>`; } } }); }
-        function updateView() { const date = document.getElementById('in-date').value; const client = document.getElementById('in-client').value || '업체명'; document.getElementById('view-date').innerText = date; document.querySelectorAll('.v-client-inline').forEach(el => el.innerText = client); document.getElementById('view-client').innerText = client; }
-        function loadLogo(e) { const out = document.getElementById('view-logo'); if(e.target.files[0]) { out.src = URL.createObjectURL(e.target.files[0]); out.style.display = 'block'; } }
+
+        const config = [
+            { id: 'mgt', title: '총괄/관리', count: 3, pool: pools.mgt, target: 'mgt-inputs', view: 'view-mgt' },
+            { id: 'air', title: '항공 담당', count: 5, pool: pools.air, target: 'air-inputs', view: 'view-air' },
+            { id: 'etc', title: '호텔/비자', count: 3, pool: pools.etc, target: 'etc-inputs', view: 'view-etc' }
+        ];
+
+        function init() {
+            document.getElementById('in-date').value = getTodayDisplay();
+            config.forEach(sec => {
+                const container = document.getElementById(sec.target);
+                for(let i=0; i<sec.count; i++) {
+                    container.innerHTML += `
+                        <div class="staff-input-unit">
+                            <label>${sec.title} ${i+1}</label>
+                            <select onchange="fillInput(this, '${sec.id}', ${i})">
+                                <option value="">담당자 선택</option>
+                                ${sec.pool.map(s => `<option value="${s.v}">${s.n}</option>`).join('')}
+                                <option value="DIRECT">직접 입력</option>
+                            </select>
+                            <input type="text" id="${sec.id}-n-${i}" placeholder="직책/성함/연락처" oninput="renderAll()">
+                        </div>`;
+                }
+            });
+            updateView();
+            renderAll();
+        }
+
+        function fillInput(sel, id, i) {
+            if(sel.value && sel.value !== "DIRECT") document.getElementById(`${id}-n-${i}`).value = sel.value;
+            renderAll();
+        }
+
+        function renderAll() {
+            config.forEach(sec => {
+                const view = document.getElementById(sec.view);
+                view.innerHTML = '';
+                for(let i=0; i<sec.count; i++) {
+                    const val = document.getElementById(`${sec.id}-n-${i}`).value;
+                    if(val) {
+                        const [tag, name, tel] = val.split('/');
+                        view.innerHTML += `
+                            <div class="staff-card">
+                                <img src="https://via.placeholder.com/60?text=User">
+                                <div class="staff-info"><b>${name||''}</b><br>${tag||''}<br>${tel||''}</div>
+                            </div>`;
+                    }
+                }
+            });
+        }
+
+        function updateView() {
+            const date = document.getElementById('in-date').value;
+            const client = document.getElementById('in-client').value || '업체명';
+            document.getElementById('view-date').innerText = date;
+            document.getElementById('view-client').innerText = client;
+            document.querySelectorAll('.v-client-inline').forEach(el => el.innerText = client);
+        }
+
+        function loadLogo(e) {
+            const out = document.getElementById('view-logo');
+            if(e.target.files[0]) { out.src = URL.createObjectURL(e.target.files[0]); out.style.display = 'block'; }
+        }
+
         window.onload = init;
     </script>
 </body>
