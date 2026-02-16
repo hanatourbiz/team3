@@ -38,14 +38,6 @@
         .staff-info b { font-size: 1.1em; color: var(--dark-blue); }
         .staff-info .email { color: var(--point-red); font-size: 0.9em; }
 
-        .section-header { text-align: center; margin: 25px 0 15px; }
-        .section-header span { background: #fef3c7; padding: 6px 25px; font-weight: bold; font-size: 1em; border-radius: 20px; color: #856404; }
-        .promise-container { border: 1px solid #d1d5db; border-radius: 12px; padding: 20px; margin-bottom: 20px; background: white; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .promise-item { display: flex; gap: 12px; align-items: center; }
-        .promise-icon { font-size: 1.8em; }
-        .promise-txt strong { font-size: 1em; color: var(--dark-blue); display: block; margin-bottom: 2px; }
-        .promise-txt p { margin: 0; font-size: 0.8em; color: #666; }
-
         .footer-index { position: absolute; bottom: 0; left: 0; right: 0; background: #f8f9fa; border-top: 1px solid #ddd; padding: 25px 50px 35px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; }
         .index-item { border-left: 2px solid var(--beige); padding-left: 15px; }
         .index-item h4 { margin: 0 0 5px; font-size: 0.9em; color: var(--dark-blue); }
@@ -57,7 +49,7 @@
 <body>
 
     <div class="admin-panel">
-        <h2 style="margin-top:0;">📋 전담 서비스 안내문 생성기</h2>
+        <h2 style="margin-top:0;">📋 전담 서비스 안내문 생성기 (호텔/비자 명단 업데이트)</h2>
         <div class="input-group">
             <div><label>발령일/날짜 입력</label><input type="text" id="in-date" oninput="updateView()"></div>
             <div><label>상대 업체명</label><input type="text" id="in-client" value="LH 한국토지주택공사" oninput="updateView()"></div>
@@ -67,9 +59,9 @@
         <div id="input-containers">
             <div class="section-title">👤 서비스 총괄 및 영업관리</div>
             <div class="staff-input-grid" id="mgt-inputs"></div>
-            <div class="section-title">✈️ 항공 서비스팀 (전화/이메일 동시 노출)</div>
+            <div class="section-title">✈️ 항공 서비스팀</div>
             <div class="staff-input-grid" id="air-inputs"></div>
-            <div class="section-title">🏨 호텔 & 🛂 비자 서비스팀</div>
+            <div class="section-title">🏨 호텔 & 🛂 비자 서비스팀 (신규 명단 적용)</div>
             <div class="staff-input-grid" id="etc-inputs"></div>
         </div>
         <button class="print-btn" onclick="window.print()">🖨️ 인쇄 및 PDF 저장</button>
@@ -87,25 +79,19 @@
                 <img src="photos/logo.png" class="company-logo-main" onerror="this.src='https://via.placeholder.com/220x80?text=HanaTour+Business'">
                 <div class="intro-text-box">
                     <strong><span class="v-client-inline">LH 한국토지주택공사</span> 임직원 여러분, 안녕하십니까.</strong><br>
-                    하나투어비즈니스는 전문 인력을 기반으로 귀사만을 위한 전담 조직을 구성하여 최상의 서비스를 약속드립니다.
+                    하나투어비즈니스는 전담 조직을 통해 신속하고 정확한 비즈니스 여행 서비스를 제공할 것을 약속드립니다.
                 </div>
             </div>
 
-            <div class="team-section"><div class="team-label">MANAGEMENT & SUPPORT</div><div class="staff-grid" id="view-mgt"></div></div>
+            <div class="team-section"><div class="team-label">MANAGEMENT & SUPPORT (총괄)</div><div class="staff-grid" id="view-mgt"></div></div>
             <div class="team-section"><div class="team-label">AIR SERVICE (항공)</div><div class="staff-grid" id="view-air"></div></div>
-            <div class="team-section"><div class="team-label">HOTEL & VISA SERVICE</div><div class="staff-grid" id="view-etc"></div></div>
-
-            <div class="section-header"><span>하나투어비즈니스의 약속</span></div>
-            <div class="promise-container">
-                <div class="promise-item"><span class="promise-icon">👍</span><div class="promise-txt"><strong>CS 만족</strong><p>법인영업3팀의 노하우를 바탕으로 한 신속 응대</p></div></div>
-                <div class="promise-item"><span class="promise-icon">🛡️</span><div class="promise-txt"><strong>안전 지원</strong><p>24시간 긴급지원센터 가동으로 안심 출장 지원</p></div></div>
-            </div>
+            <div class="team-section"><div class="team-label">HOTEL & VISA SERVICE (호텔/비자)</div><div class="staff-grid" id="view-etc"></div></div>
         </div>
 
         <div class="footer-index">
             <div class="index-item"><h4>DAEGU (영업3팀)</h4><p>대구 중구 국채보상로 648 호수빌딩 15층</p></div>
             <div class="index-item"><h4>SEOUL (본사)</h4><p>서울 중구 인사동 5길 25</p></div>
-            <div class="index-item"><h4>CONTACT</h4><p>Tel: 053-421-2334</p></div>
+            <div class="index-item"><h4>CONTACT</h4><p>전담팀 대표: 053-421-2334</p></div>
         </div>
     </div>
 
@@ -138,15 +124,24 @@
                 {n:"김서영 사원", v:"항공 담당/김서영 사원/02-2076-2253/air1@hanatour.com"}
             ],
             etc: [
-                {n:"호텔-정마음", v:"호텔 담당/정마음 선임/02-1234-1001/hotel@hanatour.com"},
-                {n:"비자-장현수", v:"비자 담당/장현수 선임/02-1234-2001/visa@hanatour.com"}
+                {n:"변윤숙 부장", v:"호텔 담당/변윤숙 부장/02-2076-2289/hotel1@hanatour.com"},
+                {n:"이길현 부장", v:"호텔 담당/이길현 부장/02-2076-2219/hotel1@hanatour.com"},
+                {n:"강병식 과장", v:"비자 담당/강병식 과장/02-2076-2216/visa1@hanatour.com"},
+                {n:"김수현 과장", v:"비자 담당/김수현 과장/02-2076-2215/visa1@hanatour.com"},
+                {n:"정경희 과장", v:"비자 담당/정경희 과장/02-2121-7642/visa1@hanatour.com"},
+                {n:"김민경 대리", v:"비자 담당/김민경 대리/02-6100-0147/visa1@hanatour.com"},
+                {n:"이수민 대리", v:"비자 담당/이수민 대리/02-2076-2284/visa1@hanatour.com"},
+                {n:"지사라 대리", v:"비자 담당/지사라 대리/02-6730-3356/visa1@hanatour.com"},
+                {n:"김가영 사원", v:"비자 담당/김가영 사원/02-6730-3330/visa1@hanatour.com"},
+                {n:"박유진 사원", v:"비자 담당/박유진 사원/02-6730-3332/visa1@hanatour.com"},
+                {n:"조아랑 사원", v:"비자 담당/조아랑 사원/02-6730-3352/visa1@hanatour.com"}
             ]
         };
 
         const config = [
             { id: 'mgt', title: '총괄/관리', count: 3, pool: pools.mgt, target: 'mgt-inputs', view: 'view-mgt' },
             { id: 'air', title: '항공 담당', count: 6, pool: pools.air, target: 'air-inputs', view: 'view-air' },
-            { id: 'etc', title: '호텔/비자', count: 3, pool: pools.etc, target: 'etc-inputs', view: 'view-etc' }
+            { id: 'etc', title: '호텔/비자', count: 6, pool: pools.etc, target: 'etc-inputs', view: 'view-etc' }
         ];
 
         function init() {
@@ -185,7 +180,7 @@
                         const [tag, name, tel, email] = val.split('/');
                         view.innerHTML += `
                             <div class="staff-card">
-                                <img src="https://via.placeholder.com/60?text=${name.charAt(0)}">
+                                <img src="https://via.placeholder.com/60?text=${name ? name.charAt(0) : 'U'}">
                                 <div class="staff-info">
                                     <b>${name||''}</b><br>
                                     ${tag||''}<br>
