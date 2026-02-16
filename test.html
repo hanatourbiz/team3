@@ -49,7 +49,7 @@
 <body>
 
     <div class="admin-panel">
-        <h2 style="margin-top:0;">📋 전담 서비스 안내문 생성기 (호텔/비자 명단 업데이트)</h2>
+        <h2 style="margin-top:0;">📋 전담 서비스 안내문 생성기 (최종 통합본)</h2>
         <div class="input-group">
             <div><label>발령일/날짜 입력</label><input type="text" id="in-date" oninput="updateView()"></div>
             <div><label>상대 업체명</label><input type="text" id="in-client" value="LH 한국토지주택공사" oninput="updateView()"></div>
@@ -57,11 +57,11 @@
         </div>
 
         <div id="input-containers">
-            <div class="section-title">👤 서비스 총괄 및 영업관리</div>
+            <div class="section-title">👤 서비스 총괄 및 영업관리 (우리팀원)</div>
             <div class="staff-input-grid" id="mgt-inputs"></div>
             <div class="section-title">✈️ 항공 서비스팀</div>
             <div class="staff-input-grid" id="air-inputs"></div>
-            <div class="section-title">🏨 호텔 & 🛂 비자 서비스팀 (신규 명단 적용)</div>
+            <div class="section-title">🏨 호텔 & 🛂 비자 서비스팀</div>
             <div class="staff-input-grid" id="etc-inputs"></div>
         </div>
         <button class="print-btn" onclick="window.print()">🖨️ 인쇄 및 PDF 저장</button>
@@ -104,9 +104,11 @@
 
         const pools = {
             mgt: [
-                {n:"김동욱 팀장", v:"서비스 총괄/김동욱 팀장/010-8560-6258/dwkim@hanatour.com"},
-                {n:"최봉재 수석", v:"영업 관리/최봉재 수석/010-7438-0333/bjchoi@hanatour.com"},
-                {n:"김태근 선임", v:"지원 관리/김태근 선임/010-5584-4616/tgkim@hanatour.com"}
+                {n:"김동욱 팀장", v:"서비스 총괄/김동욱 부장(팀장)/010-8560-6258/ugi@hanatour.com", img:"photos/김동욱.png"},
+                {n:"최봉재 수석", v:"영업 관리/최봉재 차장(수석)/010-7438-0333/meg234@hanatour.com", img:"photos/최봉재.png"},
+                {n:"김태근 선임", v:"영업 관리/김태근 과장(선임)/010-5584-4616/ktk1104zzang@hanatour.com", img:"photos/김태근.png"},
+                {n:"김채스 선임", v:"지원 관리/김채스 대리(선임)/010-9988-3266/smings@hanatour.com", img:"photos/김채스.png"},
+                {n:"장현수 사원", v:"지원 관리/장현수 사원/010-3390-5716/lovehs99@hanatour.com", img:"photos/장현수.png"}
             ],
             air: [
                 {n:"강경단 부장", v:"항공 담당/강경단 부장/02-2127-1234/air1@hanatour.com"},
@@ -124,22 +126,22 @@
                 {n:"김서영 사원", v:"항공 담당/김서영 사원/02-2076-2253/air1@hanatour.com"}
             ],
             etc: [
-                {n:"변윤숙 부장", v:"호텔 담당/변윤숙 부장/02-2076-2289/hotel1@hanatour.com"},
-                {n:"이길현 부장", v:"호텔 담당/이길현 부장/02-2076-2219/hotel1@hanatour.com"},
-                {n:"강병식 과장", v:"비자 담당/강병식 과장/02-2076-2216/visa1@hanatour.com"},
-                {n:"김수현 과장", v:"비자 담당/김수현 과장/02-2076-2215/visa1@hanatour.com"},
-                {n:"정경희 과장", v:"비자 담당/정경희 과장/02-2121-7642/visa1@hanatour.com"},
-                {n:"김민경 대리", v:"비자 담당/김민경 대리/02-6100-0147/visa1@hanatour.com"},
-                {n:"이수민 대리", v:"비자 담당/이수민 대리/02-2076-2284/visa1@hanatour.com"},
-                {n:"지사라 대리", v:"비자 담당/지사라 대리/02-6730-3356/visa1@hanatour.com"},
-                {n:"김가영 사원", v:"비자 담당/김가영 사원/02-6730-3330/visa1@hanatour.com"},
-                {n:"박유진 사원", v:"비자 담당/박유진 사원/02-6730-3332/visa1@hanatour.com"},
-                {n:"조아랑 사원", v:"비자 담당/조아랑 사원/02-6730-3352/visa1@hanatour.com"}
+                {n:"변윤숙 부장(호텔)", v:"호텔 담당/변윤숙 부장/02-2076-2289/hotel1@hanatour.com"},
+                {n:"이길현 부장(호텔)", v:"호텔 담당/이길현 부장/02-2076-2219/hotel1@hanatour.com"},
+                {n:"강병식 과장(비자)", v:"비자 담당/강병식 과장/02-2076-2216/visa1@hanatour.com"},
+                {n:"김수현 과장(비자)", v:"비자 담당/김수현 과장/02-2076-2215/visa1@hanatour.com"},
+                {n:"정경희 과장(비자)", v:"비자 담당/정경희 과장/02-2121-7642/visa1@hanatour.com"},
+                {n:"김민경 대리(비자)", v:"비자 담당/김민경 대리/02-6100-0147/visa1@hanatour.com"},
+                {n:"이수민 대리(비자)", v:"비자 담당/이수민 대리/02-2076-2284/visa1@hanatour.com"},
+                {n:"지사라 대리(비자)", v:"비자 담당/지사라 대리/02-6730-3356/visa1@hanatour.com"},
+                {n:"김가영 사원(비자)", v:"비자 담당/김가영 사원/02-6730-3330/visa1@hanatour.com"},
+                {n:"박유진 사원(비자)", v:"비자 담당/박유진 사원/02-6730-3332/visa1@hanatour.com"},
+                {n:"조아랑 사원(비자)", v:"비자 담당/조아랑 사원/02-6730-3352/visa1@hanatour.com"}
             ]
         };
 
         const config = [
-            { id: 'mgt', title: '총괄/관리', count: 3, pool: pools.mgt, target: 'mgt-inputs', view: 'view-mgt' },
+            { id: 'mgt', title: '총괄/관리', count: 5, pool: pools.mgt, target: 'mgt-inputs', view: 'view-mgt' },
             { id: 'air', title: '항공 담당', count: 6, pool: pools.air, target: 'air-inputs', view: 'view-air' },
             { id: 'etc', title: '호텔/비자', count: 6, pool: pools.etc, target: 'etc-inputs', view: 'view-etc' }
         ];
@@ -178,9 +180,13 @@
                     const val = document.getElementById(`${sec.id}-n-${i}`).value;
                     if(val) {
                         const [tag, name, tel, email] = val.split('/');
+                        // 사진 파일 매칭 로직 (pool에서 이름 찾기)
+                        const staffData = sec.pool.find(p => p.v === val);
+                        const imgSrc = (staffData && staffData.img) ? staffData.img : `https://via.placeholder.com/60?text=${name ? name.charAt(0) : 'U'}`;
+                        
                         view.innerHTML += `
                             <div class="staff-card">
-                                <img src="https://via.placeholder.com/60?text=${name ? name.charAt(0) : 'U'}">
+                                <img src="${imgSrc}" onerror="this.src='https://via.placeholder.com/60?text=${name ? name.charAt(0) : 'U'}'">
                                 <div class="staff-info">
                                     <b>${name||''}</b><br>
                                     ${tag||''}<br>
