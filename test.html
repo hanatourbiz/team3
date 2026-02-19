@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>출장 전담 여행사 안내문 V1.93 | 하나투어비즈니스</title>
+    <title>출장 전담 여행사 안내문 V1.94 | 하나투어비즈니스</title>
     <style>
         :root { --dark-blue: #1a2a4e; --point-red: #e31a1a; --beige: #bca896; }
         body { font-family: 'Pretendard', -apple-system, sans-serif; background: #f0f2f5; margin: 0; padding: 20px; }
@@ -73,7 +73,7 @@
 </head>
 <body>
     <div class="admin-panel">
-        <h2 style="margin-top:0;">📋 전담 서비스 안내문 V1.93</h2>
+        <h2 style="margin-top:0;">📋 전담 서비스 안내문 V1.94</h2>
         <div class="input-group">
             <div><label>날짜 입력</label><input type="text" id="in-date" oninput="updateView()"></div>
             <div><label>업체명</label><input type="text" id="in-client" value="LH 한국토지주택공사" oninput="updateView()"></div>
@@ -157,7 +157,8 @@
                 {n:"최봉재 수석", v:"서비스 총괄(부)/최봉재 수석/010-7438-0333/bjchoi@hanatour.com"},
                 {n:"김태근 선임", v:"서비스 총괄/김태근 선임/010-5584-4616/tgkim@hanatour.com"},
                 {n:"김채스민 선임", v:"서비스 총괄/김채스민 선임/010-5584-4616/jasmine@hanatour.com"},
-                {n:"장현수 사원", v:"서비스 총괄/장현수 사원/010-5584-4616/hsjang@hanatour.com"}
+                {n:"장현수 사원", v:"서비스 총괄/장현수 사원/010-5584-4616/hsjang@hanatour.com"},
+                {n:"직접 입력", v:""}
             ],
             air: [
                 {n:"고은비 선임", v:"항공 담당/고은비 선임/02-1234-5001"},{n:"권혜경 팀장", v:"항공 담당/권혜경 팀장/02-1234-5002"},
@@ -165,13 +166,15 @@
                 {n:"박선희 수석", v:"항공 담당/박선희 수석/02-1234-5005"},{n:"신정애 수석", v:"항공 담당/신정애 수석/02-1234-5006"},
                 {n:"안소영 선임", v:"항공 담당/안소영 선임/02-1234-5007"},{n:"이선민 선임", v:"항공 담당/이선민 선임/02-1234-5008"},
                 {n:"이혜정 수석", v:"항공 담당/이혜정 수석/02-1234-5009"},{n:"장성아 선임", v:"항공 담당/장성아 선임/02-1234-5010"},
-                {n:"정선화 선임", v:"항공 담당/정선화 선임/02-1234-5011"},{n:"채경은 팀장", v:"항공 담당/채경은 팀장/02-1234-5012"}
+                {n:"정선화 선임", v:"항공 담당/정선화 선임/02-1234-5011"},{n:"채경은 팀장", v:"항공 담당/채경은 팀장/02-1234-5012"},
+                {n:"직접 입력", v:""}
             ],
             etc: [
                 {n:"변윤숙 수석(호텔)", v:"호텔 담당/변윤숙 수석/02-2076-2289/hotelbiz@hanatour.com"},
                 {n:"김가영 선임(호텔)", v:"호텔 담당/김가영 선임/02-6730-3330/hotelbiz@hanatour.com"},
                 {n:"김가영 선임(비자)", v:"비자,보험 담당/김가영 선임/02-6730-3330/hanavisa1@hanatour.com"},
-                {n:"박유진 선임(렌터)", v:"렌터카,철도 담당/박유진 선임/02-6730-3332/hanasvc@hanatour.com"}
+                {n:"박유진 선임(렌터)", v:"렌터카,철도 담당/박유진 선임/02-6730-3332/hanasvc@hanatour.com"},
+                {n:"직접 입력", v:""}
             ]
         };
 
@@ -191,7 +194,7 @@
                     <div class="staff-input-unit">
                         <label>${label}</label>
                         <select onchange="fillInput(this, '${poolKey}', ${i})"><option value="">선택</option>${options}</select>
-                        <input type="text" id="${poolKey}-n-${i}" oninput="renderAll()">
+                        <input type="text" id="${poolKey}-n-${i}" placeholder="내용 직접 입력/수정 가능" oninput="renderAll()">
                     </div>`;
             });
         }
@@ -215,7 +218,8 @@
                     const val = input ? input.value : "";
                     if(val && val.includes('/')) {
                         const parts = val.split('/');
-                        const name = parts[1].split(' ')[0].trim();
+                        const nameRaw = parts[1] || "";
+                        const name = nameRaw.split(' ')[0].trim();
                         view.innerHTML += `
                             <div class="staff-card">
                                 <img src="photos/${name}.png" onerror="this.src='https://via.placeholder.com/60/eee/999?text=${name}'">
