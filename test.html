@@ -2,12 +2,10 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>출장 전담 여행사 안내문 | 하나투어비즈니스</title>
+    <title>출장 전담 여행사 안내문 V1.1 | 하나투어비즈니스</title>
     <style>
         :root { --dark-blue: #1a2a4e; --point-red: #e31a1a; --beige: #bca896; }
         body { font-family: 'Pretendard', sans-serif; background: #f0f2f5; margin: 0; padding: 20px; }
-        
-        /* 설정 패널 */
         .admin-panel { max-width: 1100px; margin: 0 auto 30px; background: #fff; padding: 25px; border-radius: 12px; border: 2px solid var(--dark-blue); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         .input-group { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 25px; }
         .section-title { font-size: 0.95em; font-weight: bold; color: var(--point-red); margin-bottom: 10px; border-left: 4px solid var(--point-red); padding-left: 10px; margin-top: 25px; }
@@ -17,222 +15,170 @@
         input, select { width: 100%; padding: 7px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.85em; box-sizing: border-box; }
         .print-btn { background: var(--point-red); color: white; padding: 15px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 20px; font-size: 1.1em; }
 
-        /* 안내문 디자인 (A4) */
-        .page { width: 210mm; min-height: 297mm; padding: 0; margin: 0 auto; background: white; position: relative; overflow: hidden; color: #333; box-shadow: 0 0 20px rgba(0,0,0,0.1); }
-        .date-bar { background: #3d3229; color: white; padding: 12px 50px; font-size: 1.1em; letter-spacing: 0.5px; font-weight: 300; }
-        .header { background: var(--dark-blue); color: white; padding: 40px 50px; position: relative; display: flex; justify-content: space-between; align-items: flex-start; }
-        .header h1 { font-size: 3em; margin: 0; line-height: 1.1; font-weight: 800; letter-spacing: -1px; }
-        .logo-client { max-width: 150px; max-height: 60px; filter: brightness(0) invert(1); object-fit: contain; }
+        .page { width: 210mm; height: 297mm; padding: 0; margin: 0 auto; background: white; position: relative; color: #333; box-shadow: 0 0 20px rgba(0,0,0,0.1); display: flex; flex-direction: column; overflow: hidden; box-sizing: border-box; }
+        .date-bar { background: #3d3229; color: white; padding: 10px 50px; font-size: 1.1em; font-weight: 600; text-align: center; border-bottom: 3px solid var(--beige); flex-shrink: 0; }
+        .header { background: var(--dark-blue); color: white; padding: 22px 50px; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
+        .header h1 { font-size: 2.2em; margin: 0; line-height: 1.1; font-weight: 800; letter-spacing: -1px; }
+        .logo-client { max-width: 170px; max-height: 55px; filter: brightness(0) invert(1); object-fit: contain; }
+
+        .content-body { padding: 12px 50px; background: #fcfaf8; flex: 1; display: flex; flex-direction: column; justify-content: space-between; min-height: 0; }
+        .intro-section { display: flex; gap: 15px; align-items: center; border: 1px solid #e0d6cd; background: #fff; padding: 10px; border-radius: 12px; flex-shrink: 0; }
+        .company-logo-main { width: 150px; object-fit: contain; }
+        .intro-text-box { flex: 1; font-size: 0.82em; line-height: 1.6; color: #444; border-left: 2px solid #eee; padding-left: 15px; text-align: justify; word-break: keep-all; }
+
+        .team-section { margin-bottom: 0px; flex: 0 1 auto; }
+        .team-label { background: var(--beige); color: white; padding: 2px 10px; font-weight: bold; border-radius: 5px 5px 0 0; display: inline-block; font-size: 0.7em; }
+        .staff-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; border-top: 2px solid var(--beige); padding-top: 4px; }
+        .staff-card { background: white; border: 1px solid #e0d6cd; padding: 4px; border-radius: 40px 10px 10px 40px; display: flex; align-items: center; gap: 8px; height: 58px; box-sizing: border-box; }
+        .staff-card img { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; border: 1px solid #eee; }
+        .staff-info { font-size: 0.55em; line-height: 1.2; overflow: hidden; }
+        .staff-info b { font-size: 1.1em; color: var(--dark-blue); }
+
+        .section-header { text-align: center; margin: 4px 0 2px; flex-shrink: 0; }
+        .section-header span { background: #fef3c7; padding: 2px 20px; font-weight: bold; font-size: 0.85em; border-radius: 20px; color: #856404; }
+        .promise-container { border: 2px solid #d1d5db; border-radius: 10px; padding: 8px 12px; background: white; display: flex; flex-direction: column; gap: 4px; flex-shrink: 1; }
+        .promise-item { display: flex; flex-direction: column; gap: 1px; }
+        .promise-title { font-size: 0.95em; font-weight: 900; color: #222; display: flex; align-items: center; gap: 6px; }
+        .promise-title::before { content: ""; display: inline-block; width: 7px; height: 7px; background-color: #000; flex-shrink: 0; }
+        .promise-desc { font-size: 0.75em; color: #444; line-height: 1.35; text-align: justify; word-break: keep-all; padding-left: 13px; }
         
-        .content-body { padding: 30px 50px; background: #fcfaf8; }
-        .intro-section { display: flex; gap: 30px; margin-bottom: 25px; align-items: flex-start; border-bottom: 1px solid #eee; padding-bottom: 25px; }
-        .company-logo-main { width: 200px; object-fit: contain; }
-        .intro-text-box { flex: 1; font-size: 0.9em; line-height: 1.7; color: #444; }
+        .service-area { flex-shrink: 0; margin-top: -2px; } 
+        .special-title { font-size: 0.9em; font-weight: bold; color: var(--dark-blue); margin: 4px 0 4px; text-align: center; }
+        .service-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: #ccc; border: 1px solid #ccc; }
+        .service-item { background: #fff; padding: 5px 3px; text-align: center; min-height: 32px; display: flex; align-items: center; justify-content: center; }
+        .service-item span { font-size: 0.68em; color: #333; font-weight: 500; line-height: 1.1; }
+        
+        .emergency-notice { background: #fff5f5; padding: 8px; text-align: center; border-radius: 8px; font-size: 0.85em; color: #d63031; flex-shrink: 0; margin-top: 4px; border: 1px dashed var(--point-red); font-weight: bold; }
+        .emergency-notice b { color: var(--point-red); font-size: 1.1em; }
 
-        .team-section { margin-bottom: 15px; }
-        .team-label { background: var(--beige); color: white; padding: 4px 12px; font-weight: bold; border-radius: 5px 5px 0 0; display: inline-block; font-size: 0.75em; }
-        .staff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; border-top: 2px solid var(--beige); padding-top: 8px; }
-        .staff-card { background: white; border: 1px solid #e0d6cd; padding: 6px; border-radius: 40px 10px 10px 40px; display: flex; align-items: center; gap: 10px; height: 85px; box-sizing: border-box; }
-        .staff-card img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; background: #eee; flex-shrink: 0; }
-        .staff-info { font-size: 0.7em; line-height: 1.4; overflow: hidden; }
-        .staff-info b { font-size: 1.15em; color: var(--dark-blue); }
-        .staff-info .email { color: var(--point-red); font-size: 0.9em; }
+        .footer-index { background: #f8f9fa; border-top: 1px solid #ddd; padding: 12px 50px 18px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; flex-shrink: 0; }
+        .index-item { border-left: 2px solid var(--beige); padding-left: 12px; }
+        .index-item h4 { margin: 0 0 1px; font-size: 0.75em; color: var(--dark-blue); }
+        .index-item p { margin: 0; font-size: 0.65em; color: #666; line-height: 1.2; }
 
-        /* 세 가지 약속 및 서비스 섹션 */
-        .bottom-info-area { display: grid; grid-template-columns: 1fr 1.2fr; gap: 20px; margin-top: 20px; }
-        .info-box-title { font-size: 0.95em; font-weight: bold; color: var(--dark-blue); margin-bottom: 10px; display: flex; align-items: center; gap: 5px; }
-        .info-box-title::before { content: ""; display: block; width: 4px; height: 15px; background: var(--point-red); }
-
-        .promise-list { list-style: none; padding: 0; margin: 0; }
-        .promise-item { background: white; padding: 10px; border-radius: 8px; border: 1px solid #eee; margin-bottom: 6px; display: flex; gap: 10px; align-items: center; }
-        .promise-icon { font-size: 1.5em; width: 35px; text-align: center; }
-        .promise-txt strong { font-size: 0.9em; color: var(--dark-blue); display: block; }
-        .promise-txt p { margin: 0; font-size: 0.75em; color: #777; }
-
-        .service-365 { background: #fff5f5; border: 1px solid #fed7d7; border-radius: 10px; padding: 15px; }
-        .service-365 ul { padding-left: 20px; margin: 0; }
-        .service-365 li { font-size: 0.8em; line-height: 1.8; color: #444; margin-bottom: 4px; }
-        .service-365 li b { color: var(--point-red); }
-
-        /* 주소 푸터 */
-        .footer-address { position: absolute; bottom: 0; left: 0; right: 0; background: #f8f9fa; border-top: 1px solid #ddd; padding: 20px 50px 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        .addr-item h4 { margin: 0 0 5px; font-size: 0.85em; color: var(--dark-blue); border-bottom: 1px solid var(--beige); padding-bottom: 3px; display: inline-block; }
-        .addr-item p { margin: 0; font-size: 0.7em; color: #666; line-height: 1.5; }
-
-        @media print { body { padding: 0; background: none; } .admin-panel { display: none !important; } .page { margin: 0; border: none; box-shadow: none; width: 210mm; } }
+        @page { size: A4; margin: 0; }
+        @media print { body { padding: 0; background: none; } .admin-panel { display: none !important; } .page { margin: 0; border: none; box-shadow: none; width: 210mm; height: 297mm; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
     </style>
 </head>
 <body>
-
     <div class="admin-panel">
-        <h2 style="margin-top:0;">📋 전담 서비스 안내문 생성기 (디자인 복구본)</h2>
+        <h2 style="margin-top:0;">📋 전담 서비스 안내문 V1.1</h2>
         <div class="input-group">
-            <div><label>발령일/날짜 입력</label><input type="text" id="in-date" oninput="updateView()"></div>
-            <div><label>상대 업체명</label><input type="text" id="in-client" value="LH 한국토지주택공사" oninput="updateView()"></div>
-            <div><label>상대 업체 로고</label><input type="file" onchange="loadLogo(event)"></div>
+            <div><label>날짜 입력</label><input type="text" id="in-date" oninput="updateView()"></div>
+            <div><label>업체명</label><input type="text" id="in-client" value="LH 한국토지주택공사" oninput="updateView()"></div>
+            <div><label>업체 로고</label><input type="file" onchange="loadLogo(event)"></div>
         </div>
-
         <div id="input-containers">
-            <div class="section-title">👤 서비스 총괄 및 영업관리 (우리팀원)</div>
+            <div class="section-title">👤 서비스 총괄 (정/부)</div>
             <div class="staff-input-grid" id="mgt-inputs"></div>
-            <div class="section-title">✈️ 항공 서비스팀</div>
+            <div class="section-title">✈️ 항공 서비스팀 (정/부)</div>
             <div class="staff-input-grid" id="air-inputs"></div>
-            <div class="section-title">🏨 호텔 & 🛂 비자 서비스팀</div>
+            <div class="section-title">🏨 호텔, 비자, 렌터카, 보험 서비스</div>
             <div class="staff-input-grid" id="etc-inputs"></div>
         </div>
         <button class="print-btn" onclick="window.print()">🖨️ 인쇄 및 PDF 저장</button>
     </div>
 
     <div class="page">
-        <div class="date-bar"><span id="view-date"></span>부터 <span class="v-client-inline">업체명</span> 출장 전담 여행사가 하나투어비즈니스로 새롭게 운영됩니다.</div>
-        <div class="header">
-            <h1><span id="view-client">LH 한국토지주택공사</span><br>전담 서비스팀 구성</h1>
-            <img id="view-logo" src="" class="logo-client" style="display:none;">
-        </div>
-
+        <div class="date-bar"><b><span id="view-date"></span></b>부터 <b><span class="v-client-inline"></span></b> 출장 전담 여행사가<br>하나투어비즈니스로 새롭게 운영됩니다.</div>
+        <div class="header"><h1><span id="view-client"></span><br>전담 서비스팀 구성</h1><img id="view-logo" src="" class="logo-client" style="display:none;"></div>
         <div class="content-body">
             <div class="intro-section">
-                <img src="photos/logo.png" class="company-logo-main" onerror="this.src='https://via.placeholder.com/220x80?text=HanaTour+Business'">
+                <img src="photos/logo2.png" class="company-logo-main" onerror="this.src='https://via.placeholder.com/220x80?text=HanaTour+Business'">
                 <div class="intro-text-box">
-                    <strong><span class="v-client-inline">LH 한국토지주택공사</span> 임직원 여러분, 안녕하십니까.</strong><br>
-                    하나투어비즈니스는 각 분야 전문가로 구성된 전담 조직을 통해 신속하고 정확한 비즈니스 여행 서비스를 약속드립니다.
+                    <strong><span class="v-client-inline"></span> 임직원 여러분, 안녕하십니까.</strong><br>
+                    하나투어비즈니스는 국내 최대 여행기업 하나투어가 100% 출자한 법인 여행 서비스 전문 조직으로, 23년 연속 업계 1위 그룹의 글로벌 네트워크와 전문 인력을 기반으로 기업 및 공공기관 대상 비즈니스 여행을 안정적이고 체계적으로 운영하는 전문 파트너입니다.
                 </div>
             </div>
-
-            <div class="team-section"><div class="team-label">MANAGEMENT & SUPPORT (총괄)</div><div class="staff-grid" id="view-mgt"></div></div>
+            
+            <div class="team-section"><div class="team-label">MANAGEMENT & SUPPORT (서비스 총괄)</div><div class="staff-grid" id="view-mgt"></div></div>
             <div class="team-section"><div class="team-label">AIR SERVICE (항공)</div><div class="staff-grid" id="view-air"></div></div>
-            <div class="team-section"><div class="team-label">HOTEL & VISA SERVICE (호텔/비자)</div><div class="staff-grid" id="view-etc"></div></div>
-
-            <div class="bottom-info-area">
-                <div class="info-box">
-                    <div class="info-box-title">하나투어비즈니스의 3가지 약속</div>
-                    <ul class="promise-list">
-                        <li class="promise-item"><span class="promise-icon">✨</span><div class="promise-txt"><strong>Best Price</strong><p>기업 전용 요금 및 최적의 루트 제안</p></div></li>
-                        <li class="promise-item"><span class="promise-icon">⚡</span><div class="promise-txt"><strong>Fast Response</strong><p>전담팀을 통한 실시간 신속 응대 체계</p></div></li>
-                        <li class="promise-item"><span class="promise-icon">🛡️</span><div class="promise-txt"><strong>Safety First</strong><p>24시간 긴급 지원 서비스를 통한 안전 보장</p></div></li>
-                    </ul>
-                </div>
-                <div class="info-box">
-                    <div class="info-box-title">전담팀 특전 및 365 서비스</div>
-                    <div class="service-365">
-                        <ul>
-                            <li><b>실시간 항공/호텔 예약:</b> 전 세계 실시간 인벤토리 확보</li>
-                            <li><b>상시 비자 컨설팅:</b> 국가별 최신 비자 정보 및 대행 서비스</li>
-                            <li><b>24시간 긴급센터:</b> 365일 야간/공휴일 긴급 발권 지원</li>
-                            <li><b>경영관리 지원:</b> 출장 통계 및 비용 분석 리포트 제공</li>
-                        </ul>
-                    </div>
+            <div class="team-section"><div class="team-label">HOTEL, VISA & OTHER SERVICE (호텔/비자/기타)</div><div class="staff-grid" id="view-etc"></div></div>
+            
+            <div class="section-header"><span>하나투어비즈니스의 세 가지 약속</span></div>
+            <div class="promise-container">
+                <div class="promise-item"><div class="promise-title">Customer Satisfaction</div><div class="promise-desc">차별화된 컨설팅 노하우로 친절·신속·정확한 고객 중심 서비스를 제공하겠습니다.</div></div>
+                <div class="promise-item"><div class="promise-title">Safety & Security</div><div class="promise-desc">24시간 긴급지원센터를 통해 임직원 분들의 안전을 빈틈없이 약속 드립니다.</div></div>
+                <div class="promise-item"><div class="promise-title">Efficiency & Usability</div><div class="promise-desc">실시간 예약 시스템(BTMS)을 제공하여 업무 효율성과 편의성을 높이겠습니다.</div></div>
+            </div>
+            
+            <div class="service-area">
+                <div class="special-title">하나투어비즈니스만의 특별 제공 서비스</div>
+                <div class="service-grid">
+                    <div class="service-item"><span>주요 공지 및 이벤트<br>전용 홈페이지 운영</span></div>
+                    <div class="service-item"><span>연계<br>문화행사 초청</span></div>
+                    <div class="service-item"><span>1:1 맞춤형 상담<br>및 패키지 할인</span></div>
+                    <div class="service-item"><span>출장자를 위한<br>여행 파우치 제공</span></div>
                 </div>
             </div>
+            <div class="emergency-notice">업무 시간 외 🚨 <b>24시간 긴급 서비스 센터</b> ( ☎ <b>02-2076-2200</b> / 📧 <b>air365@hanatour.com</b> )</div>
         </div>
-
-        <div class="footer-address">
-            <div class="addr-item"><h4>SEOUL (본사)</h4><p>서울특별시 중구 인사동 5길 25<br>하나투어 본사빌딩</p></div>
-            <div class="addr-item"><h4>DAEGU (영업3팀)</h4><p>대구광역시 중구 국채보상로 648<br>호수빌딩 15층</p></div>
-            <div class="addr-item"><h4>BUSAN (영남영업)</h4><p>부산광역시 중앙대로 717<br>현대카드 부산빌딩 9층</p></div>
+        
+        <div class="footer-index">
+            <div class="index-item"><h4>SEOUL </h4><p>서울 중구 인사동 5길 25</p></div>
+            <div class="index-item"><h4>DAEGU </h4><p>대구 중구 국채보상로 648</p></div>
+            <div class="index-item"><h4>BUSAN </h4><p>부산 중구 중앙대로 102</p></div>
         </div>
     </div>
 
     <script>
-        function getTodayDisplay() {
-            const now = new Date();
-            const days = ['일', '월', '화', '수', '목', '금', '토'];
-            return `${now.getFullYear()}년 ${now.getMonth() + 1}월 ${now.getDate()}일(${days[now.getDay()]})`;
-        }
-
         const pools = {
-            mgt: [
-                {n:"김동욱 팀장", v:"서비스 총괄/김동욱 부장(팀장)/010-8560-6258/ugi@hanatour.com"},
-                {n:"최봉재 수석", v:"영업 관리/최봉재 차장(수석)/010-7438-0333/meg234@hanatour.com"},
-                {n:"김태근 선임", v:"영업 관리/김태근 과장(선임)/010-5584-4616/ktk1104zzang@hanatour.com"},
-                {n:"김채스민 선임", v:"지원 관리/김채스민 대리(선임)/010-9988-3266/smings@hanatour.com"},
-                {n:"장현수 사원", v:"지원 관리/장현수 사원/010-3390-5716/lovehs99@hanatour.com"}
-            ],
+            mgt_main: [{n:"김동욱 팀장", v:"서비스 총괄(정)/김동욱 팀장/010-8560-6258/dwkim@hanatour.com"},{n:"최봉재 수석", v:"서비스 총괄(정)/최봉재 수석/010-7438-0333/bjchoi@hanatour.com"},{n:"김태근 선임", v:"서비스 총괄(정)/김태근 선임/010-5584-4616/tgkim@hanatour.com"},{n:"김채스민 선임", v:"서비스 총괄(정)/김채스민 선임/010-5584-4616/jasmine@hanatour.com"},{n:"장현수 사원", v:"서비스 총괄(정)/장현수 사원/010-5584-4616/hsjang@hanatour.com"}],
+            mgt_sub: [{n:"최봉재 수석", v:"서비스 총괄(부)/최봉재 수석/010-7438-0333/bjchoi@hanatour.com"},{n:"김태근 선임", v:"서비스 총괄(부)/김태근 선임/010-5584-4616/tgkim@hanatour.com"},{n:"김채스민 선임", v:"서비스 총괄(부)/김채스민 선임/010-5584-4616/jasmine@hanatour.com"},{n:"장현수 사원", v:"서비스 총괄(부)/장현수 사원/010-5584-4616/hsjang@hanatour.com"}],
             air: [
-                {n:"강경단 부장", v:"항공 담당/강경단 부장/02-2127-1234/air1@hanatour.com"},
-                {n:"박선희 부장", v:"항공 담당/박선희 부장/042-862-9526/air1@hanatour.com"},
-                {n:"신희철 부장", v:"항공 담당/신희철 부장/02-2076-2259/air1@hanatour.com"},
-                {n:"윤혜경 부장", v:"항공 담당/윤혜경 부장/02-2076-2291/air1@hanatour.com"},
-                {n:"김희선 차장", v:"항공 담당/김희선 차장/02-2076-2265/air1@hanatour.com"},
-                {n:"신정애 차장", v:"항공 담당/신정애 차장/042-862-8766/air1@hanatour.com"},
-                {n:"김나리 과장", v:"항공 담당/김나리 과장/02-2076-2297/air1@hanatour.com"},
-                {n:"박정아 과장", v:"항공 담당/박정아 과장/02-2127-7230/air1@hanatour.com"},
-                {n:"이선민 과장", v:"항공 담당/이선민 과장/02-2076-2294/air1@hanatour.com"},
-                {n:"정선화 과장", v:"항공 담당/정선화 과장/042-862-8767/air1@hanatour.com"},
-                {n:"안소영 대리", v:"항공 담당/안소영 대리/02-2076-2260/air1@hanatour.com"},
-                {n:"이옥주 대리", v:"항공 담당/이옥주 대리/02-2127-5678/air1@hanatour.com"},
-                {n:"김서영 사원", v:"항공 담당/김서영 사원/02-2076-2253/air1@hanatour.com"}
+                {n:"고은비 선임", v:"항공 담당/고은비 선임/02-1234-5001/ebko@hanatour.com"},{n:"권혜경 선임", v:"항공 담당/권혜경 선임/02-1234-5002/hkkwon@hanatour.com"},{n:"김나리 선임", v:"항공 담당/김나리 선임/02-1234-5003/nrkim@hanatour.com"},{n:"김서영 선임", v:"항공 담당/김서영 선임/02-1234-5004/sykim@hanatour.com"},{n:"박선희 선임", v:"항공 담당/박선희 선임/02-1234-5005/shpark@hanatour.com"},{n:"신정애 선임", v:"항공 담당/신정애 선임/02-1234-5006/jashin@hanatour.com"},{n:"안소영 선임", v:"항공 담당/안소영 선임/02-1234-5007/syahn@hanatour.com"},{n:"이선민 선임", v:"항공 담당/이선민 선임/02-1234-5008/smlee@hanatour.com"},{n:"이혜정 선임", v:"항공 담당/이혜정 선임/02-1234-5009/hjlee@hanatour.com"},{n:"장성아 선임", v:"항공 담당/장성아 선임/02-1234-5010/sajang@hanatour.com"},{n:"정선화 선임", v:"항공 담당/정선화 선임/02-1234-5011/shjung@hanatour.com"},{n:"채경은 선임", v:"항공 담당/채경은 선임/02-1234-5012/kechae@hanatour.com"}
             ],
-            etc: [
-                {n:"변윤숙 부장", v:"호텔 담당/변윤숙 부장/02-2076-2289/hotel1@hanatour.com"},
-                {n:"이길현 부장", v:"호텔 담당/이길현 부장/02-2076-2219/hotel1@hanatour.com"},
-                {n:"강병식 과장", v:"비자 담당/강병식 과장/02-2076-2216/visa1@hanatour.com"},
-                {n:"김수현 과장", v:"비자 담당/김수현 과장/02-2076-2215/visa1@hanatour.com"},
-                {n:"정경희 과장", v:"비자 담당/정경희 과장/02-2121-7642/visa1@hanatour.com"},
-                {n:"김민경 대리", v:"비자 담당/김민경 대리/02-6100-0147/visa1@hanatour.com"},
-                {n:"이수민 대리", v:"비자 담당/이수민 대리/02-2076-2284/visa1@hanatour.com"},
-                {n:"지사라 대리", v:"비자 담당/지사라 대리/02-6730-3356/visa1@hanatour.com"},
-                {n:"김가영 사원", v:"비자 담당/김가영 사원/02-6730-3330/visa1@hanatour.com"},
-                {n:"박유진 사원", v:"비자 담당/박유진 사원/02-6730-3332/visa1@hanatour.com"},
-                {n:"조아랑 사원", v:"비자 담당/조아랑 사원/02-6730-3352/visa1@hanatour.com"}
-            ]
+            visa: [{n:"김가영 선임", v:"비자,보험 담당/김가영 선임/02-6730-3330/hanavisa1@hanatour.com"},{n:"가상 인물A", v:"비자,보험 담당/담당자명/02-0000-0000/test@hanatour.com"}],
+            car: [{n:"박유진 선임", v:"렌터카,철도 담당/박유진 선임/02-6730-3332/hanasvc@hanatour.com"},{n:"가상 인물B", v:"렌터카,철도 담당/담당자명/02-0000-0000/test@hanatour.com"}],
+            hotel: [{n:"변윤숙 수석", v:"호텔 담당/변윤숙 수석/02-2076-2289/hotelbiz@hanatour.com"},{n:"김가영 선임", v:"호텔 담당/김가영 선임/02-6730-3330/hotelbiz@hanatour.com"},{n:"가상 인물C", v:"호텔 담당/담당자명/02-0000-0000/hotelbiz@hanatour.com"}]
         };
 
-        const config = [
-            { id: 'mgt', title: '총괄/관리', count: 5, pool: pools.mgt, target: 'mgt-inputs', view: 'view-mgt' },
-            { id: 'air', title: '항공 담당', count: 6, pool: pools.air, target: 'air-inputs', view: 'view-air' },
-            { id: 'etc', title: '호텔/비자', count: 6, pool: pools.etc, target: 'etc-inputs', view: 'view-etc' }
-        ];
-
         function init() {
-            document.getElementById('in-date').value = getTodayDisplay();
-            config.forEach(sec => {
-                const container = document.getElementById(sec.target);
-                for(let i=0; i<sec.count; i++) {
-                    container.innerHTML += `
-                        <div class="staff-input-unit">
-                            <label>${sec.title} ${i+1}</label>
-                            <select onchange="fillInput(this, '${sec.id}', ${i})">
-                                <option value="">담당자 선택</option>
-                                ${sec.pool.map(s => `<option value="${s.v}">${s.n}</option>`).join('')}
-                                <option value="DIRECT">직접 입력</option>
-                            </select>
-                            <input type="text" id="${sec.id}-n-${i}" placeholder="직책/이름/번호/메일" oninput="renderAll()">
-                        </div>`;
-                }
-            });
-            updateView();
-            renderAll();
+            document.getElementById('in-date').value = "2026년 2월 13일(금)";
+            // 서비스 총괄 (정, 부)
+            setupSelect('mgt-inputs', 'mgt', ['서비스 총괄(정)', '서비스 총괄(부)'], [pools.mgt_main, pools.mgt_sub]);
+            // 항공 (정, 부)
+            setupSelect('air-inputs', 'air', ['항공 담당(정)', '항공 담당(부)'], [pools.air, pools.air]);
+            // 기타 (비자, 렌터카, 호텔1, 호텔2)
+            setupSelect('etc-inputs', 'etc', ['비자/보험', '렌터카/철도', '호텔 담당1', '호텔 담당2'], [pools.visa, pools.car, pools.hotel, pools.hotel]);
+            
+            updateView(); renderAll();
         }
 
-        function fillInput(sel, id, i) {
-            if(sel.value && sel.value !== "DIRECT") document.getElementById(`${id}-n-${i}`).value = sel.value;
-            renderAll();
+        function setupSelect(containerId, prefix, labels, poolsArray) {
+            const container = document.getElementById(containerId);
+            labels.forEach((label, i) => {
+                container.innerHTML += `
+                    <div class="staff-input-unit">
+                        <label>${label}</label>
+                        <select onchange="fillInput(this, '${prefix}', ${i})">
+                            <option value="">담당자 선택</option>
+                            ${poolsArray[i].map(s => `<option value="${s.v}">${s.n}</option>`).join('')}
+                            <option value="DIRECT">직접 입력</option>
+                        </select>
+                        <input type="text" id="${prefix}-n-${i}" placeholder="직책/성함/연락처/이메일" oninput="renderAll()">
+                    </div>`;
+            });
         }
+
+        function fillInput(sel, id, i) { if(sel.value && sel.value !== "DIRECT") document.getElementById(`${id}-n-${i}`).value = sel.value; renderAll(); }
 
         function renderAll() {
-            config.forEach(sec => {
+            const sections = [{id:'mgt', view:'view-mgt', count:2}, {id:'air', view:'view-air', count:2}, {id:'etc', view:'view-etc', count:4}];
+            sections.forEach(sec => {
                 const view = document.getElementById(sec.view);
                 view.innerHTML = '';
                 for(let i=0; i<sec.count; i++) {
                     const val = document.getElementById(`${sec.id}-n-${i}`).value;
                     if(val) {
-                        const parts = val.split('/');
-                        const tag = parts[0] || '';
-                        const nameWithTitle = parts[1] || '';
-                        const tel = parts[2] || '';
-                        const email = parts[3] || '';
-                        const pureName = nameWithTitle.split(' ')[0];
-                        const imgSrc = `photos/${pureName}.png`;
-                        
+                        const [tag, nameInfo, tel, email] = val.split('/');
+                        const pureName = nameInfo ? nameInfo.trim().split(' ')[0] : "";
+                        const photoSrc = `photos/${pureName}.png`;
                         view.innerHTML += `
                             <div class="staff-card">
-                                <img src="${imgSrc}" onerror="this.src='https://via.placeholder.com/60?text=${pureName.charAt(0)}'">
+                                <img src="${photoSrc}" onerror="this.src='https://via.placeholder.com/60?text=User'">
                                 <div class="staff-info">
-                                    <b>${nameWithTitle}</b><br>
-                                    ${tag}<br>
-                                    📞${tel}<br>
-                                    <span class="email">${email}</span>
+                                    <b>${nameInfo||''}</b><br>${tag||''}<br>${tel||''}<br>${email||''}
                                 </div>
                             </div>`;
                     }
@@ -244,8 +190,8 @@
             const date = document.getElementById('in-date').value;
             const client = document.getElementById('in-client').value || '업체명';
             document.getElementById('view-date').innerText = date;
-            document.getElementById('view-client').innerText = client;
             document.querySelectorAll('.v-client-inline').forEach(el => el.innerText = client);
+            document.getElementById('view-client').innerText = client;
         }
 
         function loadLogo(e) {
