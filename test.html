@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>출장 전담 여행사 안내문 V1.1 | 하나투어비즈니스</title>
+    <title>출장 전담 여행사 안내문 V1.2 | 하나투어비즈니스</title>
     <style>
         :root { --dark-blue: #1a2a4e; --point-red: #e31a1a; --beige: #bca896; }
         body { font-family: 'Pretendard', sans-serif; background: #f0f2f5; margin: 0; padding: 20px; }
@@ -21,7 +21,7 @@
         .header h1 { font-size: 2.2em; margin: 0; line-height: 1.1; font-weight: 800; letter-spacing: -1px; }
         .logo-client { max-width: 170px; max-height: 55px; filter: brightness(0) invert(1); object-fit: contain; }
 
-        .content-body { padding: 12px 50px; background: #fcfaf8; flex: 1; display: flex; flex-direction: column; justify-content: space-between; min-height: 0; }
+        .content-body { padding: 10px 50px; background: #fcfaf8; flex: 1; display: flex; flex-direction: column; justify-content: space-between; min-height: 0; }
         .intro-section { display: flex; gap: 15px; align-items: center; border: 1px solid #e0d6cd; background: #fff; padding: 10px; border-radius: 12px; flex-shrink: 0; }
         .company-logo-main { width: 150px; object-fit: contain; }
         .intro-text-box { flex: 1; font-size: 0.82em; line-height: 1.6; color: #444; border-left: 2px solid #eee; padding-left: 15px; text-align: justify; word-break: keep-all; }
@@ -34,7 +34,11 @@
         .staff-info { font-size: 0.55em; line-height: 1.2; overflow: hidden; }
         .staff-info b { font-size: 1.1em; color: var(--dark-blue); }
 
-        .section-header { text-align: center; margin: 4px 0 2px; flex-shrink: 0; }
+        /* 긴급 서비스 센터 - 위치 이동 */
+        .emergency-notice { background: #fff5f5; padding: 8px; text-align: center; border-radius: 8px; font-size: 0.85em; color: #d63031; flex-shrink: 0; margin: 10px 0; border: 1px dashed var(--point-red); font-weight: bold; }
+        .emergency-notice b { color: var(--point-red); font-size: 1.1em; }
+
+        .section-header { text-align: center; margin: 2px 0; flex-shrink: 0; }
         .section-header span { background: #fef3c7; padding: 2px 20px; font-weight: bold; font-size: 0.85em; border-radius: 20px; color: #856404; }
         .promise-container { border: 2px solid #d1d5db; border-radius: 10px; padding: 8px 12px; background: white; display: flex; flex-direction: column; gap: 4px; flex-shrink: 1; }
         .promise-item { display: flex; flex-direction: column; gap: 1px; }
@@ -42,14 +46,11 @@
         .promise-title::before { content: ""; display: inline-block; width: 7px; height: 7px; background-color: #000; flex-shrink: 0; }
         .promise-desc { font-size: 0.75em; color: #444; line-height: 1.35; text-align: justify; word-break: keep-all; padding-left: 13px; }
         
-        .service-area { flex-shrink: 0; margin-top: -2px; } 
+        .service-area { flex-shrink: 0; margin-top: 5px; } 
         .special-title { font-size: 0.9em; font-weight: bold; color: var(--dark-blue); margin: 4px 0 4px; text-align: center; }
         .service-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: #ccc; border: 1px solid #ccc; }
         .service-item { background: #fff; padding: 5px 3px; text-align: center; min-height: 32px; display: flex; align-items: center; justify-content: center; }
         .service-item span { font-size: 0.68em; color: #333; font-weight: 500; line-height: 1.1; }
-        
-        .emergency-notice { background: #fff5f5; padding: 8px; text-align: center; border-radius: 8px; font-size: 0.85em; color: #d63031; flex-shrink: 0; margin-top: 4px; border: 1px dashed var(--point-red); font-weight: bold; }
-        .emergency-notice b { color: var(--point-red); font-size: 1.1em; }
 
         .footer-index { background: #f8f9fa; border-top: 1px solid #ddd; padding: 12px 50px 18px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; flex-shrink: 0; }
         .index-item { border-left: 2px solid var(--beige); padding-left: 12px; }
@@ -62,7 +63,7 @@
 </head>
 <body>
     <div class="admin-panel">
-        <h2 style="margin-top:0;">📋 전담 서비스 안내문 V1.1</h2>
+        <h2 style="margin-top:0;">📋 전담 서비스 안내문 V1.2</h2>
         <div class="input-group">
             <div><label>날짜 입력</label><input type="text" id="in-date" oninput="updateView()"></div>
             <div><label>업체명</label><input type="text" id="in-client" value="LH 한국토지주택공사" oninput="updateView()"></div>
@@ -73,7 +74,7 @@
             <div class="staff-input-grid" id="mgt-inputs"></div>
             <div class="section-title">✈️ 항공 서비스팀 (정/부)</div>
             <div class="staff-input-grid" id="air-inputs"></div>
-            <div class="section-title">🏨 호텔, 비자, 렌터카, 보험 서비스</div>
+            <div class="section-title">🏨 호텔, 비자, 렌터카 서비스</div>
             <div class="staff-input-grid" id="etc-inputs"></div>
         </div>
         <button class="print-btn" onclick="window.print()">🖨️ 인쇄 및 PDF 저장</button>
@@ -92,9 +93,11 @@
             </div>
             
             <div class="team-section"><div class="team-label">MANAGEMENT & SUPPORT (서비스 총괄)</div><div class="staff-grid" id="view-mgt"></div></div>
-            <div class="team-section"><div class="team-label">AIR SERVICE (항공)</div><div class="staff-grid" id="view-air"></div></div>
-            <div class="team-section"><div class="team-label">HOTEL, VISA & OTHER SERVICE (호텔/비자/기타)</div><div class="staff-grid" id="view-etc"></div></div>
+            <div class="team-section"><div class="team-label">AIR SERVICE (항공 담당 정/부)</div><div class="staff-grid" id="view-air"></div></div>
+            <div class="team-section"><div class="team-label">HOTEL, VISA & RENT-A-CAR (호텔/비자/렌터카)</div><div class="staff-grid" id="view-etc"></div></div>
             
+            <div class="emergency-notice">업무 시간 외 🚨 <b>24시간 긴급 서비스 센터</b> ( ☎ <b>02-2076-2200</b> / 📧 <b>air365@hanatour.com</b> )</div>
+
             <div class="section-header"><span>하나투어비즈니스의 세 가지 약속</span></div>
             <div class="promise-container">
                 <div class="promise-item"><div class="promise-title">Customer Satisfaction</div><div class="promise-desc">차별화된 컨설팅 노하우로 친절·신속·정확한 고객 중심 서비스를 제공하겠습니다.</div></div>
@@ -111,7 +114,6 @@
                     <div class="service-item"><span>출장자를 위한<br>여행 파우치 제공</span></div>
                 </div>
             </div>
-            <div class="emergency-notice">업무 시간 외 🚨 <b>24시간 긴급 서비스 센터</b> ( ☎ <b>02-2076-2200</b> / 📧 <b>air365@hanatour.com</b> )</div>
         </div>
         
         <div class="footer-index">
@@ -125,23 +127,22 @@
         const pools = {
             mgt_main: [{n:"김동욱 팀장", v:"서비스 총괄(정)/김동욱 팀장/010-8560-6258/dwkim@hanatour.com"},{n:"최봉재 수석", v:"서비스 총괄(정)/최봉재 수석/010-7438-0333/bjchoi@hanatour.com"},{n:"김태근 선임", v:"서비스 총괄(정)/김태근 선임/010-5584-4616/tgkim@hanatour.com"},{n:"김채스민 선임", v:"서비스 총괄(정)/김채스민 선임/010-5584-4616/jasmine@hanatour.com"},{n:"장현수 사원", v:"서비스 총괄(정)/장현수 사원/010-5584-4616/hsjang@hanatour.com"}],
             mgt_sub: [{n:"최봉재 수석", v:"서비스 총괄(부)/최봉재 수석/010-7438-0333/bjchoi@hanatour.com"},{n:"김태근 선임", v:"서비스 총괄(부)/김태근 선임/010-5584-4616/tgkim@hanatour.com"},{n:"김채스민 선임", v:"서비스 총괄(부)/김채스민 선임/010-5584-4616/jasmine@hanatour.com"},{n:"장현수 사원", v:"서비스 총괄(부)/장현수 사원/010-5584-4616/hsjang@hanatour.com"}],
-            air: [
-                {n:"고은비 선임", v:"항공 담당/고은비 선임/02-1234-5001/ebko@hanatour.com"},{n:"권혜경 선임", v:"항공 담당/권혜경 선임/02-1234-5002/hkkwon@hanatour.com"},{n:"김나리 선임", v:"항공 담당/김나리 선임/02-1234-5003/nrkim@hanatour.com"},{n:"김서영 선임", v:"항공 담당/김서영 선임/02-1234-5004/sykim@hanatour.com"},{n:"박선희 선임", v:"항공 담당/박선희 선임/02-1234-5005/shpark@hanatour.com"},{n:"신정애 선임", v:"항공 담당/신정애 선임/02-1234-5006/jashin@hanatour.com"},{n:"안소영 선임", v:"항공 담당/안소영 선임/02-1234-5007/syahn@hanatour.com"},{n:"이선민 선임", v:"항공 담당/이선민 선임/02-1234-5008/smlee@hanatour.com"},{n:"이혜정 선임", v:"항공 담당/이혜정 선임/02-1234-5009/hjlee@hanatour.com"},{n:"장성아 선임", v:"항공 담당/장성아 선임/02-1234-5010/sajang@hanatour.com"},{n:"정선화 선임", v:"항공 담당/정선화 선임/02-1234-5011/shjung@hanatour.com"},{n:"채경은 선임", v:"항공 담당/채경은 선임/02-1234-5012/kechae@hanatour.com"}
+            air_main: [
+                {n:"고은비 선임", v:"항공 담당(정)/고은비 선임/02-1234-5001/ebko@hanatour.com"},{n:"권혜경 선임", v:"항공 담당(정)/권혜경 선임/02-1234-5002/hkkwon@hanatour.com"},{n:"김나리 선임", v:"항공 담당(정)/김나리 선임/02-1234-5003/nrkim@hanatour.com"},{n:"김서영 선임", v:"항공 담당(정)/김서영 선임/02-1234-5004/sykim@hanatour.com"},{n:"박선희 선임", v:"항공 담당(정)/박선희 선임/02-1234-5005/shpark@hanatour.com"},{n:"신정애 선임", v:"항공 담당(정)/신정애 선임/02-1234-5006/jashin@hanatour.com"},{n:"안소영 선임", v:"항공 담당(정)/안소영 선임/02-1234-5007/syahn@hanatour.com"},{n:"이선민 선임", v:"항공 담당(정)/이선민 선임/02-1234-5008/smlee@hanatour.com"},{n:"이혜정 선임", v:"항공 담당(정)/이혜정 선임/02-1234-5009/hjlee@hanatour.com"},{n:"장성아 선임", v:"항공 담당(정)/장성아 선임/02-1234-5010/sajang@hanatour.com"},{n:"정선화 선임", v:"항공 담당(정)/정선화 선임/02-1234-5011/shjung@hanatour.com"},{n:"채경은 선임", v:"항공 담당(정)/채경은 선임/02-1234-5012/kechae@hanatour.com"}
             ],
+            air_sub: [
+                {n:"고은비 선임", v:"항공 담당(부)/고은비 선임/02-1234-5001/ebko@hanatour.com"},{n:"권혜경 선임", v:"항공 담당(부)/권혜경 선임/02-1234-5002/hkkwon@hanatour.com"},{n:"김나리 선임", v:"항공 담당(부)/김나리 선임/02-1234-5003/nrkim@hanatour.com"},{n:"김서영 선임", v:"항공 담당(부)/김서영 선임/02-1234-5004/sykim@hanatour.com"},{n:"박선희 선임", v:"항공 담당(부)/박선희 선임/02-1234-5005/shpark@hanatour.com"},{n:"신정애 선임", v:"항공 담당(부)/신정애 선임/02-1234-5006/jashin@hanatour.com"},{n:"안소영 선임", v:"항공 담당(부)/안소영 선임/02-1234-5007/syahn@hanatour.com"},{n:"이선민 선임", v:"항공 담당(부)/이선민 선임/02-1234-5008/smlee@hanatour.com"},{n:"이혜정 선임", v:"항공 담당(부)/이혜정 선임/02-1234-5009/hjlee@hanatour.com"},{n:"장성아 선임", v:"항공 담당(부)/장성아 선임/02-1234-5010/sajang@hanatour.com"},{n:"정선화 선임", v:"항공 담당(부)/정선화 선임/02-1234-5011/shjung@hanatour.com"},{n:"채경은 선임", v:"항공 담당(부)/채경은 선임/02-1234-5012/kechae@hanatour.com"}
+            ],
+            hotel: [{n:"변윤숙 수석", v:"호텔 담당/변윤숙 수석/02-2076-2289/hotelbiz@hanatour.com"},{n:"김가영 선임", v:"호텔 담당/김가영 선임/02-6730-3330/hotelbiz@hanatour.com"},{n:"가상 인물C", v:"호텔 담당/담당자명/02-0000-0000/hotelbiz@hanatour.com"}],
             visa: [{n:"김가영 선임", v:"비자,보험 담당/김가영 선임/02-6730-3330/hanavisa1@hanatour.com"},{n:"가상 인물A", v:"비자,보험 담당/담당자명/02-0000-0000/test@hanatour.com"}],
-            car: [{n:"박유진 선임", v:"렌터카,철도 담당/박유진 선임/02-6730-3332/hanasvc@hanatour.com"},{n:"가상 인물B", v:"렌터카,철도 담당/담당자명/02-0000-0000/test@hanatour.com"}],
-            hotel: [{n:"변윤숙 수석", v:"호텔 담당/변윤숙 수석/02-2076-2289/hotelbiz@hanatour.com"},{n:"김가영 선임", v:"호텔 담당/김가영 선임/02-6730-3330/hotelbiz@hanatour.com"},{n:"가상 인물C", v:"호텔 담당/담당자명/02-0000-0000/hotelbiz@hanatour.com"}]
+            car: [{n:"박유진 선임", v:"렌터카,철도 담당/박유진 선임/02-6730-3332/hanasvc@hanatour.com"},{n:"가상 인물B", v:"렌터카,철도 담당/담당자명/02-0000-0000/test@hanatour.com"}]
         };
 
         function init() {
             document.getElementById('in-date').value = "2026년 2월 13일(금)";
-            // 서비스 총괄 (정, 부)
             setupSelect('mgt-inputs', 'mgt', ['서비스 총괄(정)', '서비스 총괄(부)'], [pools.mgt_main, pools.mgt_sub]);
-            // 항공 (정, 부)
-            setupSelect('air-inputs', 'air', ['항공 담당(정)', '항공 담당(부)'], [pools.air, pools.air]);
-            // 기타 (비자, 렌터카, 호텔1, 호텔2)
-            setupSelect('etc-inputs', 'etc', ['비자/보험', '렌터카/철도', '호텔 담당1', '호텔 담당2'], [pools.visa, pools.car, pools.hotel, pools.hotel]);
-            
+            setupSelect('air-inputs', 'air', ['항공 담당(정)', '항공 담당(부)'], [pools.air_main, pools.air_sub]);
+            setupSelect('etc-inputs', 'etc', ['호텔 담당1', '호텔 담당2', '비자/보험', '렌터카/철도'], [pools.hotel, pools.hotel, pools.visa, pools.car]);
             updateView(); renderAll();
         }
 
