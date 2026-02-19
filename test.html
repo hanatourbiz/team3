@@ -3,28 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>출장 전담 여행사 안내문 V1.4 | 하나투어비즈니스</title>
+    <title>출장 전담 여행사 안내문 V1.5 | 하나투어비즈니스</title>
     <style>
         :root { --dark-blue: #1a2a4e; --point-red: #e31a1a; --beige: #bca896; }
         body { font-family: 'Pretendard', -apple-system, sans-serif; background: #f0f2f5; margin: 0; padding: 20px; }
         
         /* 관리 콘솔 */
         .admin-panel { max-width: 1100px; margin: 0 auto 30px; background: #fff; padding: 25px; border-radius: 12px; border: 2px solid var(--dark-blue); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .input-group { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 25px; }
+        .input-group { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 25px; align-items: end; }
         .section-title { font-size: 0.95em; font-weight: bold; color: var(--point-red); margin-bottom: 10px; border-left: 4px solid var(--point-red); padding-left: 10px; margin-top: 25px; }
         .staff-input-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; background: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #eee; }
         .staff-input-unit { background: white; padding: 10px; border: 1px solid #ddd; border-radius: 8px; display: flex; flex-direction: column; gap: 5px; }
+        
         label { font-size: 0.85em; font-weight: bold; color: #333; margin-bottom: 5px; display: block; }
-        input, select { width: 100%; padding: 7px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.85em; box-sizing: border-box; }
+        input, select { width: 100%; height: 32px; padding: 0 7px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.85em; box-sizing: border-box; }
+        /* 파일 입력창 높이 통일 */
+        input[type="file"] { padding: 4px 7px; line-height: 1; }
+
         .print-btn { background: var(--point-red); color: white; padding: 15px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 20px; font-size: 1.1em; transition: 0.2s; }
 
-        /* 출력 페이지 레이아웃 */
+        /* 출력 페이지 */
         .page { width: 210mm; height: 297mm; padding: 0; margin: 0 auto; background: white; position: relative; color: #333; box-shadow: 0 0 20px rgba(0,0,0,0.1); display: flex; flex-direction: column; overflow: hidden; box-sizing: border-box; }
         .date-bar { background: #3d3229; color: white; padding: 10px 50px; font-size: 1.1em; font-weight: 600; text-align: center; border-bottom: 3px solid var(--beige); flex-shrink: 0; }
         .header { background: var(--dark-blue); color: white; padding: 25px 50px; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
         .header h1 { font-size: 2.2em; margin: 0; line-height: 1.1; font-weight: 800; letter-spacing: -1px; }
-        
-        /* 로고 영역 표시 가이드 */
         .logo-placeholder { width: 170px; height: 55px; border: 2px dashed rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center; text-align: center; font-size: 0.7em; color: rgba(255,255,255,0.5); border-radius: 4px; }
         .logo-client { max-width: 170px; max-height: 55px; filter: brightness(0) invert(1); object-fit: contain; }
 
@@ -45,7 +47,7 @@
 
         .air-email-box { grid-column: span 2; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #fff; border: 1px solid var(--beige); border-radius: 10px; padding: 5px; text-align: center; }
         .air-email-label { font-size: 0.75em; color: var(--beige); font-weight: bold; margin-bottom: 2px; }
-        .air-email-value { font-size: 1.3em; font-weight: 800; color: var(--dark-blue); letter-spacing: 0.5px; }
+        .air-email-value { font-size: 1.35em; font-weight: 800; color: var(--dark-blue); letter-spacing: 0.5px; }
 
         .emergency-notice { background: #fff5f5; padding: 10px; text-align: center; border-radius: 8px; font-size: 0.85em; color: #d63031; flex-shrink: 0; margin: 10px 0; border: 1px dashed var(--point-red); font-weight: bold; }
         .emergency-notice b { color: var(--point-red); font-size: 1.1em; }
@@ -80,7 +82,7 @@
 </head>
 <body>
     <div class="admin-panel">
-        <h2 style="margin-top:0;">📋 전담 서비스 안내문 V1.4 (최종 FIX)</h2>
+        <h2 style="margin-top:0;">📋 전담 서비스 안내문 V1.5 (최종 FIX)</h2>
         <div class="input-group">
             <div><label>날짜 입력</label><input type="text" id="in-date" oninput="updateView()"></div>
             <div><label>업체명</label><input type="text" id="in-client" value="LH 한국토지주택공사" oninput="updateView()"></div>
@@ -88,9 +90,9 @@
             <div><label>항공 전용 이메일</label><input type="text" id="in-air-email" value="hntair@hanatour.com" oninput="updateView()"></div>
         </div>
         <div id="input-containers">
-            <div class="section-title">👤 서비스 총괄 (정/부)</div>
+            <div class="section-title">👤 서비스 총괄</div>
             <div class="staff-input-grid" id="mgt-inputs"></div>
-            <div class="section-title">✈️ 항공 서비스팀 (정/부) - 개인 이메일 자동 숨김</div>
+            <div class="section-title">✈️ 항공 서비스팀</div>
             <div class="staff-input-grid" id="air-inputs"></div>
             <div class="section-title">🏨 호텔, 비자, 렌터카 서비스</div>
             <div class="staff-input-grid" id="etc-inputs"></div>
@@ -161,7 +163,9 @@
             mgt: [
                 {n:"김동욱 팀장", v:"서비스 총괄(정)/김동욱 팀장/010-8560-6258/dwkim@hanatour.com"},
                 {n:"최봉재 수석", v:"서비스 총괄(부)/최봉재 수석/010-7438-0333/bjchoi@hanatour.com"},
-                {n:"김태근 선임", v:"서비스 총괄/김태근 선임/010-5584-4616/tgkim@hanatour.com"}
+                {n:"김태근 선임", v:"서비스 총괄/김태근 선임/010-5584-4616/tgkim@hanatour.com"},
+                {n:"김채스민 선임", v:"서비스 총괄/김채스민 선임/010-5584-4616/jasmine@hanatour.com"},
+                {n:"장현수 사원", v:"서비스 총괄/장현수 사원/010-5584-4616/hsjang@hanatour.com"}
             ],
             air: [
                 {n:"고은비 선임", v:"항공 담당/고은비 선임/02-1234-5001"},{n:"권혜경 선임", v:"항공 담당/권혜경 선임/02-1234-5002"},
@@ -207,7 +211,7 @@
             if(val !== "DIRECT" && val !== "") {
                 const parts = val.split('/');
                 const label = document.querySelectorAll(`#${id}-inputs label`)[i].innerText;
-                parts[0] = label; // 정/부 구분 적용
+                parts[0] = label;
                 val = parts.join('/');
             }
             document.getElementById(`${id}-n-${i}`).value = (val === "DIRECT") ? "" : val; 
