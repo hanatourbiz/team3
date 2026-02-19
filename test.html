@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>출장 전담 여행사 안내문 V1.6 | 하나투어비즈니스</title>
+    <title>출장 전담 여행사 안내문 V1.7 | 하나투어비즈니스</title>
     <style>
         :root { --dark-blue: #1a2a4e; --point-red: #e31a1a; --beige: #bca896; }
         body { font-family: 'Pretendard', -apple-system, sans-serif; background: #f0f2f5; margin: 0; padding: 20px; }
@@ -24,8 +24,21 @@
         /* 출력 페이지 */
         .page { width: 210mm; height: 297mm; padding: 0; margin: 0 auto; background: white; position: relative; color: #333; box-shadow: 0 0 20px rgba(0,0,0,0.1); display: flex; flex-direction: column; overflow: hidden; box-sizing: border-box; }
         .date-bar { background: #3d3229; color: white; padding: 10px 50px; font-size: 1.1em; font-weight: 600; text-align: center; border-bottom: 3px solid var(--beige); flex-shrink: 0; }
-        .header { background: var(--dark-blue); color: white; padding: 25px 50px; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
-        .header h1 { font-size: 2.2em; margin: 0; line-height: 1.1; font-weight: 800; letter-spacing: -1px; }
+        .header { background: var(--dark-blue); color: white; padding: 25px 50px; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; min-height: 120px; }
+        
+        /* 업체명 폰트 크기 자동 조절 로직 적용 */
+        .header h1 { 
+            flex: 1;
+            font-size: 2.2em; 
+            margin: 0; 
+            line-height: 1.2; 
+            font-weight: 800; 
+            letter-spacing: -1px; 
+            word-break: keep-all; 
+            padding-right: 20px;
+            max-width: 550px; /* 로고 영역 확보 */
+        }
+        
         .logo-placeholder { width: 170px; height: 55px; border: 2px dashed rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center; text-align: center; font-size: 0.7em; color: rgba(255,255,255,0.5); border-radius: 4px; }
         .logo-client { max-width: 170px; max-height: 55px; filter: brightness(0) invert(1); object-fit: contain; }
 
@@ -81,7 +94,7 @@
 </head>
 <body>
     <div class="admin-panel">
-        <h2 style="margin-top:0;">📋 전담 서비스 안내문 V1.6</h2>
+        <h2 style="margin-top:0;">📋 전담 서비스 안내문 V1.7</h2>
         <div class="input-group">
             <div><label>날짜 입력</label><input type="text" id="in-date" oninput="updateView()"></div>
             <div><label>업체명</label><input type="text" id="in-client" value="LH 한국토지주택공사" oninput="updateView()"></div>
@@ -248,8 +261,16 @@
 
         function updateView() {
             const date = document.getElementById('in-date').value, client = document.getElementById('in-client').value || '업체명';
+            const viewClient = document.getElementById('view-client');
+            
             document.getElementById('view-date').innerText = date;
-            document.getElementById('view-client').innerHTML = client.replace(' ', '<br>');
+            
+            // 업체명 길이에 따른 폰트 크기 조절 (Fluid Typography)
+            if(client.length > 15) viewClient.style.fontSize = "1.5em";
+            else if(client.length > 10) viewClient.style.fontSize = "1.8em";
+            else viewClient.style.fontSize = "2.2em";
+            
+            viewClient.innerText = client;
             document.querySelectorAll('.v-client-inline').forEach(el => el.innerText = client);
             renderAll();
         }
