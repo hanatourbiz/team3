@@ -2,9 +2,9 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>전담 서비스 안내문 V1.9 | 하나투어비즈니스</title>
+    <title>전담 서비스 안내문 V1.3 (DB 연동형) | 하나투어비즈니스</title>
     <style>
-        /* [V1.3 디자인 100% 복구] */
+        /* [원본 보존] V1.3 고유 디자인 스타일 */
         :root { --dark-blue: #1a2a4e; --point-red: #e31a1a; --beige: #bca896; }
         body { font-family: 'Pretendard', sans-serif; background: #f0f2f5; margin: 0; padding: 20px; }
         
@@ -12,13 +12,12 @@
         .admin-panel { max-width: 1100px; margin: 0 auto 30px; background: #fff; padding: 25px; border-radius: 12px; border: 2px solid var(--dark-blue); }
         .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 2px solid #eee; padding-bottom: 15px; }
         .reg-btn { background: #34a853; color: white; padding: 10px 20px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; text-decoration: none; font-size: 0.9em; }
-        
-        .select-section { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 20px; }
+        .select-section { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
         .select-box { background: #f8f9fa; padding: 10px; border-radius: 8px; border: 1px solid #ddd; }
-        .select-box label { display: block; font-size: 0.8em; font-weight: bold; margin-bottom: 5px; color: var(--dark-blue); }
+        .select-box label { display: block; font-size: 0.75em; font-weight: bold; margin-bottom: 5px; }
         select { width: 100%; padding: 5px; border: 1px solid #ccc; border-radius: 4px; }
 
-        /* [핵심] github.io/team3/print_notice.html 의 오리지널 디자인 코드 */
+        /* V1.3 안내문 디자인 (수정 금지) */
         .page { width: 210mm; height: 297mm; padding: 0; margin: 0 auto; background: white; position: relative; color: #333; box-shadow: 0 0 20px rgba(0,0,0,0.1); display: flex; flex-direction: column; overflow: hidden; box-sizing: border-box; }
         .date-bar { background: #3d3229; color: white; padding: 10px 50px; font-size: 1.1em; font-weight: 600; text-align: center; border-bottom: 3px solid var(--beige); flex-shrink: 0; }
         .header { background: var(--dark-blue); color: white; padding: 22px 50px; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
@@ -49,12 +48,12 @@
     </style>
 </head>
 <body>
-    <div id="loading" style="position:fixed; top:0; left:0; width:100%; height:100%; background:white; z-index:9999; display:flex; justify-content:center; align-items:center;">데이터를 불러오는 중입니다...</div>
+    <div id="loading" style="position:fixed; top:0; left:0; width:100%; height:100%; background:white; z-index:9999; display:flex; justify-content:center; align-items:center;">데이터 연동 중...</div>
 
     <div class="admin-panel">
         <div class="admin-header">
-            <h2 style="margin:0;">📋 안내문 관리자 모드 (V1.9)</h2>
-            <a href="https://docs.google.com/forms/d/1X6oX_VnN_D_Yy_YOUR_FORM_ID/viewform" target="_blank" class="reg-btn">📝 직원 정보 등록 (Google Form)</a>
+            <h2 style="margin:0;">📋 안내문 관리자 모드 (V1.9.2)</h2>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSf6y2inZ1DYqpJXHgFPMGop2PrzBLcJHzzgKwzJMC2F3_cEuA/viewform?usp=publish-editor" target="_blank" class="reg-btn">📝 직원 정보 등록 (Google Form)</a>
         </div>
         
         <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:15px; margin-bottom:20px;">
@@ -78,7 +77,7 @@
                 <img src="photos/logo2.png" class="company-logo-main" onerror="this.src='https://via.placeholder.com/150x50?text=HanaTour'">
                 <div class="intro-text-box">
                     <strong><span class="v-client-inline"></span> 임직원 여러분, 안녕하십니까.</strong><br>
-                    하나투어비즈니스는 국내 최대 여행기업 하나투어가 100% 출자한 법인 여행 서비스 전문 조직입니다. 26년 전통의 노하우로 최상의 서비스를 제공하겠습니다.
+                    하나투어비즈니스는 국내 최대 여행기업 하나투어가 100% 출자한 법인 여행 서비스 전문 조직입니다.
                 </div>
             </div>
             
@@ -89,10 +88,11 @@
             <div class="emergency-notice">업무 시간 외 🚨 <b>24시간 긴급 서비스 센터</b> ( ☎ <b>02-2076-2200</b> )</div>
 
             <div class="promise-container">
-                <div class="promise-item"><div class="promise-title">Global Network</div><div class="promise-desc">전 세계 지사망을 통한 안정적인 서비스를 지원합니다.</div></div>
-                <div class="promise-item"><div class="promise-title">Professional Service</div><div class="promise-desc">법인 영업 전문가들이 최적의 출장 솔루션을 제공합니다.</div></div>
+                <div class="promise-item"><div class="promise-title">Global Network & Infrastructure</div><div class="promise-desc">전 세계 지사 및 파트너망을 통해 안정적인 서비스를 지원합니다.</div></div>
+                <div class="promise-item"><div class="promise-title">Professional Consulting Service</div><div class="promise-desc">다년간의 공공기관 전담 전문가들이 최상의 솔루션을 제공합니다.</div></div>
             </div>
         </div>
+        
         <div class="footer-index">
             <div class="index-item"><h4>SEOUL (HQ) </h4><p>서울 중구 인사동 5길 25</p></div>
             <div class="index-item"><h4>DAEGU </h4><p>대구 중구 국채보상로 648 호수빌딩 15층</p></div>
@@ -101,7 +101,6 @@
     </div>
 
     <script>
-        // 팀장님이 배포하신 API 주소
         const API_URL = 'https://script.google.com/macros/s/AKfycbz3_3GbX94yOQwY8poSX0iLX_71QCNPJ8NaI6mpERZiArnlmkYrpDnVsb6BDpPxIzZdTg/exec';
         let staffDB = [];
 
@@ -114,7 +113,7 @@
                 renderSelectors('etc-selectors', '기타(호텔/비자 등)', 'view-etc');
                 syncCommon();
                 document.getElementById('loading').style.display = 'none';
-            } catch (e) { alert('DB 연결 실패'); }
+            } catch (e) { alert('데이터 로드 실패'); }
         }
 
         function renderSelectors(containerId, category, targetId) {
