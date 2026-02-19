@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>출장 전담 여행사 안내문 V1.92 | 하나투어비즈니스</title>
+    <title>출장 전담 여행사 안내문 V1.93 | 하나투어비즈니스</title>
     <style>
         :root { --dark-blue: #1a2a4e; --point-red: #e31a1a; --beige: #bca896; }
         body { font-family: 'Pretendard', -apple-system, sans-serif; background: #f0f2f5; margin: 0; padding: 20px; }
@@ -50,7 +50,6 @@
         .emergency-notice { background: #fff5f5; padding: 10px; text-align: center; border-radius: 8px; font-size: 0.85em; color: #d63031; margin: 10px 0; border: 1px dashed var(--point-red); font-weight: bold; }
         .emergency-notice b { color: var(--point-red); font-size: 1.1em; }
 
-        /* 복원된 Core Values 디자인 */
         .section-header { text-align: center; margin: 10px 0 5px; }
         .section-header span { background: #e7ebf3; padding: 3px 25px; font-weight: bold; font-size: 0.85em; border-radius: 20px; color: var(--dark-blue); }
         .promise-container { border: 1px solid #d1d5db; border-radius: 10px; padding: 15px 20px; background: white; display: flex; flex-direction: column; gap: 10px; }
@@ -74,9 +73,9 @@
 </head>
 <body>
     <div class="admin-panel">
-        <h2 style="margin-top:0;">📋 전담 서비스 안내문 V1.92</h2>
+        <h2 style="margin-top:0;">📋 전담 서비스 안내문 V1.93</h2>
         <div class="input-group">
-            <div><label>날짜 입력</label><input type="text" id="in-date"></div>
+            <div><label>날짜 입력</label><input type="text" id="in-date" oninput="updateView()"></div>
             <div><label>업체명</label><input type="text" id="in-client" value="LH 한국토지주택공사" oninput="updateView()"></div>
             <div><label>업체 로고 업로드</label><input type="file" accept="image/*" onchange="loadLogo(event)"></div>
             <div><label>항공 전용 이메일</label><input type="text" id="in-air-email" value="hntair@hanatour.com" oninput="updateView()"></div>
@@ -86,7 +85,7 @@
             <div class="staff-input-grid" id="mgt-inputs"></div>
             <div class="section-title">✈️ 항공 서비스팀</div>
             <div class="staff-input-grid" id="air-inputs"></div>
-            <div class="section-title">🏨 기타 서비스 (호텔/비자/보험/렌터카/철도)</div>
+            <div class="section-title">🏨 기타 서비스 (호텔, 비자, 렌터카, 철도)</div>
             <div class="staff-input-grid" id="etc-inputs"></div>
         </div>
         <button class="print-btn" onclick="window.print()">🖨️ 인쇄 및 PDF 저장</button>
@@ -168,8 +167,83 @@
                 {n:"이혜정 수석", v:"항공 담당/이혜정 수석/02-1234-5009"},{n:"장성아 선임", v:"항공 담당/장성아 선임/02-1234-5010"},
                 {n:"정선화 선임", v:"항공 담당/정선화 선임/02-1234-5011"},{n:"채경은 팀장", v:"항공 담당/채경은 팀장/02-1234-5012"}
             ],
-            hotel: [
-                {n:"변윤숙 수석", v:"호텔 담당/변윤숙 수석/02-2076-2289/hotelbiz@hanatour.com"},
-                {n:"김가영 선임", v:"호텔 담당/김가영 선임/02-6730-3330/hotelbiz@hanatour.com"}
-            ],
-            visa: [{n:"김가영 선임", v:"비자,보험 담당/
+            etc: [
+                {n:"변윤숙 수석(호텔)", v:"호텔 담당/변윤숙 수석/02-2076-2289/hotelbiz@hanatour.com"},
+                {n:"김가영 선임(호텔)", v:"호텔 담당/김가영 선임/02-6730-3330/hotelbiz@hanatour.com"},
+                {n:"김가영 선임(비자)", v:"비자,보험 담당/김가영 선임/02-6730-3330/hanavisa1@hanatour.com"},
+                {n:"박유진 선임(렌터)", v:"렌터카,철도 담당/박유진 선임/02-6730-3332/hanasvc@hanatour.com"}
+            ]
+        };
+
+        function init() {
+            document.getElementById('in-date').value = "2026년 2월 23일(월)";
+            setupSelect('mgt-inputs', 'mgt', ['서비스 총괄(정)', '서비스 총괄(부)'], 2);
+            setupSelect('air-inputs', 'air', ['항공 담당(정)', '항공 담당(부)'], 2);
+            setupSelect('etc-inputs', 'etc', ['호텔 담당', '비자/보험', '렌터카/철도'], 3);
+            updateView();
+        }
+
+        function setupSelect(containerId, poolKey, labels, count) {
+            const container = document.getElementById(containerId);
+            labels.forEach((label, i) => {
+                const options = pools[poolKey].map(s => `<option value="${s.v}">${s.n}</option>`).join('');
+                container.innerHTML += `
+                    <div class="staff-input-unit">
+                        <label>${label}</label>
+                        <select onchange="fillInput(this, '${poolKey}', ${i})"><option value="">선택</option>${options}</select>
+                        <input type="text" id="${poolKey}-n-${i}" oninput="renderAll()">
+                    </div>`;
+            });
+        }
+
+        function fillInput(sel, key, i) { 
+            const input = document.getElementById(`${key}-n-${i}`);
+            if (input) {
+                input.value = sel.value; 
+                renderAll(); 
+            }
+        }
+
+        function renderAll() {
+            const sections = [{id:'mgt', view:'view-mgt', count:2}, {id:'air', view:'view-air', count:2}, {id:'etc', view:'view-etc', count:3}];
+            sections.forEach(sec => {
+                const view = document.getElementById(sec.view); 
+                if(!view) return;
+                view.innerHTML = '';
+                for(let i=0; i<sec.count; i++) {
+                    const input = document.getElementById(`${sec.id}-n-${i}`);
+                    const val = input ? input.value : "";
+                    if(val && val.includes('/')) {
+                        const parts = val.split('/');
+                        const name = parts[1].split(' ')[0].trim();
+                        view.innerHTML += `
+                            <div class="staff-card">
+                                <img src="photos/${name}.png" onerror="this.src='https://via.placeholder.com/60/eee/999?text=${name}'">
+                                <div class="staff-info"><b>${parts[1]}</b><br><span style="color:#777">${parts[0]}</span><br>${sec.id==='air'?'<span class="tel-highlight">'+parts[2]+'</span>':parts[2]+'<br>'+(parts[3]||'')}</div>
+                            </div>`;
+                    }
+                }
+                if(sec.id === 'air') {
+                    view.innerHTML += `<div class="air-email-box"><div class="air-email-label">항공 예약 및 문의 전용 이메일</div><div class="air-email-value">${document.getElementById('in-air-email').value}</div></div>`;
+                }
+            });
+        }
+
+        function updateView() {
+            const client = document.getElementById('in-client').value || '업체명';
+            const viewClient = document.getElementById('view-client');
+            document.getElementById('view-date').innerText = document.getElementById('in-date').value;
+            viewClient.innerText = client;
+            viewClient.style.fontSize = client.length > 12 ? "2.0em" : "2.6em";
+            document.querySelectorAll('.v-client-inline').forEach(el => el.innerText = client);
+            renderAll();
+        }
+
+        function loadLogo(e) { 
+            const out = document.getElementById('view-logo'), p = document.getElementById('p-logo');
+            if(e.target.files[0]) { out.src = URL.createObjectURL(e.target.files[0]); out.style.display='block'; p.style.display='none'; } 
+        }
+        window.onload = init;
+    </script>
+</body>
+</html>
