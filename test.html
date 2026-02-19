@@ -31,7 +31,6 @@
         .team-section { margin-bottom: 5px; flex: 0 1 auto; }
         .team-label { background: var(--beige); color: white; padding: 3px 12px; font-weight: bold; border-radius: 5px 5px 0 0; display: inline-block; font-size: 0.75em; }
         
-        /* 스태프 그리드 레이아웃 */
         .staff-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; border-top: 2px solid var(--beige); padding-top: 6px; }
         .staff-card { background: white; border: 1px solid #e0d6cd; padding: 5px; border-radius: 40px 10px 10px 40px; display: flex; align-items: center; gap: 8px; height: 62px; box-sizing: border-box; }
         .staff-card img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 1px solid #eee; background: #f0f0f0; }
@@ -39,7 +38,6 @@
         .staff-info b { font-size: 1.15em; color: var(--dark-blue); }
         .staff-info .tel-highlight { font-size: 1.25em; font-weight: 700; color: #333; }
 
-        /* 항공 전용 이메일 박스 */
         .air-email-box { grid-column: span 2; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #fff; border: 1px solid var(--beige); border-radius: 10px; padding: 5px; text-align: center; }
         .air-email-label { font-size: 0.7em; color: var(--beige); font-weight: bold; margin-bottom: 2px; }
         .air-email-value { font-size: 1.2em; font-weight: 800; color: var(--dark-blue); letter-spacing: 0.5px; }
@@ -67,13 +65,7 @@
         .index-item h4 { margin: 0 0 2px; font-size: 0.78em; color: var(--dark-blue); }
         .index-item p { margin: 0; font-size: 0.68em; color: #666; line-height: 1.3; }
 
-        @page { size: A4; margin: 0; }
-        @media print { 
-            body { padding: 0; background: none; } 
-            .admin-panel { display: none !important; } 
-            .page { margin: 0; border: none; box-shadow: none; width: 210mm; height: 297mm; } 
-            * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } 
-        }
+        @media print { .admin-panel { display: none !important; } .page { margin: 0; border: none; box-shadow: none; width: 210mm; height: 297mm; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
     </style>
 </head>
 <body>
@@ -108,18 +100,9 @@
                 </div>
             </div>
             
-            <div class="team-section">
-                <div class="team-label">MANAGEMENT & SUPPORT (서비스 총괄)</div>
-                <div class="staff-grid" id="view-mgt"></div>
-            </div>
-            <div class="team-section">
-                <div class="team-label">AIR SERVICE (항공 담당 및 문의처)</div>
-                <div class="staff-grid" id="view-air"></div>
-            </div>
-            <div class="team-section">
-                <div class="team-label">HOTEL, VISA & RENT-A-CAR (기타 서비스)</div>
-                <div class="staff-grid" id="view-etc"></div>
-            </div>
+            <div class="team-section"><div class="team-label">MANAGEMENT & SUPPORT (서비스 총괄)</div><div class="staff-grid" id="view-mgt"></div></div>
+            <div class="team-section"><div class="team-label">AIR SERVICE (항공 담당 및 문의처)</div><div class="staff-grid" id="view-air"></div></div>
+            <div class="team-section"><div class="team-label">HOTEL, VISA & RENT-A-CAR (기타 서비스)</div><div class="staff-grid" id="view-etc"></div></div>
             
             <div class="emergency-notice">업무 시간 외 🚨 <b>24시간 긴급 서비스 센터</b> ( ☎ <b>02-2076-2200</b> / 📧 <b>air365@hanatour.com</b> )</div>
 
@@ -159,34 +142,46 @@
 
     <script>
         const pools = {
-            mgt: [
+            mgt_main: [
                 {n:"김동욱 팀장", v:"서비스 총괄(정)/김동욱 팀장/010-8560-6258/dwkim@hanatour.com"},
                 {n:"최봉재 수석", v:"서비스 총괄(정)/최봉재 수석/010-7438-0333/bjchoi@hanatour.com"},
-                {n:"김태근 선임", v:"서비스 총괄(정)/김태근 선임/010-5584-4616/tgkim@hanatour.com"}
+                {n:"김태근 선임", v:"서비스 총괄(정)/김태근 선임/010-5584-4616/tgkim@hanatour.com"},
+                {n:"김채스민 선임", v:"서비스 총괄(정)/김채스민 선임/010-5584-4616/jasmine@hanatour.com"},
+                {n:"장현수 사원", v:"서비스 총괄(정)/장현수 사원/010-5584-4616/hsjang@hanatour.com"}
+            ],
+            mgt_sub: [
+                {n:"최봉재 수석", v:"서비스 총괄(부)/최봉재 수석/010-7438-0333/bjchoi@hanatour.com"},
+                {n:"김태근 선임", v:"서비스 총괄(부)/김태근 선임/010-5584-4616/tgkim@hanatour.com"},
+                {n:"김채스민 선임", v:"서비스 총괄(부)/김채스민 선임/010-5584-4616/jasmine@hanatour.com"},
+                {n:"장현수 사원", v:"서비스 총괄(부)/장현수 사원/010-5584-4616/hsjang@hanatour.com"}
             ],
             air: [
-                {n:"권혜경 선임", v:"항공 담당/권혜경 선임/02-1234-5002"},
-                {n:"김나리 선임", v:"항공 담당/김나리 선임/02-1234-5003"},
-                {n:"고은비 선임", v:"항공 담당/고은비 선임/02-1234-5001"},
-                {n:"박선희 선임", v:"항공 담당/박선희 선임/02-1234-5005"}
+                {n:"고은비 선임", v:"항공 담당/고은비 선임/02-1234-5001"},{n:"권혜경 선임", v:"항공 담당/권혜경 선임/02-1234-5002"},
+                {n:"김나리 선임", v:"항공 담당/김나리 선임/02-1234-5003"},{n:"김서영 선임", v:"항공 담당/김서영 선임/02-1234-5004"},
+                {n:"박선희 선임", v:"항공 담당/박선희 선임/02-1234-5005"},{n:"신정애 선임", v:"항공 담당/신정애 선임/02-1234-5006"},
+                {n:"안소영 선임", v:"항공 담당/안소영 선임/02-1234-5007"},{n:"이선민 선임", v:"항공 담당/이선민 선임/02-1234-5008"},
+                {n:"이혜정 선임", v:"항공 담당/이혜정 선임/02-1234-5009"},{n:"장성아 선임", v:"항공 담당/장성아 선임/02-1234-5010"},
+                {n:"정선화 선임", v:"항공 담당/정선화 선임/02-1234-5011"},{n:"채경은 선임", v:"항공 담당/채경은 선임/02-1234-5012"}
             ],
-            hotel: [{n:"변윤숙 수석", v:"호텔 담당/변윤숙 수석/02-2076-2289/hotelbiz@hanatour.com"}],
+            hotel: [
+                {n:"변윤숙 수석", v:"호텔 담당/변윤숙 수석/02-2076-2289/hotelbiz@hanatour.com"},
+                {n:"김가영 선임", v:"호텔 담당/김가영 선임/02-6730-3330/hotelbiz@hanatour.com"}
+            ],
             visa: [{n:"김가영 선임", v:"비자,보험 담당/김가영 선임/02-6730-3330/hanavisa1@hanatour.com"}],
             car: [{n:"박유진 선임", v:"렌터카,철도 담당/박유진 선임/02-6730-3332/hanasvc@hanatour.com"}]
         };
 
         function init() {
             document.getElementById('in-date').value = "2026년 2월 23일(월)";
-            setupSelect('mgt-inputs', 'mgt', ['서비스 총괄(정)', '서비스 총괄(부)'], [pools.mgt, pools.mgt]);
+            setupSelect('mgt-inputs', 'mgt', ['서비스 총괄(정)', '서비스 총괄(부)'], [pools.mgt_main, pools.mgt_sub]);
             setupSelect('air-inputs', 'air', ['항공 담당 1', '항공 담당 2'], [pools.air, pools.air]);
-            setupSelect('etc-inputs', 'etc', ['호텔 담당', '비자/보험', '렌터카/철도'], [pools.hotel, pools.visa, pools.car]);
+            setupSelect('etc-inputs', 'etc', ['호텔 담당(정)', '호텔 담당(부)', '비자/보험', '렌터카/철도'], [pools.hotel, pools.hotel, pools.visa, pools.car]);
             updateView();
             renderAll();
         }
 
         function setupSelect(containerId, prefix, labels, poolsArray) {
-            const container = document.getElementById(containerId);
-            container.innerHTML = '';
+            const container = document.getElementById(containerId); container.innerHTML = '';
             labels.forEach((label, i) => {
                 const options = poolsArray[i].map(s => `<option value="${s.v}">${s.n}</option>`).join('');
                 container.innerHTML += `
@@ -195,79 +190,51 @@
                         <select onchange="fillInput(this, '${prefix}', ${i})">
                             <option value="">담당자 선택</option>${options}<option value="DIRECT">직접 입력</option>
                         </select>
-                        <input type="text" id="${prefix}-n-${i}" placeholder="직책/성함/연락처" oninput="renderAll()">
+                        <input type="text" id="${prefix}-n-${i}" placeholder="내용" oninput="renderAll()">
                     </div>`;
             });
         }
 
-        function fillInput(sel, id, i) {
-            document.getElementById(`${id}-n-${i}`).value = (sel.value === "DIRECT") ? "" : sel.value;
-            renderAll();
-        }
+        function fillInput(sel, id, i) { document.getElementById(`${id}-n-${i}`).value = (sel.value === "DIRECT") ? "" : sel.value; renderAll(); }
 
         function renderAll() {
-            const sections = [
-                {id:'mgt', view:'view-mgt', count:2},
-                {id:'air', view:'view-air', count:2}, // 항공 2명 고정
-                {id:'etc', view:'view-etc', count:3}
-            ];
-
+            const sections = [{id:'mgt', view:'view-mgt', count:2}, {id:'air', view:'view-air', count:2}, {id:'etc', view:'view-etc', count:4}];
             sections.forEach(sec => {
-                const view = document.getElementById(sec.view);
-                view.innerHTML = '';
+                const view = document.getElementById(sec.view); view.innerHTML = '';
                 for(let i=0; i<sec.count; i++) {
-                    const val = document.getElementById(`${sec.id}-n-${i}`).value;
+                    const input = document.getElementById(`${sec.id}-n-${i}`);
+                    if(!input) continue;
+                    const val = input.value;
                     if(val && val.includes('/')) {
                         const parts = val.split('/');
-                        const tag = parts[0] || '';
-                        const nameInfo = parts[1] || '';
-                        const tel = parts[2] || '';
-                        const email = parts[3] || '';
+                        const tag = parts[0]||'', nameInfo = parts[1]||'', tel = parts[2]||'', email = parts[3]||'';
                         const pureName = nameInfo.trim().split(' ')[0];
-                        
-                        // 항공 섹션은 이메일 노출 안함 + 번호 크게
                         const emailHTML = (sec.id === 'air' || !email) ? '' : `${email}`;
                         const telClass = (sec.id === 'air') ? 'tel-highlight' : '';
                         
                         view.innerHTML += `
                             <div class="staff-card">
                                 <img src="photos/${pureName}.png" onerror="this.src='https://via.placeholder.com/60/eee/999?text=User'">
-                                <div class="staff-info">
-                                    <b>${nameInfo}</b><br>
-                                    <span style="color:#777">${tag}</span><br>
-                                    <span class="${telClass}">${tel}</span><br>
-                                    ${emailHTML}
-                                </div>
+                                <div class="staff-info"><b>${nameInfo}</b><br><span style="color:#777">${tag}</span><br><span class="${telClass}">${tel}</span><br>${emailHTML}</div>
                             </div>`;
                     }
                 }
-                
-                // 항공 섹션 우측에 공용 이메일 박스 추가
                 if(sec.id === 'air') {
                     const airEmail = document.getElementById('in-air-email').value;
-                    view.innerHTML += `
-                        <div class="air-email-box">
-                            <div class="air-email-label">항공 예약 및 문의 전용 이메일</div>
-                            <div class="air-email-value">${airEmail}</div>
-                        </div>`;
+                    view.innerHTML += `<div class="air-email-box"><div class="air-email-label">항공 예약 및 문의 전용 이메일</div><div class="air-email-value">${airEmail}</div></div>`;
                 }
             });
         }
 
         function updateView() {
-            const date = document.getElementById('in-date').value;
-            const client = document.getElementById('in-client').value || '업체명';
+            const date = document.getElementById('in-date').value, client = document.getElementById('in-client').value || '업체명';
             document.getElementById('view-date').innerText = date;
             document.getElementById('view-client').innerHTML = client.replace(' ', '<br>');
             document.querySelectorAll('.v-client-inline').forEach(el => el.innerText = client);
             renderAll();
         }
 
-        function loadLogo(e) {
-            const out = document.getElementById('view-logo');
-            if(e.target.files[0]) { out.src = URL.createObjectURL(e.target.files[0]); out.style.display = 'block'; }
-        }
-
+        function loadLogo(e) { const out = document.getElementById('view-logo'); if(e.target.files[0]) { out.src = URL.createObjectURL(e.target.files[0]); out.style.display = 'block'; } }
         window.onload = init;
     </script>
 </body>
