@@ -2,85 +2,84 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>출장 전담 여행사 안내문 V1.96 | 하나투어비즈니스</title>
     <style>
         :root { --dark-blue: #1a2a4e; --point-red: #e31a1a; --beige: #bca896; }
-        body { font-family: 'Pretendard', -apple-system, sans-serif; background: #f0f2f5; margin: 0; padding: 20px; }
-        
+        body { font-family: 'Pretendard', sans-serif; background: #f0f2f5; margin: 0; padding: 20px; }
         .admin-panel { max-width: 1100px; margin: 0 auto 30px; background: #fff; padding: 25px; border-radius: 12px; border: 2px solid var(--dark-blue); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .input-group { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 25px; align-items: end; }
+        .input-group { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 25px; }
         .section-title { font-size: 0.95em; font-weight: bold; color: var(--point-red); margin-bottom: 10px; border-left: 4px solid var(--point-red); padding-left: 10px; margin-top: 25px; }
         .staff-input-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; background: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #eee; }
         .staff-input-unit { background: white; padding: 10px; border: 1px solid #ddd; border-radius: 8px; display: flex; flex-direction: column; gap: 5px; }
-        label { font-size: 0.85em; font-weight: bold; color: #333; }
-        input, select { width: 100%; height: 32px; padding: 0 7px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.85em; box-sizing: border-box; }
+        label { font-size: 0.85em; font-weight: bold; color: #333; margin-bottom: 5px; display: block; }
+        input, select { width: 100%; padding: 7px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.85em; box-sizing: border-box; }
         .print-btn { background: var(--point-red); color: white; padding: 15px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 20px; font-size: 1.1em; }
 
         .page { width: 210mm; height: 297mm; padding: 0; margin: 0 auto; background: white; position: relative; color: #333; box-shadow: 0 0 20px rgba(0,0,0,0.1); display: flex; flex-direction: column; overflow: hidden; box-sizing: border-box; }
         .date-bar { background: #3d3229; color: white; padding: 10px 50px; font-size: 1.1em; font-weight: 600; text-align: center; border-bottom: 3px solid var(--beige); flex-shrink: 0; }
-        
-        .header { background: var(--dark-blue); color: white; padding: 25px 40px; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; min-height: 150px; gap: 30px; }
-        .header-title-box { flex: 1; }
-        .header h1 { font-size: 2.6em; margin: 0; line-height: 1.1; font-weight: 900; letter-spacing: -1.5px; word-break: keep-all; }
-        .header p { margin: 8px 0 0; font-size: 1.3em; opacity: 0.85; font-weight: 500; }
-        
-        .logo-frame { background: #fff; border-radius: 8px; padding: 12px; width: 220px; height: 100px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.3); flex-shrink: 0; }
-        .logo-client { max-width: 100%; max-height: 100%; object-fit: contain; }
-        .logo-placeholder { font-size: 0.85em; color: #aaa; text-align: center; }
+        .header { background: var(--dark-blue); color: white; padding: 22px 50px; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
+        .header h1 { font-size: 2.2em; margin: 0; line-height: 1.1; font-weight: 800; letter-spacing: -1px; }
+        .logo-client { max-width: 170px; max-height: 55px; filter: brightness(0) invert(1); object-fit: contain; }
 
-        .content-body { padding: 15px 40px; background: #fcfaf8; flex: 1; display: flex; flex-direction: column; justify-content: space-between; min-height: 0; padding-bottom: 30px; }
-        .intro-section { display: flex; gap: 15px; align-items: center; border: 1px solid #e0d6cd; background: #fff; padding: 12px; border-radius: 12px; }
-        .company-logo-main { width: 150px; }
-        .intro-text-box { flex: 1; font-size: 0.82em; line-height: 1.6; border-left: 2px solid #eee; padding-left: 15px; text-align: justify; word-break: keep-all; }
+        .content-body { padding: 12px 50px; background: #fcfaf8; flex: 1; display: flex; flex-direction: column; justify-content: space-between; min-height: 0; }
+        .intro-section { display: flex; gap: 15px; align-items: center; border: 1px solid #e0d6cd; background: #fff; padding: 10px; border-radius: 12px; flex-shrink: 0; }
+        .company-logo-main { width: 150px; object-fit: contain; }
+        .intro-text-box { flex: 1; font-size: 0.82em; line-height: 1.6; color: #444; border-left: 2px solid #eee; padding-left: 15px; text-align: justify; word-break: keep-all; }
 
-        .team-section { margin-bottom: 5px; }
-        .team-label { background: var(--beige); color: white; padding: 3px 12px; font-weight: bold; border-radius: 5px 5px 0 0; font-size: 0.75em; display: inline-block; }
-        .staff-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; border-top: 2px solid var(--beige); padding-top: 6px; }
-        .staff-card { background: white; border: 1px solid #e0d6cd; padding: 5px; border-radius: 40px 10px 10px 40px; display: flex; align-items: center; gap: 8px; height: 62px; box-sizing: border-box; }
-        .staff-card img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 1px solid #eee; background: #f0f0f0; }
-        .staff-info { font-size: 0.58em; line-height: 1.3; overflow: hidden; }
-        .staff-info b { font-size: 1.15em; color: var(--dark-blue); }
-        .staff-info .tel-highlight { font-size: 1.25em; font-weight: 700; color: #333; }
+        .team-section { margin-bottom: 0px; flex: 0 1 auto; }
+        .team-label { background: var(--beige); color: white; padding: 2px 10px; font-weight: bold; border-radius: 5px 5px 0 0; display: inline-block; font-size: 0.7em; }
+        .staff-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; border-top: 2px solid var(--beige); padding-top: 4px; }
+        .staff-card { background: white; border: 1px solid #e0d6cd; padding: 4px; border-radius: 40px 10px 10px 40px; display: flex; align-items: center; gap: 8px; height: 58px; box-sizing: border-box; }
+        .staff-card img { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; border: 1px solid #eee; }
+        .staff-info { font-size: 0.55em; line-height: 1.2; overflow: hidden; }
+        .staff-info b { font-size: 1.1em; color: var(--dark-blue); }
 
-        .air-email-box { grid-column: span 2; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #fff; border: 1px solid var(--beige); border-radius: 10px; padding: 5px; text-align: center; }
-        .air-email-label { font-size: 0.75em; color: var(--beige); font-weight: bold; }
-        .air-email-value { font-size: 1.35em; font-weight: 800; color: var(--dark-blue); }
-
-        .emergency-notice { background: #fff5f5; padding: 10px; text-align: center; border-radius: 8px; font-size: 0.85em; color: #d63031; margin: 10px 0; border: 1px dashed var(--point-red); font-weight: bold; }
+        .emergency-notice { background: #fff5f5; padding: 8px; text-align: center; border-radius: 8px; font-size: 0.85em; color: #d63031; flex-shrink: 0; margin: 8px 0; border: 1px dashed var(--point-red); font-weight: bold; }
         .emergency-notice b { color: var(--point-red); font-size: 1.1em; }
 
-        .section-header { text-align: center; margin: 10px 0 5px; }
-        .section-header span { background: #e7ebf3; padding: 3px 25px; font-weight: bold; font-size: 0.85em; border-radius: 20px; color: var(--dark-blue); }
-        .promise-container { border: 1px solid #d1d5db; border-radius: 10px; padding: 12px 20px; background: white; display: flex; flex-direction: column; gap: 8px; }
-        .promise-item { display: flex; flex-direction: column; }
-        .promise-title { font-size: 1.0em; font-weight: 900; color: var(--dark-blue); display: flex; align-items: center; gap: 8px; margin-bottom: 2px; }
-        .promise-title::before { content: ""; display: inline-block; width: 4px; height: 14px; background-color: var(--point-red); }
-        .promise-desc { font-size: 0.82em; color: #555; line-height: 1.4; padding-left: 12px; }
+        .section-header { text-align: center; margin: 2px 0; flex-shrink: 0; }
+        .section-header span { background: #e7ebf3; padding: 2px 20px; font-weight: bold; font-size: 0.85em; border-radius: 20px; color: var(--dark-blue); }
         
-        .special-title { font-size: 0.95em; font-weight: bold; color: var(--dark-blue); margin: 12px 0 6px; text-align: center; }
-        .service-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-        .service-item { background: #fff; padding: 10px 5px; text-align: center; border: 1px solid #e0d6cd; border-radius: 8px; min-height: 50px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
-        .service-item span { font-size: 0.78em; color: #333; font-weight: 600; line-height: 1.3; }
+        .promise-container { border: 2px solid #d1d5db; border-radius: 10px; padding: 10px 15px; background: white; display: flex; flex-direction: column; gap: 6px; flex-shrink: 1; }
+        .promise-item { display: flex; flex-direction: column; gap: 2px; }
+        .promise-title { font-size: 0.95em; font-weight: 900; color: var(--dark-blue); display: flex; align-items: center; gap: 6px; }
+        .promise-title::before { content: ""; display: inline-block; width: 4px; height: 12px; background-color: var(--point-red); flex-shrink: 0; }
+        .promise-desc { font-size: 0.78em; color: #555; line-height: 1.4; text-align: justify; word-break: keep-all; padding-left: 10px; }
+        
+        .service-area { flex-shrink: 0; margin-top: 8px; } 
+        .special-title { font-size: 0.9em; font-weight: bold; color: var(--dark-blue); margin-bottom: 5px; text-align: center; }
+        .service-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+        .service-item { background: #fff; padding: 10px 5px; text-align: center; border: 1px solid #e0d6cd; border-radius: 6px; min-height: 45px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(0,0,0,0.03); }
+        .service-item span { font-size: 0.72em; color: #333; font-weight: 600; line-height: 1.2; }
 
-        @media print { .admin-panel { display: none !important; } .page { margin: 0; border: none; box-shadow: none; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+        .footer-index { background: #f8f9fa; border-top: 1px solid #ddd; padding: 12px 50px 18px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; flex-shrink: 0; }
+        .index-item { border-left: 2px solid var(--beige); padding-left: 12px; }
+        .index-item h4 { margin: 0 0 1px; font-size: 0.75em; color: var(--dark-blue); }
+        .index-item p { margin: 0; font-size: 0.65em; color: #666; line-height: 1.2; }
+
+        @page { size: A4; margin: 0; }
+        @media print { 
+            body { padding: 0; background: none !important; } 
+            .admin-panel { display: none !important; } 
+            .page { margin: 0 !important; border: none !important; box-shadow: none !important; width: 210mm; height: 297mm; display: flex !important; overflow: visible !important; } 
+            * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } 
+        }
     </style>
 </head>
 <body>
     <div class="admin-panel">
-        <h2 style="margin-top:0;">📋 전담 서비스 안내문 V1.95 </h2>
+        <h2 style="margin-top:0;">📋 전담 서비스 안내문 V1.96</h2>
         <div class="input-group">
             <div><label>날짜 입력</label><input type="text" id="in-date" oninput="updateView()"></div>
             <div><label>업체명</label><input type="text" id="in-client" value="LH 한국토지주택공사" oninput="updateView()"></div>
-            <div><label>업체 로고 업로드</label><input type="file" accept="image/*" onchange="loadLogo(event)"></div>
-            <div><label>항공 전용 이메일</label><input type="text" id="in-air-email" value="hntair@hanatour.com" oninput="updateView()"></div>
+            <div><label>업체 로고</label><input type="file" onchange="loadLogo(event)"></div>
         </div>
         <div id="input-containers">
-            <div class="section-title">👤 서비스 총괄</div>
+            <div class="section-title">👤 서비스 총괄 (정/부)</div>
             <div class="staff-input-grid" id="mgt-inputs"></div>
-            <div class="section-title">✈️ 항공 서비스팀</div>
+            <div class="section-title">✈️ 항공 서비스팀 (정/부 구분)</div>
             <div class="staff-input-grid" id="air-inputs"></div>
-            <div class="section-title">🏨 기타 서비스 (호텔, 보험, 비자, 렌터카, 철도)</div>
+            <div class="section-title">🏨 호텔, 비자, 렌터카 서비스</div>
             <div class="staff-input-grid" id="etc-inputs"></div>
         </div>
         <button class="print-btn" onclick="window.print()">🖨️ 인쇄 및 PDF 저장</button>
@@ -88,16 +87,7 @@
 
     <div class="page">
         <div class="date-bar"><b><span id="view-date"></span></b>부터 <b><span class="v-client-inline"></span></b> 출장 전담 여행사가<br>하나투어비즈니스로 새롭게 운영됩니다.</div>
-        <div class="header">
-            <div class="header-title-box">
-                <h1 id="view-client"></h1>
-               <p style="font-size: 1.8em; font-weight: 800; opacity: 1; margin-top: 10px; letter-spacing: -1px;">전담 서비스팀 구성</p>
-</div>
-            <div class="logo-frame">
-                <div id="p-logo" class="logo-placeholder">거래처 로고를<br>업로드하세요</div>
-                <img id="view-logo" src="" class="logo-client" style="display:none;">
-            </div>
-        </div>
+        <div class="header"><h1><span id="view-client"></span><br>전담 서비스팀 구성</h1><img id="view-logo" src="" class="logo-client" style="display:none;"></div>
         <div class="content-body">
             <div class="intro-section">
                 <img src="photos/logo2.png" class="company-logo-main" onerror="this.src='https://via.placeholder.com/220x80?text=HanaTour+Business'">
@@ -108,8 +98,8 @@
             </div>
             
             <div class="team-section"><div class="team-label">MANAGEMENT & SUPPORT (서비스 총괄)</div><div class="staff-grid" id="view-mgt"></div></div>
-            <div class="team-section"><div class="team-label">AIR SERVICE (항공 담당 및 문의처)</div><div class="staff-grid" id="view-air"></div></div>
-            <div class="team-section"><div class="team-label">OTHER SERVICES (호텔, 보험, 비자, 렌터카, 철도)</div><div class="staff-grid" id="view-etc"></div></div>
+            <div class="team-section"><div class="team-label">AIR SERVICE (항공 담당)</div><div class="staff-grid" id="view-air"></div></div>
+            <div class="team-section"><div class="team-label">HOTEL, VISA & RENT-A-CAR (호텔/비자/기타)</div><div class="staff-grid" id="view-etc"></div></div>
             
             <div class="emergency-notice">업무 시간 외 🚨 <b>24시간 긴급 서비스 센터</b> ( ☎ <b>02-2076-2200</b> / 📧 <b>air365@hanatour.com</b> )</div>
 
@@ -129,117 +119,123 @@
                 </div>
             </div>
             
-            <div class="special-title">하나투어비즈니스만의 차별화된 서비스</div>
-            <div class="service-grid">
-                <div class="service-item"><span>기업 전용<br>BTMS 솔루션</span></div>
-                <div class="service-item"><span>실시간 항공/호텔<br>최저가 운임 비교</span></div>
-                <div class="service-item"><span>출장 규정 자동<br>필터링 가이드</span></div>
-                <div class="service-item"><span>데이터 기반<br>출장 리포트 분석</span></div>
+            <div class="service-area">
+                <div class="special-title">하나투어비즈니스만의 차별화된 서비스</div>
+                <div class="service-grid">
+                    <div class="service-item"><span>기업 전용<br>BTMS 솔루션</span></div>
+                    <div class="service-item"><span>실시간 항공/호텔<br>최저가 운임 비교</span></div>
+                    <div class="service-item"><span>출장 규정 자동<br>필터링 가이드</span></div>
+                    <div class="service-item"><span>데이터 기반<br>출장 리포트 분석</span></div>
+                </div>
             </div>
+        </div>
+        
+        <div class="footer-index">
+            <div class="index-item"><h4>SEOUL (HQ) </h4><p>서울 중구 인사동 5길 25</p></div>
+            <div class="index-item"><h4>DAEGU </h4><p>대구 중구 국채보상로 648</p></div>
+            <div class="index-item"><h4>BUSAN </h4><p>부산 중구 중앙대로 102</p></div>
         </div>
     </div>
 
     <script>
         const pools = {
-            mgt: [
-                {n:"김동욱 팀장", v:"서비스 총괄/김동욱 팀장/010-8560-6258/ugi@hanatour.com"},
-                {n:"최봉재 수석", v:"서비스 총괄/최봉재 수석/010-7438-0333/meg234@hanatour.com"},
-                {n:"김태근 선임", v:"서비스 총괄/김태근 선임/010-5584-4616/ktk1104zzang@hanatour.com"},
-                {n:"김채스민 선임", v:"서비스 총괄/김채스민 선임/010-9988-3266/smings@hanatour.com"},
-                {n:"장현수 사원", v:"서비스 총괄/장현수 사원/010-3390-5716/lovehs99@hanatour.com"},
-                {n:"직접 입력", v:""}
+            mgt_main: [{n:"김동욱 팀장", v:"서비스 총괄(정)/김동욱 팀장/010-8560-6258/dwkim@hanatour.com"},{n:"최봉재 수석", v:"서비스 총괄(정)/최봉재 수석/010-7438-0333/bjchoi@hanatour.com"},{n:"김태근 선임", v:"서비스 총괄(정)/김태근 선임/010-5584-4616/tgkim@hanatour.com"},{n:"김채스민 선임", v:"서비스 총괄(정)/김채스민 선임/010-5584-4616/jasmine@hanatour.com"},{n:"장현수 사원", v:"서비스 총괄(정)/장현수 사원/010-5584-4616/hsjang@hanatour.com"}],
+            mgt_sub: [{n:"최봉재 수석", v:"서비스 총괄(부)/최봉재 수석/010-7438-0333/bjchoi@hanatour.com"},{n:"김태근 선임", v:"서비스 총괄(부)/김태근 선임/010-5584-4616/tgkim@hanatour.com"},{n:"김채스민 선임", v:"서비스 총괄(부)/김채스민 선임/010-5584-4616/jasmine@hanatour.com"},{n:"장현수 사원", v:"서비스 총괄(부)/장현수 사원/010-5584-4616/hsjang@hanatour.com"}],
+            air_main: [
+                {n:"고은비 수석", v:"항공 담당(정)/고은비 수석/042-862-9525/ebko@hanatour.com"},
+                {n:"권혜경 팀장", v:"항공 담당(정)/권혜경 팀장/02-2076-2261/hkkwon@hanatour.com"},
+                {n:"김나리 선임", v:"항공 담당(정)/김나리 선임/02-2076-2297/nrkim@hanatour.com"},
+                {n:"김서영 선임", v:"항공 담당(정)/김서영 선임/02-2076-2253/sykim@hanatour.com"},
+                {n:"박선희 수석", v:"항공 담당(정)/박선희 수석/042-862-9526/shpark@hanatour.com"},
+                {n:"신정애 수석", v:"항공 담당(정)/신정애 수석/042-862-8766/jashin@hanatour.com"},
+                {n:"안소영 선임", v:"항공 담당(정)/안소영 선임/02-2076-2260/syahn@hanatour.com"},
+                {n:"이선민 선임", v:"항공 담당(정)/이선민 선임/02-2076-2294/smlee@hanatour.com"},
+                {n:"이혜정 수석", v:"항공 담당(정)/이혜정 수석/02-6730-3337/hjlee@hanatour.com"},
+                {n:"장성아 선임", v:"항공 담당(정)/장성아 선임/02-2076-2254/sajang@hanatour.com"},
+                {n:"정선화 선임", v:"항공 담당(정)/정선화 선임/042-862-8767/shjung@hanatour.com"},
+                {n:"채경은 팀장", v:"항공 담당(정)/채경은 팀장/02-2076-2292/kechae@hanatour.com"}
             ],
-            air: [
-               {n:"고은비 수석", v:"항공 담당/고은비 수석/042-862-9525"},
-{n:"권혜경 팀장", v:"항공 담당/권혜경 팀장/02-2076-2261"},
-{n:"김나리 선임", v:"항공 담당/김나리 선임/02-2076-2297"},
-{n:"김서영 선임", v:"항공 담당/김서영 선임/02-2076-2253"},
-{n:"박선희 수석", v:"항공 담당/박선희 수석/042-862-9526"},
-{n:"신정애 수석", v:"항공 담당/신정애 수석/042-862-8766"},
-{n:"안소영 선임", v:"항공 담당/안소영 선임/02-2076-2260"},
-{n:"이선민 선임", v:"항공 담당/이선민 선임/02-2076-2294"},
-{n:"이혜정 수석", v:"항공 담당/이혜정 수석/02-6730-3337"},
-{n:"장성아 선임", v:"항공 담당/장성아 선임/02-2076-2254"},
-{n:"정선화 선임", v:"항공 담당/정선화 선임/042-862-8767"},
-{n:"채경은 팀장", v:"항공 담당/채경은 팀장/02-2076-2292"},
-                {n:"직접 입력", v:""}
+            air_sub: [
+                {n:"고은비 수석", v:"항공 담당(부)/고은비 수석/042-862-9525/ebko@hanatour.com"},
+                {n:"권혜경 팀장", v:"항공 담당(부)/권혜경 팀장/02-2076-2261/hkkwon@hanatour.com"},
+                {n:"김나리 선임", v:"항공 담당(부)/김나리 선임/02-2076-2297/nrkim@hanatour.com"},
+                {n:"김서영 선임", v:"항공 담당(부)/김서영 선임/02-2076-2253/sykim@hanatour.com"},
+                {n:"박선희 수석", v:"항공 담당(부)/박선희 수석/042-862-9526/shpark@hanatour.com"},
+                {n:"신정애 수석", v:"항공 담당(부)/신정애 수석/042-862-8766/jashin@hanatour.com"},
+                {n:"안소영 선임", v:"항공 담당(부)/안소영 선임/02-2076-2260/syahn@hanatour.com"},
+                {n:"이선민 선임", v:"항공 담당(부)/이선민 선임/02-2076-2294/smlee@hanatour.com"},
+                {n:"이혜정 수석", v:"항공 담당(부)/이혜정 수석/02-6730-3337/hjlee@hanatour.com"},
+                {n:"장성아 선임", v:"항공 담당(부)/장성아 선임/02-2076-2254/sajang@hanatour.com"},
+                {n:"정선화 선임", v:"항공 담당(부)/정선화 선임/042-862-8767/shjung@hanatour.com"},
+                {n:"채경은 팀장", v:"항공 담당(부)/채경은 팀장/02-2076-2292/kechae@hanatour.com"}
             ],
-            hotel: [
-                {n:"김가영 선임", v:"호텔,보험 담당/김가영 선임/02-6730-3330/hotelbiz@hanatour.com"},
-                {n:"직접 입력", v:""}
-            ],
-            visa: [{n:"조아랑 선임", v:"비자 담당/조아랑 선임/02-6730-3352/hanavisa1@hanatour.com"}, {n:"직접 입력", v:""}],
-            car: [{n:"박유진 선임", v:"렌터카,철도 담당/박유진 선임/02-6730-3332/hanasvc@hanatour.com"}, {n:"직접 입력", v:""}]
+            hotel: [{n:"변윤숙 수석", v:"호텔 담당/변윤숙 수석/02-2076-2289/hotelbiz@hanatour.com"},{n:"김가영 선임", v:"호텔 담당/김가영 선임/02-6730-3330/hotelbiz@hanatour.com"},{n:"가상 인물C", v:"호텔 담당/담당자명/02-0000-0000/hotelbiz@hanatour.com"}],
+            visa: [{n:"김가영 선임", v:"비자,보험 담당/김가영 선임/02-6730-3330/hanavisa1@hanatour.com"},{n:"가상 인물A", v:"비자,보험 담당/담당자명/02-0000-0000/test@hanatour.com"}],
+            car: [{n:"박유진 선임", v:"렌터카,철도 담당/박유진 선임/02-6730-3332/hanasvc@hanatour.com"},{n:"가상 인물B", v:"렌터카,철도 담당/담당자명/02-0000-0000/test@hanatour.com"}]
         };
 
         function init() {
-            document.getElementById('in-date').value = "2026년 2월 23일(월)";
-            setupSelect('mgt-inputs', 'mgt', ['서비스 총괄(정)', '서비스 총괄(부)'], 2);
-            setupSelect('air-inputs', 'air', ['항공 담당(정)', '항공 담당(부)'], 2);
-            // 
-            setupSelect('etc-inputs', 'etc', ['호텔/보험', '비자', '렌터카/철도'], 3, ['hotel', 'visa', 'car']);
-            updateView();
+            document.getElementById('in-date').value = "2026년 2월 13일(금)";
+            setupSelect('mgt-inputs', 'mgt', ['서비스 총괄(정)', '서비스 총괄(부)'], [pools.mgt_main, pools.mgt_sub]);
+            setupSelect('air-inputs', 'air', ['항공 담당(정)', '항공 담당(부)'], [pools.air_main, pools.air_sub]);
+            setupSelect('etc-inputs', 'etc', ['호텔 담당1', '호텔 담당2', '비자/보험', '렌터카/철도'], [pools.hotel, pools.hotel, pools.visa, pools.car]);
+            updateView(); renderAll();
         }
 
-        function setupSelect(containerId, poolKey, labels, count, poolKeysOverride = null) {
+        function setupSelect(containerId, prefix, labels, poolsArray) {
             const container = document.getElementById(containerId);
             labels.forEach((label, i) => {
-                const currentPoolKey = poolKeysOverride ? poolKeysOverride[i] : poolKey;
-                const options = pools[currentPoolKey].map(s => `<option value="${s.v}">${s.n}</option>`).join('');
                 container.innerHTML += `
                     <div class="staff-input-unit">
                         <label>${label}</label>
-                        <select onchange="fillInput(this, '${poolKey}', ${i})"><option value="">선택</option>${options}</select>
-                        <input type="text" id="${poolKey}-n-${i}" placeholder="내용 직접 입력 가능" oninput="renderAll()">
+                        <select onchange="fillInput(this, '${prefix}', ${i})">
+                            <option value="">담당자 선택</option>
+                            ${poolsArray[i].map(s => `<option value="${s.v}">${s.n}</option>`).join('')}
+                            <option value="DIRECT">직접 입력</option>
+                        </select>
+                        <input type="text" id="${prefix}-n-${i}" placeholder="직책/성함/연락처/이메일" oninput="renderAll()">
                     </div>`;
             });
         }
 
-        function fillInput(sel, key, i) { 
-            const input = document.getElementById(`${key}-n-${i}`);
-            if (input) { input.value = sel.value; renderAll(); }
-        }
+        function fillInput(sel, id, i) { if(sel.value && sel.value !== "DIRECT") document.getElementById(`${id}-n-${i}`).value = sel.value; renderAll(); }
 
         function renderAll() {
-            // etc 섹션의 카운트를 3으로 변경
-            const sections = [{id:'mgt', view:'view-mgt', count:2}, {id:'air', view:'view-air', count:2}, {id:'etc', view:'view-etc', count:3}];
+            const sections = [{id:'mgt', view:'view-mgt', count:2}, {id:'air', view:'view-air', count:2}, {id:'etc', view:'view-etc', count:4}];
             sections.forEach(sec => {
-                const view = document.getElementById(sec.view); 
-                if(!view) return;
+                const view = document.getElementById(sec.view);
                 view.innerHTML = '';
                 for(let i=0; i<sec.count; i++) {
-                    const input = document.getElementById(`${sec.id}-n-${i}`);
-                    const val = input ? input.value : "";
-                    if(val && val.includes('/')) {
-                        const parts = val.split('/');
-                        const name = (parts[1] || "").split(' ')[0].trim();
+                    const val = document.getElementById(`${sec.id}-n-${i}`).value;
+                    if(val) {
+                        const [tag, nameInfo, tel, email] = val.split('/');
+                        const pureName = nameInfo ? nameInfo.trim().split(' ')[0] : "";
+                        const photoSrc = `photos/${pureName}.png`;
                         view.innerHTML += `
                             <div class="staff-card">
-                                <img src="photos/${name}.png" onerror="this.src='https://via.placeholder.com/60/eee/999?text=${name}'">
-                                <div class="staff-info"><b>${parts[1]}</b><br><span style="color:#777">${parts[0]}</span><br>${sec.id==='air'?'<span class="tel-highlight">'+parts[2]+'</span>':parts[2]+'<br>'+(parts[3]||'')}</div>
+                                <img src="${photoSrc}" loading="eager" onerror="this.onerror=null; this.src='https://via.placeholder.com/60?text=User'">
+                                <div class="staff-info">
+                                    <b>${nameInfo||''}</b><br>${tag||''}<br>${tel||''}<br>${email||''}
+                                </div>
                             </div>`;
                     }
-                }
-                if(sec.id === 'air') {
-                    view.innerHTML += `<div class="air-email-box"><div class="air-email-label">항공 예약 및 문의 전용 이메일</div><div class="air-email-value">${document.getElementById('in-air-email').value}</div></div>`;
                 }
             });
         }
 
         function updateView() {
+            const date = document.getElementById('in-date').value;
             const client = document.getElementById('in-client').value || '업체명';
-            const viewClient = document.getElementById('view-client');
-            document.getElementById('view-date').innerText = document.getElementById('in-date').value;
-            viewClient.innerText = client;
-            viewClient.style.fontSize = client.length > 12 ? "2.0em" : "2.6em";
+            document.getElementById('view-date').innerText = date;
             document.querySelectorAll('.v-client-inline').forEach(el => el.innerText = client);
-            renderAll();
+            document.getElementById('view-client').innerText = client;
         }
 
-        function loadLogo(e) { 
-            const out = document.getElementById('view-logo'), p = document.getElementById('p-logo');
-            if(e.target.files[0]) { out.src = URL.createObjectURL(e.target.files[0]); out.style.display='block'; p.style.display='none'; } 
+        function loadLogo(e) {
+            const out = document.getElementById('view-logo');
+            if(e.target.files[0]) { out.src = URL.createObjectURL(e.target.files[0]); out.style.display = 'block'; }
         }
+
         window.onload = init;
     </script>
 </body>
