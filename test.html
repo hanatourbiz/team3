@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>출장 전담 여행사 안내문 V1.96 | 하나투어비즈니스</title>
+    <title>출장 전담 여행사 안내문 V1.97 | 하나투어비즈니스</title>
     <style>
         :root { --dark-blue: #1a2a4e; --point-red: #e31a1a; --beige: #bca896; }
         body { font-family: 'Pretendard', -apple-system, sans-serif; background: #f0f2f5; margin: 0; padding: 20px; }
@@ -23,7 +23,7 @@
         .header { background: var(--dark-blue); color: white; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; min-height: 120px; gap: 30px; }
         .header-title-box { flex: 1; }
         .header h1 { font-size: 2.6em; margin: 0; line-height: 1.1; font-weight: 900; letter-spacing: -1.5px; word-break: keep-all; }
-        .header p { margin: 8px 0 0; font-size: 2.6em; opacity: 0.85; font-weight: 800; } /* 기존 1.3em에서 2배 확대 */
+        .header p { margin: 8px 0 0; font-size: 2.6em; opacity: 0.85; font-weight: 800; }
         
         .logo-frame { background: #fff; border-radius: 8px; padding: 8px; width: 220px; height: 80px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.3); flex-shrink: 0; }
         .logo-client { max-width: 100%; max-height: 100%; object-fit: contain; }
@@ -47,10 +47,11 @@
         .air-email-label { font-size: 0.72em; color: var(--beige); font-weight: bold; }
         .air-email-value { font-size: 1.25em; font-weight: 800; color: var(--dark-blue); }
 
-        .emergency-notice-container { display: flex; align-items: center; gap: 15px; background: #fff5f5; padding: 8px 20px; border-radius: 8px; border: 1px dashed var(--point-red); margin: 5px 0; }
-        .emergency-text { flex: 1; text-align: center; font-size: 0.82em; color: #d63031; font-weight: bold; }
-        .emergency-text b { color: var(--point-red); font-size: 1.1em; }
-        .kakao-qr { width: 50px; height: 50px; background: #fff; padding: 2px; border-radius: 4px; }
+        .emergency-notice-container { display: flex; align-items: center; justify-content: center; gap: 30px; background: #fff5f5; padding: 10px 40px; border-radius: 8px; border: 1px dashed var(--point-red); margin: 5px 0; }
+        .emergency-qr-box { flex-shrink: 0; }
+        .kakao-qr { width: 65px; height: 65px; background: #fff; padding: 3px; border: 1px solid #eee; border-radius: 4px; }
+        .emergency-text { flex: 1; text-align: left; font-size: 0.85em; color: #d63031; font-weight: bold; line-height: 1.4; }
+        .emergency-text b { color: var(--point-red); font-size: 1.15em; }
 
         .section-header { text-align: center; margin: 5px 0; }
         .section-header span { background: #e7ebf3; padding: 2px 25px; font-weight: bold; font-size: 0.8em; border-radius: 20px; color: var(--dark-blue); }
@@ -75,7 +76,7 @@
 </head>
 <body>
     <div class="admin-panel">
-        <h2 style="margin-top:0;">📋 전담 서비스 안내문 V1.96</h2>
+        <h2 style="margin-top:0;">📋 전담 서비스 안내문 V1.97</h2>
         <div class="input-group">
             <div><label>날짜 입력</label><input type="text" id="in-date" oninput="updateView()"></div>
             <div><label>업체명</label><input type="text" id="in-client" value="LH 한국토지주택공사" oninput="updateView()"></div>
@@ -119,8 +120,14 @@
             <div class="team-section"><div class="team-label">OTHER SERVICES (호텔, 비자, 렌터카, 철도)</div><div class="staff-grid" id="view-etc"></div></div>
             
             <div class="emergency-notice-container">
-                <div class="emergency-text">업무 시간 외 🚨 <b>24시간 긴급 서비스 센터</b><br>( ☎ <b>02-2076-2200</b> / 📧 <b>air365@hanatour.com</b> )</div>
-                <img src="https://i.ibb.co/YF8W26k/qr.png" class="kakao-qr" title="카카오톡 상담 QR" onerror="this.src='https://via.placeholder.com/50?text=QR'">
+                <div class="emergency-qr-box">
+                    <img src="photos/카카오큐알.png" class="kakao-qr" title="카카오톡 상담 QR" onerror="this.src='https://via.placeholder.com/65?text=QR'">
+                </div>
+                <div class="emergency-text">
+                    업무 시간 외 🚨 <b>24시간 긴급 서비스 센터 운영</b><br>
+                    ( ☎ <b>02-2076-2200</b> / 📧 <b>air365@hanatour.com</b> )<br>
+                    <span style="font-size:0.9em; opacity:0.8;">※ 좌측 QR코드를 스캔하시면 카카오톡 채팅 상담으로 연결됩니다.</span>
+                </div>
             </div>
 
             <div class="section-header"><span>HanaTour Business Core Values</span></div>
