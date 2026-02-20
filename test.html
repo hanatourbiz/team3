@@ -47,11 +47,8 @@
         .air-email-label { font-size: 0.75em; color: var(--beige); font-weight: bold; }
         .air-email-value { font-size: 1.35em; font-weight: 800; color: var(--dark-blue); }
 
-        .emergency-notice { background: #fff5f5; padding: 10px 20px; text-align: center; border-radius: 8px; font-size: 0.85em; color: #d63031; margin: 10px 0; border: 1px dashed var(--point-red); font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 20px; }
+        .emergency-notice { background: #fff5f5; padding: 10px; text-align: center; border-radius: 8px; font-size: 0.85em; color: #d63031; margin: 10px 0; border: 1px dashed var(--point-red); font-weight: bold; }
         .emergency-notice b { color: var(--point-red); font-size: 1.1em; }
-        .qr-box { display: flex; align-items: center; gap: 8px; border-left: 1px solid #ffcccc; padding-left: 20px; }
-        .qr-box img { width: 45px; height: 45px; border: 1px solid #ddd; border-radius: 4px; }
-        .qr-text { font-size: 0.8em; text-align: left; line-height: 1.2; color: #333; }
 
         .section-header { text-align: center; margin: 10px 0 5px; }
         .section-header span { background: #e7ebf3; padding: 3px 25px; font-weight: bold; font-size: 0.85em; border-radius: 20px; color: var(--dark-blue); }
@@ -71,7 +68,7 @@
 </head>
 <body>
     <div class="admin-panel">
-        <h2 style="margin-top:0;">📋 전담 서비스 안내문 V1.95</h2>
+        <h2 style="margin-top:0;">📋 전담 서비스 안내문 V1.95 (호텔 1인 수정본)</h2>
         <div class="input-group">
             <div><label>날짜 입력</label><input type="text" id="in-date" oninput="updateView()"></div>
             <div><label>업체명</label><input type="text" id="in-client" value="LH 한국토지주택공사" oninput="updateView()"></div>
@@ -114,13 +111,7 @@
             <div class="team-section"><div class="team-label">AIR SERVICE (항공 담당 및 문의처)</div><div class="staff-grid" id="view-air"></div></div>
             <div class="team-section"><div class="team-label">OTHER SERVICES (호텔, 비자, 렌터카, 철도)</div><div class="staff-grid" id="view-etc"></div></div>
             
-            <div class="emergency-notice">
-                <div>업무 시간 외 🚨 <b>24시간 긴급 서비스 센터</b><br>( ☎ <b>02-2076-2200</b> / 📧 <b>air365@hanatour.com</b> )</div>
-                <div class="qr-box">
-                    <img src="photos/카카오큐알.png" onerror="this.src='https://via.placeholder.com/50?text=QR'">
-                    <div class="qr-text">카카오톡 채널<br><b>'하나투어비즈니스'</b></div>
-                </div>
-            </div>
+            <div class="emergency-notice">업무 시간 외 🚨 <b>24시간 긴급 서비스 센터</b> ( ☎ <b>02-2076-2200</b> / 📧 <b>air365@hanatour.com</b> )</div>
 
             <div class="section-header"><span>HanaTour Business Core Values</span></div>
             <div class="promise-container">
@@ -172,11 +163,7 @@
                 {n:"김가영 선임", v:"호텔 담당/김가영 선임/02-6730-3330/hotelbiz@hanatour.com"},
                 {n:"직접 입력", v:""}
             ],
-            visa: [
-                {n:"조아랑 선임", v:"비자,보험 담당/조아랑 선임/02-2076-2646/arang@hanatour.com"},
-                {n:"김가영 선임", v:"비자,보험 담당/김가영 선임/02-6730-3330/hanavisa1@hanatour.com"}, 
-                {n:"직접 입력", v:""}
-            ],
+            visa: [{n:"김가영 선임", v:"비자,보험 담당/김가영 선임/02-6730-3330/hanavisa1@hanatour.com"}, {n:"직접 입력", v:""}],
             car: [{n:"박유진 선임", v:"렌터카,철도 담당/박유진 선임/02-6730-3332/hanasvc@hanatour.com"}, {n:"직접 입력", v:""}]
         };
 
@@ -184,7 +171,7 @@
             document.getElementById('in-date').value = "2026년 2월 23일(월)";
             setupSelect('mgt-inputs', 'mgt', ['서비스 총괄(정)', '서비스 총괄(부)'], 2);
             setupSelect('air-inputs', 'air', ['항공 담당(정)', '항공 담당(부)'], 2);
-            // 호텔 담당을 1명으로 수정함
+            // 호텔 담당을 1명으로 수정
             setupSelect('etc-inputs', 'etc', ['호텔 담당', '비자/보험', '렌터카/철도'], 3, ['hotel', 'visa', 'car']);
             updateView();
         }
@@ -209,7 +196,7 @@
         }
 
         function renderAll() {
-            // etc 섹션의 출력 개수를 3으로 수정함
+            // etc 섹션의 카운트를 3으로 변경
             const sections = [{id:'mgt', view:'view-mgt', count:2}, {id:'air', view:'view-air', count:2}, {id:'etc', view:'view-etc', count:3}];
             sections.forEach(sec => {
                 const view = document.getElementById(sec.view); 
