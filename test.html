@@ -47,9 +47,9 @@
         .air-email-label { font-size: 0.72em; color: var(--beige); font-weight: bold; }
         .air-email-value { font-size: 1.25em; font-weight: 800; color: var(--dark-blue); }
 
-        .emergency-notice-container { display: flex; align-items: center; justify-content: center; gap: 30px; background: #fff5f5; padding: 10px 40px; border-radius: 8px; border: 1px dashed var(--point-red); margin: 5px 0; }
-        .emergency-qr-box { flex-shrink: 0; }
-        .kakao-qr { width: 65px; height: 65px; background: #fff; padding: 3px; border: 1px solid #eee; border-radius: 4px; }
+        /* 긴급 서비스 센터 섹션 수정 */
+        .emergency-notice-container { display: flex; align-items: center; justify-content: center; gap: 20px; background: #fff5f5; padding: 10px 30px; border-radius: 8px; border: 1px dashed var(--point-red); margin: 5px 0; }
+        .kakao-qr { width: 60px; height: 60px; background: #fff; padding: 3px; border: 1px solid #ddd; border-radius: 4px; flex-shrink: 0; }
         .emergency-text { flex: 1; text-align: left; font-size: 0.85em; color: #d63031; font-weight: bold; line-height: 1.4; }
         .emergency-text b { color: var(--point-red); font-size: 1.15em; }
 
@@ -120,13 +120,11 @@
             <div class="team-section"><div class="team-label">OTHER SERVICES (호텔, 비자, 렌터카, 철도)</div><div class="staff-grid" id="view-etc"></div></div>
             
             <div class="emergency-notice-container">
-                <div class="emergency-qr-box">
-                    <img src="photos/카카오큐알.png" class="kakao-qr" title="카카오톡 상담 QR" onerror="this.src='https://via.placeholder.com/65?text=QR'">
-                </div>
+                <img src="photos/카카오큐알.png" class="kakao-qr" title="카카오톡 상담 QR" onerror="this.src='https://via.placeholder.com/60/eee/999?text=QR'">
                 <div class="emergency-text">
                     업무 시간 외 🚨 <b>24시간 긴급 서비스 센터 운영</b><br>
                     ( ☎ <b>02-2076-2200</b> / 📧 <b>air365@hanatour.com</b> )<br>
-                    <span style="font-size:0.9em; opacity:0.8;">※ 좌측 QR코드를 스캔하시면 카카오톡 채팅 상담으로 연결됩니다.</span>
+                    <span style="font-size:0.9em; opacity:0.8;">※ QR코드를 스캔하시면 카카오톡 채팅 상담으로 바로 연결됩니다.</span>
                 </div>
             </div>
 
