@@ -151,11 +151,11 @@
     <script>
         const pools = {
             mgt: [
-                {n:"김동욱 팀장", v:"서비스 총괄(정)/김동욱 팀장/010-8560-6258/dwkim@hanatour.com"},
-                {n:"최봉재 수석", v:"서비스 총괄(부)/최봉재 수석/010-7438-0333/bjchoi@hanatour.com"},
-                {n:"김태근 선임", v:"서비스 총괄/김태근 선임/010-5584-4616/tgkim@hanatour.com"},
-                {n:"김채스민 선임", v:"서비스 총괄/김채스민 선임/010-5584-4616/jasmine@hanatour.com"},
-                {n:"장현수 사원", v:"서비스 총괄/장현수 사원/010-5584-4616/hsjang@hanatour.com"},
+                {n:"김동욱 팀장", v:"서비스 총괄/김동욱 팀장/010-8560-6258/ugi@hanatour.com"},
+                {n:"최봉재 수석", v:"서비스 총괄/최봉재 수석/010-7438-0333/meg234@hanatour.com"},
+                {n:"김태근 선임", v:"서비스 총괄/김태근 선임/010-5584-4616/ktk1104zzang@hanatour.com"},
+                {n:"김채스민 선임", v:"서비스 총괄/김채스민 선임/010-9988-3266/smings@hanatour.com"},
+                {n:"장현수 사원", v:"서비스 총괄/장현수 사원/010-3390-5716/lovehs99@hanatour.com"},
                 {n:"직접 입력", v:""}
             ],
             air: [
@@ -184,7 +184,8 @@
             document.getElementById('in-date').value = "2026년 2월 23일(월)";
             setupSelect('mgt-inputs', 'mgt', ['서비스 총괄(정)', '서비스 총괄(부)'], 2);
             setupSelect('air-inputs', 'air', ['항공 담당(정)', '항공 담당(부)'], 2);
-            setupSelect('etc-inputs', 'etc', ['호텔 담당(정)', '호텔 담당(부)', '비자/보험', '렌터카/철도'], 4, ['hotel', 'hotel', 'visa', 'car']);
+            // 호텔 담당을 1명으로 수정함
+            setupSelect('etc-inputs', 'etc', ['호텔 담당', '비자/보험', '렌터카/철도'], 3, ['hotel', 'visa', 'car']);
             updateView();
         }
 
@@ -208,7 +209,8 @@
         }
 
         function renderAll() {
-            const sections = [{id:'mgt', view:'view-mgt', count:2}, {id:'air', view:'view-air', count:2}, {id:'etc', view:'view-etc', count:4}];
+            // etc 섹션의 출력 개수를 3으로 수정함
+            const sections = [{id:'mgt', view:'view-mgt', count:2}, {id:'air', view:'view-air', count:2}, {id:'etc', view:'view-etc', count:3}];
             sections.forEach(sec => {
                 const view = document.getElementById(sec.view); 
                 if(!view) return;
