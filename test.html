@@ -159,8 +159,7 @@
                 {n:"직접 입력", v:""}
             ],
             hotel: [
-                {n:"변윤숙 수석", v:"호텔 담당/변윤숙 수석/02-2076-2289/hotelbiz@hanatour.com"},
-                {n:"김가영 선임", v:"호텔 담당/김가영 선임/02-6730-3330/hotelbiz@hanatour.com"},
+                {n:"김가영 선임", v:"호텔,보험 담당/김가영 선임/02-6730-3330/hotelbiz@hanatour.com"},
                 {n:"직접 입력", v:""}
             ],
             visa: [{n:"김가영 선임", v:"비자,보험 담당/김가영 선임/02-6730-3330/hanavisa1@hanatour.com"}, {n:"직접 입력", v:""}],
@@ -171,8 +170,8 @@
             document.getElementById('in-date').value = "2026년 2월 23일(월)";
             setupSelect('mgt-inputs', 'mgt', ['서비스 총괄(정)', '서비스 총괄(부)'], 2);
             setupSelect('air-inputs', 'air', ['항공 담당(정)', '항공 담당(부)'], 2);
-            // 호텔 담당을 1명으로 수정
-            setupSelect('etc-inputs', 'etc', ['호텔 담당', '비자/보험', '렌터카/철도'], 3, ['hotel', 'visa', 'car']);
+            // 
+            setupSelect('etc-inputs', 'etc', ['호텔/보험', '비자', '렌터카/철도'], 3, ['hotel', 'visa', 'car']);
             updateView();
         }
 
