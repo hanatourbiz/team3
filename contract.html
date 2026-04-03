@@ -48,3 +48,104 @@
 
     <div class="admin-panel">
         <h2 style="margin-top:0;">📝 연수 위탁계약서 생성기 (상세형)</h2>
+        
+        <div class="input-group">
+            <div class="section-title">1. 기본 계약 정보</div>
+            <div class="col-3"><label>계약 명칭</label><input type="text" id="in-title" value="한국 로터리 장학재단 연수 위탁계약" oninput="updateView()"></div>
+            <div class="col-2"><label>연수 장소</label><input type="text" id="in-location" value="필리핀 마닐라 및 인근 지역" oninput="updateView()"></div>
+            <div><label>연수 인원</label><input type="text" id="in-members" value="약 40명" oninput="updateView()"></div>
+            <div class="col-2"><label>연수 기간</label><input type="text" id="in-period" value="2026년 07월 10일 ~ 07월 20일" oninput="updateView()"></div>
+            <div><label>계약 날짜</label><input type="text" id="in-contract-date" value="2026년 04월 03일" oninput="updateView()"></div>
+            <div class="col-3"><label>대금 총액 (VAT 포함)</label><input type="text" id="in-amount" value="금 일억이천삼백만원정 (₩123,000,000)" oninput="updateView()"></div>
+
+            <div class="section-title">2. 발주처 정보 (갑)</div>
+            <div><label>발주처명</label><input type="text" id="in-client-name" value="한국 로터리 장학재단" oninput="updateView()"></div>
+            <div class="col-2"><label>발주처 주소</label><input type="text" id="in-client-addr" value="서울특별시 종로구 인사동길 12" oninput="updateView()"></div>
+            <div><label>대표자 성함</label><input type="text" id="in-client-ceo" value="홍길동" oninput="updateView()"></div>
+
+            <div class="section-title">3. 수탁처 정보 (을)</div>
+            <div><label>수탁처명</label><input type="text" id="in-pro-name" value="(주)하나투어비즈니스" oninput="updateView()"></div>
+            <div class="col-2"><label>수탁처 주소</label><input type="text" id="in-pro-addr" value="서울특별시 중구 인사동 5길 25" oninput="updateView()"></div>
+            <div><label>대표자 성함</label><input type="text" id="in-pro-ceo" value="곽민수" oninput="updateView()"></div>
+        </div>
+        
+        <button class="print-btn" onclick="window.print()">🖨️ 계약서 인쇄 및 PDF 저장</button>
+    </div>
+
+    <div class="page">
+        <div class="contract-title" id="view-title">한국 로터리 장학재단 연수 위탁계약</div>
+        
+        <p class="contract-intro">
+            <span id="view-intro-client" style="font-weight: bold;">한국 로터리 장학재단</span>(이하 "갑"이라 한다)와 <span id="view-intro-pro" style="font-weight: bold;">(주)하나투어비즈니스</span>(이하 "을"이라 한다)는 본 연수 위탁 운영에 관하여 다음과 같이 계약을 체결하고 신의성실의 원칙에 입각하여 본 계약을 이행한다.
+        </p>
+
+        <table class="info-table">
+            <tr><th>연수 명칭</th><td id="view-info-title" colspan="3">한국 로터리 장학재단 연수 위탁계약</td></tr>
+            <tr><th>연수 장소</th><td id="view-location">필리핀 마닐라 및 인근 지역</td><th>연수 인원</th><td id="view-members">약 40명</td></tr>
+            <tr><th>연수 기간</th><td id="view-period" colspan="3">2026년 07월 10일 ~ 07월 20일</td></tr>
+            <tr><th>계약 금액</th><td id="view-amount" colspan="3" style="font-weight: bold;">금 일억이천삼백만원정 (₩123,000,000)</td></tr>
+        </table>
+
+        <span class="article-title">제1조 (목적)</span>
+        <span class="article-content">본 계약은 "갑"이 실시하는 해외 연수 업무를 "을"에게 위탁하고, "을"은 이에 수반되는 항공, 숙박, 교통 및 교육 프로그램 지원 등 일체의 서비스를 제공하여 연수 목적을 달성함에 있다.</span>
+
+        <span class="article-title">제2조 (계약이행보증)</span>
+        <span class="article-content">"을"은 본 계약의 이행을 보증하기 위하여 계약금액의 100분의 10에 해당하는 계약이행보증보험증권을 "갑"에게 제출하여야 한다. (단, "갑"의 승인 시 생략할 수 있다.)</span>
+
+        <span class="article-title">제3조 (연수경비 지급 및 정산)</span>
+        <span class="article-content">1. 연수경비는 계약 체결 후 선급금과 연수 종료 후 정산금으로 분할 지급할 수 있다.<br>
+        2. "을"은 연수 종료 후 7일 이내에 실제 집행 내역을 바탕으로 한 정산 서류를 "갑"에게 제출하여야 한다.</span>
+
+        <span class="article-title">제4조 (권리 의무의 양도 금지)</span>
+        <span class="article-content">"을"은 "갑"의 서면 동의 없이 본 계약상의 권리 의무를 제3자에게 양도하거나 담보로 제공할 수 없다.</span>
+
+        <div class="signature-area">
+            <div class="sig-box">
+                <span class="sig-label">발주처 (갑)</span>
+                <p>상호: <span id="sig-client-name">한국 로터리 장학재단</span></p>
+                <p>주소: <span id="sig-client-addr">서울특별시 종로구 인사동길 12</span></p>
+                <p>대표이사: <span id="sig-client-ceo">홍길동</span> (인)</p>
+            </div>
+            <div class="sig-box">
+                <span class="sig-label">수탁처 (을)</span>
+                <p>상호: <span id="sig-pro-name">(주)하나투어비즈니스</span></p>
+                <p>주소: <span id="sig-pro-addr">서울특별시 중구 인사동 5길 25</span></p>
+                <p>대표이사: <span id="sig-pro-ceo">곽민수</span> (인)</p>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Red_Square_Stamp.svg/100px-Red_Square_Stamp.svg.png" class="stamp">
+            </div>
+        </div>
+
+        <p style="text-align: center; margin-top: 50px; font-weight: bold; font-size: 12pt;" id="view-contract-date">2026년 04월 03일</p>
+    </div>
+
+    <script>
+        function updateView() {
+            // 기본 정보 연동
+            const title = document.getElementById('in-title').value;
+            document.getElementById('view-title').innerText = title;
+            document.getElementById('view-info-title').innerText = title;
+            document.getElementById('view-location').innerText = document.getElementById('in-location').value;
+            document.getElementById('view-members').innerText = document.getElementById('in-members').value;
+            document.getElementById('view-period').innerText = document.getElementById('in-period').value;
+            document.getElementById('view-amount').innerText = document.getElementById('in-amount').value;
+            document.getElementById('view-contract-date').innerText = document.getElementById('in-contract-date').value;
+
+            // 발주처 정보 연동
+            const clientName = document.getElementById('in-client-name').value;
+            document.getElementById('view-intro-client').innerText = clientName;
+            document.getElementById('sig-client-name').innerText = clientName;
+            document.getElementById('sig-client-addr').innerText = document.getElementById('in-client-addr').value;
+            document.getElementById('sig-client-ceo').innerText = document.getElementById('in-client-ceo').value;
+
+            // 수탁처 정보 연동
+            const proName = document.getElementById('in-pro-name').value;
+            document.getElementById('view-intro-pro').innerText = proName;
+            document.getElementById('sig-pro-name').innerText = proName;
+            document.getElementById('sig-pro-addr').innerText = document.getElementById('in-pro-addr').value;
+            document.getElementById('sig-pro-ceo').innerText = document.getElementById('in-pro-ceo').value;
+        }
+        // 초기 실행
+        window.onload = updateView;
+    </script>
+</body>
+</html>
