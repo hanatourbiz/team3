@@ -8,55 +8,58 @@
         body { font-family: 'Pretendard', 'Malgun Gothic', sans-serif; background: #f0f2f5; margin: 0; padding: 20px; }
         
         /* 관리자 패널 */
-        .admin-panel { max-width: 900px; margin: 0 auto 30px; background: #fff; padding: 25px; border-radius: 12px; border: 2px solid var(--dark-blue); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .admin-panel { max-width: 950px; margin: 0 auto 30px; background: #fff; padding: 25px; border-radius: 12px; border: 2px solid var(--dark-blue); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         .input-group { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
-        .section-title { grid-column: span 3; font-size: 0.9em; font-weight: bold; color: var(--point-red); margin: 15px 0 5px; border-left: 4px solid var(--point-red); padding-left: 10px; }
+        .section-title { grid-column: span 3; font-size: 0.95em; font-weight: bold; color: var(--point-red); margin: 15px 0 5px; border-left: 4px solid var(--point-red); padding-left: 10px; }
         label { font-size: 0.85em; font-weight: bold; color: #333; margin-bottom: 5px; display: block; }
-        input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 0.85em; }
+        input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 0.9em; }
         .col-2 { grid-column: span 2; }
         .col-3 { grid-column: span 3; }
-        .print-btn { background: var(--point-red); color: white; padding: 15px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; font-size: 1.1em; margin-top: 10px; }
+        .print-btn { background: var(--point-red); color: white; padding: 15px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; font-size: 1.1em; margin-top: 10px; transition: 0.3s; }
+        .print-btn:hover { background: #b31414; }
 
         /* 계약서 본문 스타일 */
-        .page { width: 210mm; min-height: 297mm; padding: 20mm 18mm; margin: 20px auto; background: white; box-sizing: border-box; position: relative; box-shadow: 0 0 20px rgba(0,0,0,0.1); font-size: 10pt; line-height: 1.7; color: #000; word-break: keep-all; }
-        .contract-title { text-align: center; font-size: 22pt; font-weight: bold; margin-bottom: 40px; }
+        .page { width: 210mm; min-height: 297mm; padding: 20mm 20mm; margin: 20px auto; background: white; box-sizing: border-box; position: relative; box-shadow: 0 0 20px rgba(0,0,0,0.1); font-size: 10pt; line-height: 1.7; color: #000; text-align: justify; word-break: keep-all; }
+        .contract-title { text-align: center; font-size: 22pt; font-weight: bold; margin-bottom: 40px; text-decoration: underline; }
+        .info-table { width: 100%; border-collapse: collapse; margin-bottom: 25px; }
+        .info-table th, .info-table td { border: 1px solid #000; padding: 10px 12px; }
+        .info-table th { background: #f2f2f2; width: 25%; font-weight: bold; text-align: left; }
         
-        .info-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-        .info-table th, .info-table td { border: 1px solid #000; padding: 8px 12px; text-align: left; }
-        .info-table th { background: #f2f2f2; width: 22%; font-weight: bold; }
-
-        .article-title { font-weight: bold; margin-top: 15px; display: block; font-size: 10.5pt; }
-        .article-content { padding-left: 5px; margin-bottom: 10px; display: block; text-align: justify; }
-
-        .signature-area { margin-top: 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-        .sig-box { border: 1px solid #000; padding: 15px; height: 180px; position: relative; }
-        .sig-label { font-weight: bold; border-bottom: 1px solid #000; padding-bottom: 5px; margin-bottom: 15px; display: block; font-size: 11pt; }
-        .sig-box p { margin: 6px 0; font-size: 9.5pt; }
+        .article-title { font-weight: bold; margin-top: 15px; display: block; font-size: 10.5pt; border-bottom: 1px solid #eee; padding-bottom: 3px; }
+        .article-content { padding-left: 5px; margin-top: 5px; margin-bottom: 8px; display: block; white-space: pre-wrap; }
+        
+        .signature-area { margin-top: 50px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .sig-box { border: 1px solid #000; padding: 20px; height: 180px; position: relative; }
+        .sig-label { font-weight: bold; border-bottom: 1px solid #000; padding-bottom: 8px; margin-bottom: 15px; display: block; font-size: 11pt; }
+        .sig-box p { margin: 8px 0; font-size: 10pt; }
 
         .page-break { page-break-before: always; }
-        @media print {
-            .admin-panel { display: none !important; }
+        @media print { 
+            .admin-panel { display: none !important; } 
             body { padding: 0; background: none; }
-            .page { margin: 0 !important; border: none !important; box-shadow: none !important; width: 210mm; }
+            .page { margin: 0 !important; border: none !important; box-shadow: none !important; width: 210mm; } 
         }
     </style>
 </head>
 <body>
 
     <div class="admin-panel">
-        <h2 style="margin-top:0; color: var(--dark-blue);">🏦 연수 위탁계약 생성기 (날짜 자동입력)</h2>
+        <h2 style="margin-top:0; color: var(--dark-blue);">🏦 iM뱅크 연수 위탁계약 생성 시스템</h2>
         <div class="input-group">
-            <div class="section-title">1. 계약 및 연수 정보</div>
-            <div class="col-2"><label>연수 명칭 (제목 자동반영)</label><input type="text" id="in_title" value="iM뱅크 선진금융체험연수" oninput="update()"></div>
-            <div><label>계약 체결일</label><input type="text" id="in_contract_date" value="2026년 04월 03일" oninput="update()"></div>
+            <div class="section-title">1. 기본 정보 및 계약일</div>
+            <div class="col-2"><label>연수 명칭</label><input type="text" id="in_title" value="iM뱅크 선진금융체험연수" oninput="update()"></div>
+            <div><label>계약 체결일</label><input type="text" id="in_contract_date" placeholder="2026년 04월 03일" oninput="update()"></div>
             
-            <div class="section-title">2. 대금 지급 조건</div>
-            <div class="col-3"><label>총 계약 금액 (VAT포함)</label><input type="text" id="in_price" placeholder="일금 원정 (₩000,000)" oninput="update()"></div>
-            <div><label>계약금 (체결 시)</label><input type="text" id="in_dep_price" placeholder="금액 또는 비율" oninput="update()"></div>
-            <div class="col-2"><label>잔금 지급 기한</label><input type="text" id="in_balance_date" value="출발 전 7일 이내" oninput="update()"></div>
+            <div class="section-title">2. 대금 지급 조건 (금액 자동 변환)</div>
+            <div class="col-2"><label>총 계약 금액 (숫자만 입력)</label><input type="number" id="num_price" placeholder="예: 73500000" oninput="updatePrice()"></div>
+            <div><label>표시 금액 (자동변환)</label><input type="text" id="in_price" readonly style="background:#f9f9f9;"></div>
+            
+            <div><label>계약금 (숫자만 입력)</label><input type="number" id="num_dep" placeholder="예: 10000000" oninput="updatePrice()"></div>
+            <div><label>표시 계약금 (자동변환)</label><input type="text" id="in_dep_price" readonly style="background:#f9f9f9;"></div>
+            <div><label>잔금 지급 기한</label><input type="text" id="in_balance_date" value="출발 전 7일 이내" oninput="update()"></div>
 
-            <div class="section-title">3. 위탁자 정보 (갑)</div>
-            <div><label>기관/업체명</label><input type="text" id="in_client_name" value="iM뱅크" oninput="update()"></div>
+            <div class="section-title">3. 위탁자(갑) 정보</div>
+            <div><label>기관명</label><input type="text" id="in_client_name" value="iM뱅크" oninput="update()"></div>
             <div><label>대표자명</label><input type="text" id="in_client_ceo" placeholder="대표이사 성함" oninput="update()"></div>
             <div><label>사업자번호</label><input type="text" id="in_client_bizno" placeholder="000-00-00000" oninput="update()"></div>
             <div class="col-3"><label>주소</label><input type="text" id="in_client_addr" placeholder="고객사 상세 주소 입력" oninput="update()"></div>
@@ -66,53 +69,87 @@
 
     <div class="page">
         <div class="contract-title"><span class="view_title">iM뱅크 선진금융체험연수</span> 위탁 계약서</div>
-        
         <div class="contract-intro">
-            <span class="view_client_name" style="font-weight:bold;">iM뱅크</span>(이하 "갑"이라 한다)와 
-            <span style="font-weight:bold;">(주)하나투어비즈니스</span>(이하 "을"이라 한다)는 
-            상기 연수 위탁 업무에 대하여 다음과 같이 계약을 체결한다.
+            <span class="view_client_name" style="font-weight:bold;">iM뱅크</span>(이하 "갑"이라 한다)와 <b>(주)하나투어비즈니스</b>(이하 "을"이라 한다)는 본 연수 위탁 업무에 대하여 다음과 같이 계약을 체결한다.
         </div>
 
-        <div class="article-title">[계약 요약]</div>
+        <div class="article-title">[계약 내용 요약]</div>
         <table class="info-table">
-            <tr><th>연 수 명</th><td class="view_title">iM뱅크 선진금융체험연수</td></tr>
+            <tr><th>연 수 명</th><td class="view_title">-</td></tr>
             <tr><th>총 계약금액</th><td class="view_price" style="font-weight:bold;">-</td></tr>
-            <tr><th>계약금(체결시)</th><td class="view_dep_price">-</td></tr>
-            <tr><th>잔금 지급기한</th><td class="view_balance_date">출발 전 7일 이내</td></tr>
+            <tr><th>계약금(착수금)</th><td class="view_dep_price">-</td></tr>
+            <tr><th>잔금 지급기한</th><td class="view_balance_date">-</td></tr>
         </table>
 
         <div class="article-title">제1조 (목적)</div>
         <div class="article-content">본 계약은 "갑"이 시행하는 연수 업무를 "을"에게 위탁하고, "을"은 "갑"의 연수 목적에 부합하도록 제반 사항을 성실히 수행함을 목적으로 한다.</div>
 
-        <div class="article-title">제2조 (업무의 범위)</div>
-        <div class="article-content">"을"은 항공권 발권, 숙박, 식사, 현지 교통 및 가이드 배정, 여행자 보험 가입 등 연수 일정표에 명시된 모든 제반 업무를 수행한다.</div>
+        <div class="article-title">제2조 (연수 업무의 범위)</div>
+        <div class="article-content">"을"이 수행하여야 할 연수 업무의 범위는 다음과 같다.
+1. 항공권 예약 및 발권(왕복)
+2. 연수 일정에 따른 숙박시설 예약 및 식사 제공
+3. 연수 기간 내 전용 차량 배정 및 현지 가이드 배치
+4. 해외 여행자 보험 가입
+5. 기타 연수 진행에 필요한 제반 행정 업무</div>
 
-        <div class="article-title">제3조 (지급 및 정산)</div>
-        <div class="article-content">1. "갑"은 계약 체결과 동시에 계약금 <span class="view_dep_price" style="font-weight:bold;">-</span>을 "을"의 지정 계좌로 지급한다.<br>2. 잔금은 <span class="view_balance_date" style="font-weight:bold; text-decoration: underline;">출발 전 7일 이내</span>에 정산하여 지급하는 것을 원칙으로 한다.</div>
+        <div class="article-title">제3조 (연수 경비의 지급 및 정산)</div>
+        <div class="article-content">1. 연수 경비는 총 계약 금액 <span class="view_price" style="font-weight:bold;">-</span>을 원칙으로 하되, 연수 인원 변동 시 실인원에 따라 정산한다.
+2. "갑"은 본 계약 체결 후 계약금 <span class="view_dep_price" style="font-weight:bold;">-</span>을 지급하며, 잔금은 <span class="view_balance_date" style="font-weight:bold;">-</span>에 "을"의 청구에 의하여 지급한다.</div>
+
+        <div class="article-title">제4조 (계약의 해지)</div>
+        <div class="article-content">1. "갑" 또는 "을"은 천재지변 등 불가항력적인 사유로 본 계약의 이행이 불가능할 경우 본 계약을 해지할 수 있다. 이 경우 이미 발생한 실비에 대해서는 "갑"이 부담한다.
+2. 상대방이 계약 조건을 위반하여 계약의 목적을 달성할 수 없다고 판단될 경우 서면 통보 후 계약을 해지할 수 있다.</div>
+
+        <div class="article-title">제5조 (취소 수수료 및 계약 변경)</div>
+        <div class="article-content">"갑"의 사정에 의하여 계약을 취소하거나 변경할 경우 국외여행 표준약관 및 특별약관(항공사, 호텔 규정 등)에 따른 취소 수수료를 지불하여야 한다.</div>
     </div>
 
     <div class="page page-break">
-        <div class="article-title">제4조 (계약의 해지)</div>
-        <div class="article-content">천재지변 등 불가항력적인 사유로 계약 이행이 불가능할 경우 본 계약을 해지할 수 있으며, 이 경우 기 발생한 실비는 "갑"이 부담한다.</div>
+        <div class="article-title">제6조 (취소 수수료 상세 기준)</div>
+        <div class="article-content">본 연수 계약 취소 시 발생하는 위약금 상세 기준은 다음과 같다.
+- 여행개시 30일전까지 통보 시: 계약금 환급
+- 여행개시 29~20일전까지 통보 시: 총 요금의 10% 배상
+- 여행개시 19~10일전까지 통보 시: 총 요금의 15% 배상
+- 여행개시 9~8일전까지 통보 시: 총 요금의 20% 배상
+- 여행개시 7~1일전까지 통보 시: 총 요금의 30% 배상
+- 여행 당일 통보 시: 총 요금의 50% 배상
+※ 항공권 발권 이후 취소 시에는 위 기준과 별도로 항공사 규정에 따른 취소 수수료가 청구된다.</div>
 
-        <div class="article-title">제5조 (위약금 상세 기준)</div>
-        <div class="article-content">"갑"의 사정에 의한 취소 시 발생하는 위약금은 국외여행 표준약관을 준수한다.
-            <table class="info-table" style="margin-top:10px;">
-                <tr style="background:#f9f9f9;"><th>통보 시점</th><th>위약금 요율</th></tr>
-                <tr><td>여행개시 30일전까지</td><td>계약금 환급</td></tr>
-                <tr><td>여행개시 29~20일전까지</td><td>총 요금의 10%</td></tr>
-                <tr><td>여행개시 19~10일전까지</td><td>총 요금의 15%</td></tr>
-                <tr><td>여행개시 9~8일전까지</td><td>총 요금의 20%</td></tr>
-                <tr><td>여행개시 7~1일전까지</td><td>총 요금의 30%</td></tr>
-                <tr><td>여행 당일 통보 시</td><td>총 요금의 50%</td></tr>
-            </table>
-        </div>
+        <div class="article-title">제7조 (안전관리 및 사고책임)</div>
+        <div class="article-content">"을"은 연수 기간 중 참가자의 안전을 최우선으로 고려하며, "을"의 귀책 사유로 발생한 사고에 대하여는 관련 법령 및 보험 규정에 따라 배상 책임을 진다.</div>
 
-        <div style="margin-top: 100px; text-align: center; font-weight: bold; font-size: 11pt;">
-            본 계약을 증명하기 위하여 2부를 작성하여 "갑"과 "을"이 각각 1부씩 보관한다.
-        </div>
+        <div class="article-title">제8조 (비밀 유지)</div>
+        <div class="article-content">"갑"과 "을"은 본 계약과 관련하여 취득한 상대방의 업무상 비밀이나 개인정보를 제3자에게 누설하거나 본 계약 이외의 목적으로 사용하여서는 안 된다.</div>
 
-        <div style="margin-top: 30px; text-align: center; font-size: 12pt; font-weight: bold;" class="view_contract_date">2026년 04월 03일</div>
+        <div class="article-title">제9조 (권리 의무의 양도 금지)</div>
+        <div class="article-content">양 당사자는 상대방의 서면 동의 없이 본 계약상의 권리와 의무를 제3자에게 양도하거나 담보로 제공할 수 없다.</div>
+
+        <div class="article-title">제10조 (계약의 해석)</div>
+        <div class="article-content">본 계약서에 명시되지 않은 사항이나 해석상 이견이 있을 경우 상호 협의하여 결정하며, 협의가 되지 않을 경우 일반 상관례 및 관련 법령에 따른다.</div>
+
+        <div class="article-title">제11조 (긴급 상황 대처)</div>
+        <div class="article-content">"을"은 연수 진행 중 발생하는 천재지변, 파업, 테러, 전염병 등 긴급 상황에 대하여 즉시 "갑"에게 보고하고 최선의 조치를 취해야 한다.</div>
+
+        <div class="article-title">제12조 (참가자 관리)</div>
+        <div class="article-content">"을"은 연수 목적에 맞는 연수 환경을 조성하고 참가자의 정당한 요구 사항을 충실히 반영하여야 한다.</div>
+    </div>
+
+    <div class="page page-break">
+        <div class="article-title">제13조 (보험 가입)</div>
+        <div class="article-content">"을"은 연수 참가자 전원에 대하여 해외여행자 보험에 가입하여야 하며, 그 증빙을 "갑"에게 제출한다.</div>
+
+        <div class="article-title">제14조 (계약의 유효기간)</div>
+        <div class="article-content">본 계약의 유효기간은 계약 체결일부터 연수 종료 후 모든 정산 업무가 완료되는 시점까지로 한다.</div>
+
+        <div class="article-title">제15조 (보고 업무)</div>
+        <div class="article-content">"을"은 연수 준비 현황 및 진행 상황을 "갑"이 요청할 시 수시로 보고하여야 하며, 연수 종료 후 정산 보고서를 제출하여야 한다.</div>
+
+        <div class="article-title">제16조 (관할 법원)</div>
+        <div class="article-content">본 계약과 관련하여 소송이 제기될 경우 "갑"의 소재지 관할 법원을 합의 관할 법원으로 한다.</div>
+
+        <div style="margin-top: 60px; text-align: center; font-weight: bold;">본 계약의 체결을 증명하기 위하여 계약서 2부를 작성하여 "갑"과 "을"이 서명 날인 후 각각 1부씩 보관한다.</div>
+        
+        <div style="margin-top: 30px; text-align: center; font-size: 11pt; font-weight:bold;"><span class="view_contract_date">2026년    월    일</span></div>
 
         <div class="signature-area">
             <div class="sig-box">
@@ -133,6 +170,41 @@
     </div>
 
     <script>
+        // 금액을 한글로 변환하는 함수
+        function numToKorean(number) {
+            if (!number || isNaN(number)) return "-";
+            const inputNum = number.toString();
+            const units = ['', '십', '백', '천'];
+            const bigUnits = ['', '만', '억', '조'];
+            const digits = ['', '일', '이', '삼', '사', '오', '육', '칠', '팔', '구'];
+            
+            let result = '';
+            for (let i = 0; i < inputNum.length; i++) {
+                let digit = inputNum[inputNum.length - 1 - i];
+                if (digit !== '0') {
+                    let word = digits[digit] + units[i % 4];
+                    if (i % 4 === 0) word += bigUnits[Math.floor(i / 4)];
+                    result = word + result;
+                } else if (i % 4 === 0 && inputNum.length > i + 3 && 
+                           (inputNum[inputNum.length - 1 - i - 1] !== '0' || 
+                            inputNum[inputNum.length - 1 - i - 2] !== '0' || 
+                            inputNum[inputNum.length - 1 - i - 3] !== '0')) {
+                    result = bigUnits[Math.floor(i / 4)] + result;
+                }
+            }
+            
+            const commaNum = new Intl.NumberFormat('ko-KR').format(number);
+            return `일금 ${result}원정 (\\${commaNum})`;
+        }
+
+        function updatePrice() {
+            const pVal = document.getElementById('num_price').value;
+            const dVal = document.getElementById('num_dep').value;
+            document.getElementById('in_price').value = numToKorean(pVal);
+            document.getElementById('in_dep_price').value = numToKorean(dVal);
+            update();
+        }
+
         function update() {
             const map = {
                 'in_title': 'view_title',
@@ -145,16 +217,22 @@
                 'in_client_ceo': 'view_client_ceo',
                 'in_client_bizno': 'view_client_bizno'
             };
-
+            
             for (let id in map) {
-                let val = document.getElementById(id).value;
+                let inputEl = document.getElementById(id);
+                if (!inputEl) continue;
+                let val = inputEl.value;
                 let targets = document.getElementsByClassName(map[id]);
+                
                 for(let t of targets) {
-                    t.innerText = val || "-";
+                    if(id === 'in_contract_date') {
+                        t.innerText = val || "2026년    월    일";
+                    } else {
+                        t.innerText = val || "-";
+                    }
                 }
             }
         }
-        // 페이지 로드 시 즉시 초기화 실행
         window.onload = update;
     </script>
 </body>
