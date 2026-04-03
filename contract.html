@@ -27,7 +27,6 @@
 
         .article-title { font-weight: bold; margin-top: 15px; display: block; font-size: 10.5pt; }
         .article-content { padding-left: 5px; margin-bottom: 10px; display: block; text-align: justify; }
-        .sub-list { padding-left: 20px; margin: 5px 0; }
 
         .signature-area { margin-top: 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
         .sig-box { border: 1px solid #000; padding: 15px; height: 180px; position: relative; }
@@ -45,18 +44,18 @@
 <body>
 
     <div class="admin-panel">
-        <h2 style="margin-top:0; color: var(--dark-blue);">🏦 연수 위탁계약 생성기 (iM뱅크 모드)</h2>
+        <h2 style="margin-top:0; color: var(--dark-blue);">🏦 연수 위탁계약 생성기 (날짜 자동입력)</h2>
         <div class="input-group">
             <div class="section-title">1. 계약 및 연수 정보</div>
             <div class="col-2"><label>연수 명칭 (제목 자동반영)</label><input type="text" id="in_title" value="iM뱅크 선진금융체험연수" oninput="update()"></div>
-            <div><label>계약 체결일</label><input type="text" id="in_contract_date" placeholder="2026년 04월 03일" oninput="update()"></div>
+            <div><label>계약 체결일</label><input type="text" id="in_contract_date" value="2026년 04월 03일" oninput="update()"></div>
             
             <div class="section-title">2. 대금 지급 조건</div>
             <div class="col-3"><label>총 계약 금액 (VAT포함)</label><input type="text" id="in_price" placeholder="일금 원정 (₩000,000)" oninput="update()"></div>
             <div><label>계약금 (체결 시)</label><input type="text" id="in_dep_price" placeholder="금액 또는 비율" oninput="update()"></div>
             <div class="col-2"><label>잔금 지급 기한</label><input type="text" id="in_balance_date" value="출발 전 7일 이내" oninput="update()"></div>
 
-            <div class="section-title">3. 위탁자 정보 (갑: iM뱅크 등 고객사)</div>
+            <div class="section-title">3. 위탁자 정보 (갑)</div>
             <div><label>기관/업체명</label><input type="text" id="in_client_name" value="iM뱅크" oninput="update()"></div>
             <div><label>대표자명</label><input type="text" id="in_client_ceo" placeholder="대표이사 성함" oninput="update()"></div>
             <div><label>사업자번호</label><input type="text" id="in_client_bizno" placeholder="000-00-00000" oninput="update()"></div>
@@ -90,12 +89,12 @@
 
         <div class="article-title">제3조 (지급 및 정산)</div>
         <div class="article-content">1. "갑"은 계약 체결과 동시에 계약금 <span class="view_dep_price" style="font-weight:bold;">-</span>을 "을"의 지정 계좌로 지급한다.<br>2. 잔금은 <span class="view_balance_date" style="font-weight:bold; text-decoration: underline;">출발 전 7일 이내</span>에 정산하여 지급하는 것을 원칙으로 한다.</div>
-
-        <div class="article-title">제4조 (계약의 해지)</div>
-        <div class="article-content">천재지변 등 불가항력적인 사유로 계약 이행이 불가능할 경우 본 계약을 해지할 수 있으며, 이 경우 기 발생한 실비는 "갑"이 부담한다.</div>
     </div>
 
     <div class="page page-break">
+        <div class="article-title">제4조 (계약의 해지)</div>
+        <div class="article-content">천재지변 등 불가항력적인 사유로 계약 이행이 불가능할 경우 본 계약을 해지할 수 있으며, 이 경우 기 발생한 실비는 "갑"이 부담한다.</div>
+
         <div class="article-title">제5조 (위약금 상세 기준)</div>
         <div class="article-content">"갑"의 사정에 의한 취소 시 발생하는 위약금은 국외여행 표준약관을 준수한다.
             <table class="info-table" style="margin-top:10px;">
@@ -109,14 +108,11 @@
             </table>
         </div>
 
-        <div class="article-title">제6조 (기타 사항)</div>
-        <div class="article-content">본 계약서에 명시되지 않은 사항은 관련 법령 및 일반 상관례에 따른다.</div>
-
         <div style="margin-top: 100px; text-align: center; font-weight: bold; font-size: 11pt;">
             본 계약을 증명하기 위하여 2부를 작성하여 "갑"과 "을"이 각각 1부씩 보관한다.
         </div>
 
-        <div style="margin-top: 30px; text-align: center; font-size: 11pt;" class="view_contract_date">2026년    월    일</div>
+        <div style="margin-top: 30px; text-align: center; font-size: 12pt; font-weight: bold;" class="view_contract_date">2026년 04월 03일</div>
 
         <div class="signature-area">
             <div class="sig-box">
@@ -154,10 +150,11 @@
                 let val = document.getElementById(id).value;
                 let targets = document.getElementsByClassName(map[id]);
                 for(let t of targets) {
-                    t.innerText = val || (id.includes('date') ? "2026년   월   일" : "-");
+                    t.innerText = val || "-";
                 }
             }
         }
+        // 페이지 로드 시 즉시 초기화 실행
         window.onload = update;
     </script>
 </body>
