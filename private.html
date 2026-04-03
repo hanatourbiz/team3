@@ -25,18 +25,19 @@
         .info-card strong { color: var(--dark-blue); display: block; margin-bottom: 8px; border-bottom: 1px solid #d0d7ef; padding-bottom: 5px; }
         .info-card p { margin: 5px 0; font-size: 0.9em; color: #555; }
 
-        /* [추가] 안내문 생성기 전용 링크 스타일 */
+        /* [수정] 안내문/계약서 제작 버튼 그리드 스타일 */
+        .maker-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
         .maker-link-box { 
             background: linear-gradient(135deg, var(--dark-blue), #0055ff); 
-            color: white; padding: 20px; border-radius: 12px; margin-top: 15px; 
+            color: white; padding: 15px 20px; border-radius: 12px; 
             display: flex; justify-content: space-between; align-items: center; 
             text-decoration: none; transition: transform 0.2s;
         }
         .maker-link-box:hover { transform: scale(1.02); box-shadow: 0 5px 15px rgba(0,51,153,0.3); }
         .maker-txt { text-align: left; }
-        .maker-txt strong { font-size: 1.1em; display: block; }
-        .maker-txt span { font-size: 0.85em; opacity: 0.8; }
-        .maker-icon { font-size: 2em; }
+        .maker-txt strong { font-size: 1.05em; display: block; }
+        .maker-txt span { font-size: 0.8em; opacity: 0.8; }
+        .maker-icon { font-size: 1.8em; }
 
         /* 다운로드 버튼 스타일 */
         .btn-box { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
@@ -79,14 +80,23 @@
             </tbody>
         </table>
 
-        <h3>📄 제안용 공문 제작</h3>
-        <a href="print_notice.html" class="maker-link-box">
-            <div class="maker-txt">
-                <strong>출장 전담 여행사 변경 안내문 제작</strong>
-                <span>업체명/로고/담당자 선택 후 즉시 출력 및 PDF 저장</span>
-            </div>
-            <div class="maker-icon">🖨️</div>
-        </a>
+        <h3>📄 제안 및 계약 서류 제작</h3>
+        <div class="maker-grid">
+            <a href="print_notice.html" class="maker-link-box">
+                <div class="maker-txt">
+                    <strong>변경 안내문 제작</strong>
+                    <span>안내문 즉시 출력 및 저장</span>
+                </div>
+                <div class="maker-icon">🖨️</div>
+            </a>
+            <a href="https://hanatourbiz.github.io/team3/contract.html" class="maker-link-box">
+                <div class="maker-txt">
+                    <strong>위탁계약서 제작</strong>
+                    <span>표준 위탁계약서 자동 생성</span>
+                </div>
+                <div class="maker-icon">📝</div>
+            </a>
+        </div>
 
         <h3>🔑 시스템 접속 정보</h3>
         <div class="info-grid">
