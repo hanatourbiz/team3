@@ -69,7 +69,7 @@ function sendEmail() {
     // 메일 제목 및 본문 구성
     const subject = encodeURIComponent(`[그룹견적요청] ${demand} (${route})`);
     const body = encodeURIComponent(
-`안녕하세요, 항공팀 담당자님.\n그룹 견적 요청드립니다.\n\n` +
+`안녕하세요.\n 하기와 같이 그룹 견적 요청드립니다.\n\n` +
 `ㅇ 수요처 : ${demand}\n` +
 `ㅇ H/AGT : ${hagt}\n` +
 `ㅇ 요청석 : ${seats}\n` +
@@ -80,7 +80,7 @@ function sendEmail() {
     );
 
     // 기본 메일 클라이언트(Outlook 등) 연동
-    window.location.href = `mailto:ugi@hanatour.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:hkkwon@hanatour.com, dgfhh456@hanatour.com?subject=${subject}&body=${body}`;
 }
 </script>
 
